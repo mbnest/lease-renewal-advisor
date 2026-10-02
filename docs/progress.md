@@ -42,7 +42,11 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 - Next: `.gitattributes`, `.env.example`, then 0.1 starting with the ADRs
 - Done: `.gitattributes` (union merge for `docs/progress.md`) and `.env.example` (`OPENROUTER_API_KEY` only, fake value)
 - Next: 0.1, starting with the ADRs
+- Decision: repo is `mbnest/lease-renewal-advisor`, public, MIT license
+- Done: `LICENSE`, PR template in `.github/`, repo name and license recorded in README and AGENTS.md
+- Done: `main` protected by a ruleset (PR required, squash only, no force push or deletion)
+- Next: merge this PR, then 0.1 on `docs/adrs`, starting with the ADRs
 
 ## Known gaps and open questions
-- Repo name, public or private, license, pinned Python version, and folder layout are open
+- Pinned Python version and folder layout are open
 - Link to the tracked implementation plan once it is written

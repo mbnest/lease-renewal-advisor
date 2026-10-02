@@ -7,6 +7,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Lease renewal decision agent: multi-agent, advisory, synthetic data, graded against answer keys
 - Phase: architecture. Everything is designed, not built, until a commit says otherwise
 - Overview: [README.md](README.md)
+- Repo: `mbnest/lease-renewal-advisor` on GitHub, public, MIT license
 - Current state, next step, and resume prompt: [docs/progress.md](docs/progress.md). Read it first
 
 ## Sources and precedence
@@ -58,6 +59,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Commit format: `<lane>(<wbs-id>): <summary>`, for example `f(0.1): add progress log`
 - Lanes: a data and keys, b eval and infra, c decision code, d state and UI, e agents, f docs and process
 - Keep PRs small, under about 400 changed lines
+- Fill in the PR template (`.github/pull_request_template.md`)
 
 ## Upkeep
 - Log notable changes in `docs/progress.md`: append-only, dated, naming the task id
@@ -70,5 +72,5 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Test register and CI rules in `docs/testing-strategy.md`. No live model calls in CI
 
 ## Known gaps and open questions
-- Repo name, public or private, license, pinned Python version, and folder layout are open
+- Pinned Python version and folder layout are open
 - Lane directory ownership waits on the folder layout
