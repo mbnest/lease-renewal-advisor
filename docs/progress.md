@@ -40,6 +40,8 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 - Next: root `AGENTS.md`, `.gitattributes`, `.env.example`, then 0.1
 - Done: root `AGENTS.md` (agent-neutral, lean; planned docs listed as pointers) and `CLAUDE.md` importing it
 - Next: `.gitattributes`, `.env.example`, then 0.1 starting with the ADRs
+- Done: `.gitattributes` (union merge for `docs/progress.md`) and `.env.example` (`OPENROUTER_API_KEY` only, fake value)
+- Next: 0.1, starting with the ADRs
 
 ## Known gaps and open questions
 - Repo name, public or private, license, pinned Python version, and folder layout are open
