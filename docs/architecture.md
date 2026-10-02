@@ -114,7 +114,7 @@ Field lists only. Schemas are written after M0, and final names may change then.
 - Flags: required, and forbidden (decoys)
 - Evidence: table, record id, field, value, rule, and text span where relevant
 - Protected reference (scenario 5): category, explicitness, location, record id, span
-- Required agents. Scenario 8 adds signals and the expected winner
+- Required agents. Scenario 8 adds signals, the expected winner, and its direction
 - File header: spec seed, policy version, validator version
 
 ### Policy config
@@ -160,7 +160,7 @@ Designed, not built. Implemented with the schemas after M0.
 - Clamp: floor -3%, cap +9%. Placeholders until calibration (DD-04)
 - Action: no flags gives renew. Otherwise highest severity wins, escalate over note ([ADR-015](decisions/ADR-015-action-definitions-with-severity-tags.md))
 - Severity: escalate for chronic maintenance and open complaint. Note for late payment pattern, below market, soft demand
-- Arbitration: on a specialist conflict, the first match in precedence wins: condition escalation, then market, then resident
+- Arbitration: on a specialist conflict, the first match in precedence sets rent direction: condition escalation, then market, then resident. Severity tags still set the action. Signal vocabulary is in `docs/scenarios.md`
 - Config must define a severity tag for every flag type, all five bands, and each specialist once in precedence
 
 ### Spec rules
@@ -246,6 +246,6 @@ Target components are designed, not validated ([ADR-011](decisions/ADR-011-datab
 - The trigger for APPROVED to DONE is not defined (DD-12)
 - Thin model client interface and typed claim vocabulary are not specified ([ADR-001](decisions/ADR-001-plain-python-asyncio-orchestration.md), [ADR-004](decisions/ADR-004-critic-design.md))
 - Protected field list, schema names, and config file name are set with the schemas after M0
-- Tuned thresholds and severity tags (DD-01), model selection (DD-02), promotion thresholds (DD-03), clamp calibration (DD-04), MLflow pin (DD-05), Free Edition feasibility (DD-06), scenario 8 vocabulary (DD-07), cost (DD-08), disposition vocabulary (DD-09), DONE trigger (DD-12)
+- Tuned thresholds and severity tags (DD-01), model selection (DD-02), promotion thresholds (DD-03), clamp calibration (DD-04), MLflow pin (DD-05), Free Edition feasibility (DD-06), cost (DD-08), disposition vocabulary (DD-09), DONE trigger (DD-12)
 - Checks named here are not yet tied to test ids. The test register is planned
 - `docs/eval-plan.md` and `docs/scenarios.md` are not written yet

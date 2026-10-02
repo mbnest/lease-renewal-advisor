@@ -5,7 +5,7 @@
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
 | **Related** | ADR-006 (grading), ADR-013 (ground truth), ADR-014 (thresholds), ADR-018 (arbitration), ADR-021 (storage) |
-| **Pending** | DD-04 (rent and city rate calibration), DD-07 (scenario 8 signal vocabulary) |
+| **Pending** | DD-04 (rent and city rate calibration) |
 
 ## Context
 
@@ -28,7 +28,7 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 | Dallas | Medium | Mixed | about 13 |
 | Lewisville | Low | High | 4 |
 | Fort Worth | Low | Mixed | about 12 |
-| Arlington | Low | Softer | about 12 |
+| Arlington | Low | Soft | about 12 |
 
 - Prosper adds high rent with soft demand, and Lewisville adds low rent with strong demand. Every rate tier then has a contrasting demand value, so tier_swap slots can move a cause across tiers. Prosper also gives scenario 3 a soft city outside the low tier.
 
@@ -77,5 +77,4 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 ## Known gaps and open questions
 
 - City counts and rate values are drafts until calibration (DD-04).
-- Scenario 8 signal vocabulary is thin (DD-07).
 - Slot parameter ranges are set in the scenario spec (planned).

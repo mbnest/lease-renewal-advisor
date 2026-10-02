@@ -5,7 +5,7 @@
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
 | **Related** | ADR-003 (logic stays code), ADR-012 (scenarios), ADR-013 (ground truth), ADR-015 (severity tags), ADR-016 (BLOCKED state) |
-| **Pending** | DD-07 (scenario 8 signal vocabulary) |
+| **Pending** | None |
 
 ## Context
 
@@ -17,8 +17,9 @@ Scenario 8 plants conflicting signals between specialists to test how disagreeme
 
 - **Order:** condition escalation, then market, then resident.
 - **Compliance is outside arbitration.** The critic handles it through the BLOCKED state (ADR-016).
-- **Scope:** precedence applies only when specialists conflict. Severity tags (ADR-015) drive the combining rule within a case. Overlap between the two is watched.
-- **Keys:** for scenario 8, the key stores the signals and the expected winner. The validator checks that the winner is the first matching specialist in precedence order.
+- **Scope:** arbitration decides rent direction only, and only when specialist signals imply different directions. Severity tags (ADR-015) still decide the action, so the two never overlap.
+- **Signals:** each specialist output carries one directional signal. Condition: ESCALATE, RAISE, NONE. Market: RAISE, HOLD, NONE. Resident: RAISE, HOLD, NONE. Only ESCALATE matches for condition. Values live in the policy config. Slot design is in `docs/scenarios.md`.
+- **Keys:** for scenario 8, the key stores the signals, the expected winner, and the direction. The validator checks that the winner is the first matching specialist in precedence order and that the direction is the winner's.
 - The supervisor's arbitration note explains the code's outcome. It cannot change it.
 - **Order:** arbitration runs in code on the specialist outputs, before the supervisor. The supervisor receives the outcome and writes the note (ADR-001).
 
@@ -37,13 +38,14 @@ Scenario 8 plants conflicting signals between specialists to test how disagreeme
 **Costs we accept**
 
 - A fixed order cannot weigh evidence strength.
-- The conflict signal vocabulary is thin, so scenario 8 may be passed for the wrong reason.
+- The signal vocabulary is small, so scenario 8 may still be passed for the wrong reason.
+- Arbitration cannot change the action, even when the winning specialist's domain would argue for one.
 
 ## Revisit when
 
-- Arbitration outcomes disagree with severity-tag outcomes in generated cases.
-- The signal vocabulary is expanded (DD-07).
+- Generated cases show a winner's direction that contradicts the action, such as a raise on an escalate case.
+- Scenario 8 results suggest the vocabulary is too small to separate right and wrong reasoning.
 
 ## Known gaps and open questions
 
-- Scenario 8 signal vocabulary is thin (DD-07).
+- The signal field in the specialist output schema is set with the schemas after M0.

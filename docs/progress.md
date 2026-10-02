@@ -7,7 +7,7 @@ Where the project stands and where to resume. Detail lives in one log per milest
 - Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9)
 - Next milestone: M0, architecture exit checklist passed. Checklist in [docs/progress/m0.md](progress/m0.md)
 - Active task: 0.1, architecture docs
-- Next step: open the PR for `docs/scenarios` (scenarios doc, ADR-012 city update). Then `docs/eval-plan.md`, then `docs/risks.md`, each in its own PR under about 400 lines. Then a README refresh, then one review pass against the M0 checklist
+- Next step: open the PR for `docs/scenarios` (scenarios doc, ADR-012 city update, DD-07 closed in ADR-018). Then `docs/eval-plan.md`, then `docs/risks.md`, each in its own PR under about 400 lines. Then a README refresh, then one review pass against the M0 checklist
 - Resume prompt: "Read AGENTS.md and docs/progress.md, then the current milestone log. Continue from the next step above. Docs state decisions already made in the ADRs and link to them, and log missing decisions as gaps rather than inventing them. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
