@@ -10,11 +10,11 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 - Drafts in `docs/reference/` stay drafts. Tracked docs are written from them, not copied
 
 ## Current position
-- Phase: pre-P0 repo setup
+- Phase: pre-P0 repo setup done. PR #1 merged 2026-10-02 (https://github.com/mbnest/lease-renewal-advisor/pull/1)
 - Next milestone: M0, architecture exit checklist passed
 - Active task: none
-- Next step: start 0.1, regenerate the architecture docs from the addenda
-- Resume prompt: "Read AGENTS.md and docs/progress.md. Inputs are in docs/reference/ (untracked drafts; session 5 wins on conflicts). Continue from the next step above. Use bullets, keep outputs succinct, and avoid em dashes."
+- Next step: branch `docs/adrs` from `main` and start 0.1 with the ADR index and ADRs 0001 to 0010 (plan in the 2026-10-02 log)
+- Resume prompt: "Read AGENTS.md and docs/progress.md. Inputs are in docs/reference/ (untracked drafts; session 5 wins on conflicts). Continue from the next step above. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
 
@@ -48,6 +48,14 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 - Next: merge this PR, then 0.1 on `docs/adrs`, starting with the ADRs
 - Decision: PR template replaced with the owner's template (summary with risk ratings, requirement, contracts, assumptions, dependencies, evidence, signoffs). Every PR follows it
 - Gap: risk and rigor rubric not written yet. The draft pointed to a missing `docs/Testing.md` section 8 and a `just packet` command, both dropped
+- Done: PR #1 merged (squash) with the full template
+- Proposed (not yet confirmed): ADR plan for 0.1
+  - Scope is 28 ADRs. 0011 split into 0011 (principle) and 0021 to 0027 (per substitution, session 2 format). 0028 is cost envelope (DD-08). 0021 to 0028 have no drafts
+  - Write each ADR from its addendum source. Session 1 addendum lives inside the scoping doc. Draft ADRs are cross-checks only
+  - Cite addenda by name. The ADR index states the addenda are private planning notes, not in the repo
+  - Path `docs/decisions/NNNN-slug.md`. Status "accepted (design only, not built)"
+  - Three PRs under about 400 lines each: index and 0001 to 0010; 0011 to 0020; 0021 to 0028 plus `docs/open-decisions.md`
+  - Fix the stale 0017 index title (one gateway, OpenRouter)
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
