@@ -10,7 +10,7 @@ Index of every ADR, with a one-line summary of each decision.
 - Sections: context, decision, alternatives considered, consequences (benefits, costs we accept), revisit when, known gaps and open questions
 - Status: "Accepted (design only, not built)" until code and tests exist
 - Rationale is about the project only: its requirements, constraints, and evaluation
-- Deferred items (DD-nn) live in `docs/open-decisions.md` (planned)
+- Deferred items (DD-nn) live in [docs/open-decisions.md](../open-decisions.md)
 - A superseded ADR stays in place, marked superseded, with a link to its replacement
 
 ## Index
@@ -45,9 +45,9 @@ Index of every ADR, with a one-line summary of each decision.
 | [ADR-022](ADR-022-substitution-tool-access.md) | Serve tools from a custom thin MCP server for release one, managed UC Functions MCP as the target | Managed UC Functions MCP, stood in by the custom thin MCP server | accepted |
 | [ADR-023](ADR-023-substitution-data-prep.md) | Prepare data with a seeded Python generator for release one, a Databricks pipeline as the target | Pipeline on Databricks, stood in by the seeded Python generator | accepted |
 | [ADR-024](ADR-024-substitution-redaction-and-key-isolation.md) | Redact and isolate keys in a Python access layer for release one, UC controls as the target | UC views or column masks, stood in by the Python access layer and a directory allowlist | accepted |
-| ADR-025 | Substitution: observability | Databricks-managed MLflow, stood in by local MLflow in Docker | planned |
-| ADR-026 | Substitution: approval and audit state | Lakebase, stood in by SQLite behind the repository interface | planned |
-| ADR-027 | Substitution: reviewer UI | Streamlit as a Databricks App, stood in by Streamlit in Docker Compose | planned |
+| [ADR-025](ADR-025-substitution-observability.md) | Trace to local MLflow for release one, Databricks-managed MLflow as the target | Databricks-managed MLflow, stood in by local MLflow in Docker | accepted |
+| [ADR-026](ADR-026-substitution-approval-and-audit-state.md) | Keep approval and audit state in SQLite for release one, Lakebase as the target | Lakebase, stood in by SQLite behind the repository interface | accepted |
+| [ADR-027](ADR-027-substitution-reviewer-ui.md) | Run the reviewer UI in Docker Compose for release one, as a Databricks App as the target | Streamlit as a Databricks App, stood in by Streamlit in Docker Compose | accepted |
 
 ### Data and ground truth
 | ADR | Title | Decision | Status |
@@ -65,8 +65,7 @@ Index of every ADR, with a one-line summary of each decision.
 | [ADR-018](ADR-018-fixed-arbitration-precedence.md) | Resolve specialist conflicts with a fixed precedence list | Specialist conflicts resolved by a fixed precedence list in config. Code decides, model explains | accepted |
 | [ADR-019](ADR-019-promotion-criteria-and-threshold-freeze.md) | Fix promotion non-negotiables now, freeze numeric thresholds after baseline | Non-negotiables fixed now. Numeric thresholds frozen after baseline, before multi-agent results | accepted |
 | [ADR-020](ADR-020-rent-clamp-and-symbolic-bands.md) | Clamp rent changes globally and grade against symbolic bands | Global floor and cap clamp. Five named bands resolved by the policy config | accepted |
-| ADR-028 | Cost envelope | Lean run plan, provisional $50 ceiling, per-run spend abort | planned |
+| [ADR-028](ADR-028-cost-envelope.md) | Run a lean eval plan under a provisional $50 ceiling | Lean run plan, provisional $50 ceiling, per-run spend abort | accepted |
 
 ## Known gaps and open questions
-- ADRs 025 to 028 are not written yet. Rows link once each file lands
-- `docs/open-decisions.md` is not written yet
+- All 28 ADRs are written. None is validated by code or tests yet

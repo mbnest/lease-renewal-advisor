@@ -61,10 +61,10 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 ## Upkeep
 - Log notable changes in `docs/progress.md`: append-only, dated, naming the task id
 - Update the README status table in the same commit that changes a component's state
+- Deferred decisions (DD-nn) live in [docs/open-decisions.md](docs/open-decisions.md). Close an item by updating its row, the affected ADR, and the status table in the same commit
+- ADRs live in `docs/decisions/`. Follow the format and index rules in `docs/decisions/README.md`
 
 ## Planned (rules expand when these land)
-- ADRs in `docs/decisions/`. Format and index in `docs/decisions/README.md`
-- Deferred decisions register in `docs/open-decisions.md`, updated in the same commit that closes an item
 - Branching and lane ownership in `docs/branching-strategy.md`
 - Test register and CI rules in `docs/testing-strategy.md`. No live model calls in CI
 

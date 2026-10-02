@@ -71,6 +71,11 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Decision: ADR-021 to ADR-028 split into two PRs to stay under about 400 lines. PR A: ADR-021 to ADR-024. PR B: ADR-025 to ADR-028 plus `docs/open-decisions.md`
 - Done: ADR-021 to ADR-024 on `docs/adrs-021-024`, index links them
 - Next: PR for ADR-021 to ADR-024, then ADR-025 to ADR-028 plus `docs/open-decisions.md`
+- Done: PR #7 merged (ADR-021 to ADR-024). https://github.com/mbnest/lease-renewal-advisor/pull/7
+- Done: ADR-025 to ADR-028 and `docs/open-decisions.md` (DD-01 to DD-11, standing triggers) on `docs/adrs-025-028`. Index links all 28 ADRs
+- Decision: register drops the build step column. Its numbering does not match the implementation plan. Milestone mapping waits until the plan is tracked
+- Done: register rule moved from planned into AGENTS.md upkeep
+- Next: PR for ADR-025 to ADR-028, then the remaining architecture docs for M0
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
