@@ -9,11 +9,24 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Each entry names the task id it advances
 
 ## Current position
-- Phase: P0, architecture docs. ADR index and ADR-001 to ADR-010 merged 2026-10-02 (PR #3, PR #4)
+- Phase: P0, architecture docs. All 28 ADRs and `docs/open-decisions.md` merged 2026-10-02 (PR #3 to PR #8)
 - Next milestone: M0, architecture exit checklist passed
-- Active task: 0.1, ADRs
-- Next step: on `docs/adrs-011-020` (this state save is its first commit), write ADR-011 to ADR-015, then ADR-016 to ADR-020. Two PRs to stay under about 400 lines. Then ADR-021 to ADR-028 plus `docs/open-decisions.md`
-- Resume prompt: "Read AGENTS.md and docs/progress.md. Continue from the next step above. ADRs follow the conventions in docs/decisions/README.md, and each written ADR is linked in its index row. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
+- Active task: 0.1, architecture docs
+- Next step: on `docs/architecture` (this state save is its first commit), write `docs/architecture.md`. Then `docs/scenarios.md`, `docs/eval-plan.md`, `docs/risks.md`, each in its own PR under about 400 lines. Then a README refresh, then one review pass against the M0 checklist
+- Resume prompt: "Read AGENTS.md and docs/progress.md. Continue from the next step above. Docs state decisions already made in the ADRs and link to them, and log missing decisions as gaps rather than inventing them. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
+
+## M0 exit checklist
+- [x] ADR index and ADR-001 to ADR-028, each with a Pending row where items are open
+- [x] `docs/open-decisions.md`: DD-01 to DD-11 plus standing triggers
+- [x] AGENTS.md carries style, phase, status table, and register rules
+- [ ] `docs/architecture.md`: boundaries, component flow and gate states in Mermaid that renders on GitHub, contract field lists, validator and policy rules, target versus release-one table, model tiering note, known gaps
+- [ ] `docs/scenarios.md`: scenarios, slots, signal channel, clean and near-clean homes
+- [ ] `docs/eval-plan.md`: metrics and counts per ADR-006, run plan per ADR-028, bake-off method
+- [ ] `docs/risks.md`: routing nondeterminism, cheap-model schema failures, price staleness, judge self-preference, not legal advice
+- [ ] README: dated status table, target components marked designed, not validated
+- [ ] Every doc has a status line, last-updated date, and known gaps section
+- [ ] No built, tested, or evaluated claims anywhere
+- [ ] One review pass, with findings resolved or logged here
 
 ## Milestones
 
@@ -76,6 +89,12 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Decision: register drops the build step column. Its numbering does not match the implementation plan. Milestone mapping waits until the plan is tracked
 - Done: register rule moved from planned into AGENTS.md upkeep
 - Next: PR for ADR-025 to ADR-028, then the remaining architecture docs for M0
+- Done: PR #8 merged (ADR-025 to ADR-028, `docs/open-decisions.md`). https://github.com/mbnest/lease-renewal-advisor/pull/8
+- Done: all 28 ADRs and the deferred decisions register merged
+- Gap: merged remote branches `docs/adrs-021-024` and `docs/adrs-025-028` are not deleted yet. Auto-delete is still off
+- Done: M0 exit checklist added under current position
+- Done: merged branches deleted, local (`docs/adrs-011-020`, `docs/adrs-016-020`, `docs/adrs-021-024`, `docs/adrs-025-028`) and remote. Each local tip matched its merged PR head first
+- Next: `docs/architecture.md` on `docs/architecture`
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
