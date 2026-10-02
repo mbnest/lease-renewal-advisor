@@ -163,6 +163,19 @@ The 5 slot roles map to reference type and location. Each slot uses a different 
 - Generated once and frozen. Generation never calls a model
 - A leakage scan fails generation if any fixture names a scenario label or cause
 
+## Research notes
+Secondary sources checked 2026-10-02. They shaped the fictional draft values above. They do not calibrate them, which stays with DD-04 and primary sources in the README.
+
+| Topic | Finding | Source |
+|---|---|---|
+| City demand | May 2026 days on market: Plano 15, Lewisville 15, Dallas 25, Fort Worth 25, Arlington 42. Lewisville median rent $1,555 | [Doorstead DFW rental report](https://www.doorstead.com/blog/dallas-fort-worth-rental-market-report) |
+| Lewisville | Among the top 5 US suburbs adding renters | [DFW Property Management market data](https://dfwpropertymanagement.com/market-data) |
+| Prosper | Single-family rents about $2,500 to $4,500 a month | [RentNow TX, Prosper](https://www.rentnowtx.com/prosper/) |
+| Prosper | Record permits in McKinney, Frisco, and Prosper, now among the softest pricing as new supply leases up | [ManageCasa Texas market guide](https://managecasa.com/articles/texas-housing-market) |
+| Prosper | Days on market rose to 41 in June 2026, up 13 from a year earlier (sales market) | [Prosper market update, June 2026](https://prospertx.homes/blog/prosper-tx-market-update-june-2026) |
+| Scenarios 3 and 4 | A turn costs about $4,000 to $7,000 per unit, including vacancy loss and leasing costs (multifamily figures). A raise that triggers a move-out can cost more than it earns | [RentReady, cost of resident turnover](https://www.rentready.com/blog/real-cost-of-resident-turnover-turn-time) |
+| Scenario 5 | The Fair Housing Act protects race, color, national origin, religion, sex, familial status, and disability | [HUD Fair Housing Act overview](https://www.hud.gov/helping-americans/fair-housing-act-overview) |
+
 ## Known gaps and open questions
 - Slot parameter ranges, decoys per scenario, and acceptable band sets per slot are set in the scenario spec after M0
 - Scenario 8 signal vocabulary and the conflicting signal sets are not decided (DD-07)
