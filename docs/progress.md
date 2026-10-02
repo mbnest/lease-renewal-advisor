@@ -67,6 +67,10 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Done: PR #5 merged (ADR-011 to ADR-015). https://github.com/mbnest/lease-renewal-advisor/pull/5
 - Done: ADR-016 to ADR-020 on `docs/adrs-016-020`, index links them
 - Next: PR for ADR-016 to ADR-020, then ADR-021 to ADR-028 plus `docs/open-decisions.md`
+- Done: PR #6 merged (ADR-016 to ADR-020). https://github.com/mbnest/lease-renewal-advisor/pull/6
+- Decision: ADR-021 to ADR-028 split into two PRs to stay under about 400 lines. PR A: ADR-021 to ADR-024. PR B: ADR-025 to ADR-028 plus `docs/open-decisions.md`
+- Done: ADR-021 to ADR-024 on `docs/adrs-021-024`, index links them
+- Next: PR for ADR-021 to ADR-024, then ADR-025 to ADR-028 plus `docs/open-decisions.md`
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
