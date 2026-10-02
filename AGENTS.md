@@ -10,12 +10,6 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Repo: `mbnest/lease-renewal-advisor` on GitHub, public, MIT license
 - Current state, next step, and resume prompt: [docs/progress.md](docs/progress.md). Read it first
 
-## Sources and precedence
-- Decisions come from the addenda, highest first: session 5, 4, 3, 2, then session 1 (inside the scoping doc), then the scoping doc body
-- Inputs live in `docs/reference/`. It is gitignored, local only, and never tracked
-- Drafts in `docs/reference/` inform tracked files. Write each tracked file fresh. Never copy a draft wholesale
-- If sources conflict and precedence does not settle it, or a decision is missing, do not invent one. Log it under known gaps and in `docs/progress.md`
-
 ## Writing style
 - Succinct. Bullets. Sentence case headings
 - No em dashes anywhere, docs included. Use plain sentence breaks
@@ -26,6 +20,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Keep it simple. Do not overengineer or program defensively
 - Work in small increments. Validate each one before moving on
 - Find and prove the root cause before fixing. No workarounds
+- If a decision is missing or conflicting, do not invent one. Log it under known gaps and in `docs/progress.md`
 - Use current APIs
 
 ## Code style
@@ -57,6 +52,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - `main` is protected. Merge through pull requests, squash merge
 - Branch names: `<lane>/<wbs-id>-<slug>`, `contract/<slug>`, `docs/<slug>`, `eval/<run-id>`
 - Commit format: `<lane>(<wbs-id>): <summary>`, for example `f(0.1): add progress log`
+- Commit messages never reference a coding agent. No agent names, no Co-Authored-By or "generated with" trailers
 - Lanes: a data and keys, b eval and infra, c decision code, d state and UI, e agents, f docs and process
 - Keep PRs small, under about 400 changed lines
 - Every PR description follows `.github/pull_request_template.md`. Fill every section. Write "None" or "n/a" rather than deleting one
@@ -67,7 +63,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Update the README status table in the same commit that changes a component's state
 
 ## Planned (rules expand when these land)
-- ADRs in `docs/decisions/`. Each has context, options, decision, tradeoffs, revisit trigger, an addendum citation, and a "Pending: DD-nn" line when open
+- ADRs in `docs/decisions/`. Format and index in `docs/decisions/README.md`
 - Deferred decisions register in `docs/open-decisions.md`, updated in the same commit that closes an item
 - Branching and lane ownership in `docs/branching-strategy.md`
 - Test register and CI rules in `docs/testing-strategy.md`. No live model calls in CI

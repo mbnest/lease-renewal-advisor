@@ -1,0 +1,72 @@
+# Architecture decision records
+
+Status: living index. Last updated 2026-10-02.
+Index of every ADR, with a one-line summary of each decision.
+
+## Conventions
+- File name: `ADR-NNN-slug.md`, three-digit number, never reused
+- Title: the decision, stated as an action
+- Header table: status, date, related ADRs, pending DD-nn items
+- Sections: context, decision, alternatives considered, consequences (benefits, costs we accept), revisit when, known gaps and open questions
+- Status: "Accepted (design only, not built)" until code and tests exist
+- Rationale is about the project only: its requirements, constraints, and evaluation
+- Deferred items (DD-nn) live in `docs/open-decisions.md` (planned)
+- A superseded ADR stays in place, marked superseded, with a link to its replacement
+
+## Index
+
+### Agents and orchestration
+| ADR | Title | Decision | Status |
+|---|---|---|---|
+| [ADR-001](ADR-001-plain-python-asyncio-orchestration.md) | Orchestrate agents in plain Python with asyncio | Hand-coded asyncio flow with Pydantic contracts. No agent framework, no Agent Bricks | accepted |
+| [ADR-002](ADR-002-prefetched-context-for-specialists.md) | Prefetch specialist context in code | Code prefetches each specialist's evidence. One narrow tool is tested only as an ablation | accepted |
+| [ADR-003](ADR-003-economics-and-critic-logic-stay-code.md) | Keep economics and critic logic in code | Rent economics is a code tool the supervisor calls. LLM agents are only the supervisor and three specialists | accepted |
+| [ADR-004](ADR-004-critic-design.md) | Verify claims in code and check compliance with rules plus one classifier | Code verifies every cited claim. Keyword rules plus one narrow classifier check compliance | accepted |
+| [ADR-005](ADR-005-custom-thin-mcp-server.md) | Start tool access with a thin custom MCP server | Custom MCP server over the Python access functions, added after evals are measurable | accepted |
+
+### Evaluation and observability
+| ADR | Title | Decision | Status |
+|---|---|---|---|
+| ADR-006 | Grade with separate named counts, not a composite score | Pass/fail on direction and clamp, strict three-way action match, severe misses counted separately | planned |
+| ADR-007 | Use one cache for development and published results | Hash-keyed call cache for dev, frozen snapshot with manifest for published runs | planned |
+| ADR-008 | Trace through the project's own decorator over MLflow | Agent code uses a thin `@traced` decorator. Only it imports MLflow | planned |
+
+### Reviewer experience and guardrails
+| ADR | Title | Decision | Status |
+|---|---|---|---|
+| ADR-009 | Review in Streamlit with append-only SQLite state | Streamlit approval page, card, and dashboard. Append-only SQLite decision events | planned |
+| ADR-010 | Enforce guardrails in code, with an approval gate and an audit record | No send or write capability. Code-enforced approval gate. Minimal audit record per recommendation | planned |
+
+### Platform layer
+| ADR | Title | Decision | Status |
+|---|---|---|---|
+| ADR-011 | Databricks target, local-first release | Docs describe the Databricks Free Edition target. Release one is local, every stand-in behind a seam | planned |
+| ADR-021 | Substitution: storage | Delta in Unity Catalog, stood in by Parquet behind the data-access interface | planned |
+| ADR-022 | Substitution: tool access | Managed UC Functions MCP, stood in by the custom thin MCP server | planned |
+| ADR-023 | Substitution: data prep | Pipeline on Databricks, stood in by the seeded Python generator | planned |
+| ADR-024 | Substitution: redaction and answer-key isolation | UC views or column masks, stood in by the Python access layer and a directory allowlist | planned |
+| ADR-025 | Substitution: observability | Databricks-managed MLflow, stood in by local MLflow in Docker | planned |
+| ADR-026 | Substitution: approval and audit state | Lakebase, stood in by SQLite behind the repository interface | planned |
+| ADR-027 | Substitution: reviewer UI | Streamlit as a Databricks App, stood in by Streamlit in Docker Compose | planned |
+
+### Data and ground truth
+| ADR | Title | Decision | Status |
+|---|---|---|---|
+| ADR-012 | Data scale, scenarios, and variants | 7 scenarios, 60 homes (35 planted, 25 clean), seeded variant slots | planned |
+| ADR-013 | Ground truth and compliance trap | Hand-authored keys checked by a generation-time validator. Counterfactual pairs for the protected reference | planned |
+
+### Policy and decision logic
+| ADR | Title | Decision | Status |
+|---|---|---|---|
+| ADR-014 | Thresholds in versioned config | Agents see a versioned policy config. No runtime recompute by the critic | planned |
+| ADR-015 | Action definitions with severity tags | Semantic action definitions. Severity tags in config. Highest severity wins | planned |
+| ADR-016 | Distinct BLOCKED state | Critic blocks go to a terminal BLOCKED state and a manual-review queue, counted separately | planned |
+| ADR-017 | One gateway, tiered models | OpenRouter as the single gateway. Smaller models for specialists, larger for supervisor and classifier | planned |
+| ADR-018 | Fixed arbitration precedence | Specialist conflicts resolved by a fixed precedence list in config. Code decides, model explains | planned |
+| ADR-019 | Promotion criteria and threshold freeze | Non-negotiables fixed now. Numeric thresholds frozen after baseline, before multi-agent results | planned |
+| ADR-020 | Rent clamp and symbolic bands | Global floor and cap clamp. Five named bands resolved by the policy config | planned |
+| ADR-028 | Cost envelope | Lean run plan, provisional $50 ceiling, per-run spend abort | planned |
+
+## Known gaps and open questions
+- ADRs 006 to 028 are not written yet. Rows link once each file lands
+- `docs/open-decisions.md` is not written yet

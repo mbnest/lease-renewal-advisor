@@ -1,20 +1,19 @@
 # Progress
 
 Status: living log. Last updated 2026-10-02.
-Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, milestones, and task ids below follow it.
+Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids below follow it.
 
 ## Rules
 - Log entries are append-only and dated
 - Edit only the current position block and milestone rows, and only when a phase or milestone changes
 - Each entry names the task id it advances
-- Drafts in `docs/reference/` stay drafts. Tracked docs are written from them, not copied
 
 ## Current position
-- Phase: pre-P0 repo setup
+- Phase: pre-P0 repo setup done. PR #1 merged 2026-10-02 (https://github.com/mbnest/lease-renewal-advisor/pull/1)
 - Next milestone: M0, architecture exit checklist passed
-- Active task: none
-- Next step: start 0.1, regenerate the architecture docs from the addenda
-- Resume prompt: "Read AGENTS.md and docs/progress.md. Inputs are in docs/reference/ (untracked drafts; session 5 wins on conflicts). Continue from the next step above. Use bullets, keep outputs succinct, and avoid em dashes."
+- Active task: 0.1, ADRs
+- Next step: merge the PR for the index and ADR-001 to ADR-005 (`docs/adrs`), then the stacked PR for ADR-006 to ADR-010 (`docs/adrs-006-010`). Then ADR-011 to ADR-020
+- Resume prompt: "Read AGENTS.md and docs/progress.md. Continue from the next step above. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
 
@@ -34,9 +33,6 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 ### 2026-10-02
 - Task: pre-P0 repo setup
 - Done: repo initialized on `main` with README and `.gitignore`
-- Done: reference inputs complete in `docs/reference/` (scoping doc, addenda 2 to 5, session 4 drafts, ADRs 0001 to 0020, schemas, `policy_v1.yaml`, planning drafts)
-- Decision: `docs/reference/` stays untracked, input only
-- Decision: drafts are not copied wholesale. Each tracked doc is written when needed, informed by its draft
 - Next: root `AGENTS.md`, `.gitattributes`, `.env.example`, then 0.1
 - Done: root `AGENTS.md` (agent-neutral, lean; planned docs listed as pointers) and `CLAUDE.md` importing it
 - Next: `.gitattributes`, `.env.example`, then 0.1 starting with the ADRs
@@ -47,7 +43,20 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 - Done: `main` protected by a ruleset (PR required, squash only, no force push or deletion)
 - Next: merge this PR, then 0.1 on `docs/adrs`, starting with the ADRs
 - Decision: PR template replaced with the owner's template (summary with risk ratings, requirement, contracts, assumptions, dependencies, evidence, signoffs). Every PR follows it
-- Gap: risk and rigor rubric not written yet. The draft pointed to a missing `docs/Testing.md` section 8 and a `just packet` command, both dropped
+- Gap: risk and rigor rubric not written yet
+- Done: PR #1 merged (squash) with the full template
+- Proposed (not yet confirmed): ADR plan for 0.1
+  - Scope is 28 ADRs. 0011 is the platform principle, 0021 to 0027 cover one substitution each, 0028 is the cost envelope (DD-08)
+  - Path `docs/decisions/NNNN-slug.md`. Status "accepted (design only, not built)"
+  - Three PRs under about 400 lines each: index and 0001 to 0010; 0011 to 0020; 0021 to 0028 plus `docs/open-decisions.md`
+- Decision: ADR plan confirmed, with changes. Three-digit numbers (`NNN-slug.md`) in `docs/decisions/`. `docs/decisions/README.md` is the index, with a one-line summary per ADR. Unwritten ADRs are listed as planned and link once they land
+- Done: `docs/decisions/README.md` index (001 to 010 linked, 011 to 028 planned)
+- Decision: ADR format. Files `ADR-NNN-slug.md`, title states the decision, header table (status, date, related, pending), sections context, decision, alternatives considered, consequences, revisit when, known gaps
+- Done: ADR-001 (orchestration) in the new format, index updated
+- Done: AGENTS.md and progress.md limited to tracked sources
+- Done: ADR-002 to ADR-010, index titles updated
+- Decision: split into two PRs to stay under about 400 lines. PR A: index, ADR-001 to ADR-005, AGENTS.md and progress cleanup. PR B, stacked on A: ADR-006 to ADR-010
+- Next: merge PR A, then PR B
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
