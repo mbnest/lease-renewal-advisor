@@ -60,13 +60,13 @@ Index of every ADR, with a one-line summary of each decision.
 |---|---|---|---|
 | [ADR-014](ADR-014-thresholds-in-versioned-config.md) | Keep policy thresholds in versioned config, with no runtime recompute | Agents see a versioned policy config. No runtime recompute by the critic | accepted |
 | [ADR-015](ADR-015-action-definitions-with-severity-tags.md) | Define actions semantically, with severity tags in config | Semantic action definitions. Severity tags in config. Highest severity wins | accepted |
-| ADR-016 | Distinct BLOCKED state | Critic blocks go to a terminal BLOCKED state and a manual-review queue, counted separately | planned |
-| ADR-017 | One gateway, tiered models | OpenRouter as the single gateway. Smaller models for specialists, larger for supervisor and classifier | planned |
-| ADR-018 | Fixed arbitration precedence | Specialist conflicts resolved by a fixed precedence list in config. Code decides, model explains | planned |
-| ADR-019 | Promotion criteria and threshold freeze | Non-negotiables fixed now. Numeric thresholds frozen after baseline, before multi-agent results | planned |
-| ADR-020 | Rent clamp and symbolic bands | Global floor and cap clamp. Five named bands resolved by the policy config | planned |
+| [ADR-016](ADR-016-distinct-blocked-state.md) | Send critic blocks to a distinct BLOCKED state | Critic blocks go to a terminal BLOCKED state and a manual-review queue, counted separately | accepted |
+| [ADR-017](ADR-017-one-gateway-tiered-models.md) | Route all model calls through one gateway, with tiered models | OpenRouter as the single gateway. Smaller models for specialists, larger for supervisor and classifier | accepted |
+| [ADR-018](ADR-018-fixed-arbitration-precedence.md) | Resolve specialist conflicts with a fixed precedence list | Specialist conflicts resolved by a fixed precedence list in config. Code decides, model explains | accepted |
+| [ADR-019](ADR-019-promotion-criteria-and-threshold-freeze.md) | Fix promotion non-negotiables now, freeze numeric thresholds after baseline | Non-negotiables fixed now. Numeric thresholds frozen after baseline, before multi-agent results | accepted |
+| [ADR-020](ADR-020-rent-clamp-and-symbolic-bands.md) | Clamp rent changes globally and grade against symbolic bands | Global floor and cap clamp. Five named bands resolved by the policy config | accepted |
 | ADR-028 | Cost envelope | Lean run plan, provisional $50 ceiling, per-run spend abort | planned |
 
 ## Known gaps and open questions
-- ADRs 016 to 028 are not written yet. Rows link once each file lands
+- ADRs 021 to 028 are not written yet. Rows link once each file lands
 - `docs/open-decisions.md` is not written yet
