@@ -5,7 +5,7 @@
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
 | **Related** | ADR-009 (approval state), ADR-016 (BLOCKED state), ADR-019 (promotion criteria) |
-| **Pending** | DD-03 (numeric promotion thresholds) |
+| **Pending** | DD-03 (numeric promotion thresholds), DD-12 (APPROVED to DONE trigger) |
 
 ## Context
 
@@ -19,7 +19,7 @@ Guardrails stated only in documentation can be bypassed by a code change. They n
 
 - **Tiers:** RECORD_ONLY and APPROVAL_REQUIRED. Every recommendation is APPROVAL_REQUIRED in release one.
 - **Gate states:** DRAFTED, BLOCKED, PENDING_APPROVAL, APPROVED, REJECTED, DONE. A recommendation that requires approval cannot reach DONE without a decision event. BLOCKED routes to the manual-review queue.
-- **Audit record:** an immutable snapshot of the recommendation version at DRAFTED, stored next to decision events through the same repository interface (ADR-009). JSON export for published samples.
+- **Audit record:** an immutable snapshot of the recommendation version, taken when the critic verdict is recorded and the version leaves DRAFTED for BLOCKED or PENDING_APPROVAL. Every version a reviewer sees, or that is blocked, has a complete snapshot, critic verdict included. Stored next to decision events through the same repository interface (ADR-009). JSON export for published samples.
 - Reproducibility metadata (model id, prompt versions, policy config, git commit, data seed) lives in trace attributes, MLflow run params, and the snapshot manifest, not in the audit record.
 - Promotion from APPROVAL_REQUIRED to RECORD_ONLY is documented, not built (ADR-019).
 - Tests: the codebase has no send or write path, and no approval-required recommendation reaches DONE without a decision event.
@@ -49,3 +49,4 @@ Guardrails stated only in documentation can be bypassed by a code change. They n
 ## Known gaps and open questions
 
 - Numeric promotion thresholds are set after the baseline run (DD-03).
+- What moves a recommendation from APPROVED to DONE is not defined (DD-12).

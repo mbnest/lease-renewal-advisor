@@ -5,7 +5,7 @@ Deferred decisions (DD-nn) and the standing revisit triggers that live in the AD
 
 ## Rules
 - One row per deferred item. Rows are never deleted. Closing an item sets status to decided or frozen, with the date
-- A commit that closes an item updates, in the same commit: this row, the affected ADR (decision text or revisit trigger, and its Pending row), and the README status table if a component's state changes. Log it in `docs/progress.md`
+- A commit that closes an item updates, in the same commit: this row, the affected ADR (decision text or revisit trigger, and its Pending row), and the README status table if a component's state changes. Log it in the current milestone log under `docs/progress/`
 - Every ADR with an open item names it in its Pending row
 - Frozen items (DD-03) are committed in the ADR with a dated freeze and a git tag before multi-agent results are viewed
 
@@ -24,6 +24,7 @@ Deferred decisions (DD-nn) and the standing revisit triggers that live in the AD
 | DD-09 | Resolution event disposition vocabulary | Set with the recommendation schema | Recommendation schema authoring | ADR-016, ADR-026 | open | |
 | DD-10 | Coding agent task, branch, and environment mechanics | Not exercised until a coding agent runs a task | First coding agent task | Branching strategy (planned), AGENTS.md | open | |
 | DD-11 | Single-source task list for the plan and Gantt view | Low priority until the two drift | First drift between them | Implementation plan (not yet tracked) | open | |
+| DD-12 | Trigger for APPROVED to DONE | The system has no send capability, so what DONE records is not defined | Recommendation schema authoring | ADR-010 | open | |
 
 ## Standing triggers
 

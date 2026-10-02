@@ -1,1 +1,2 @@
 docs/progress.md merge=union
+docs/progress/*.md merge=union

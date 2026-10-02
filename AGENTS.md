@@ -8,7 +8,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Phase: architecture. Everything is designed, not built, until a commit says otherwise
 - Overview: [README.md](README.md)
 - Repo: `mbnest/lease-renewal-advisor` on GitHub, public, MIT license
-- Current state, next step, and resume prompt: [docs/progress.md](docs/progress.md). Read it first
+- Current state, next step, and resume prompt: [docs/progress.md](docs/progress.md). Read it first, then the current milestone log it links
 
 ## Writing style
 - Succinct. Bullets. Sentence case headings
@@ -20,7 +20,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Keep it simple. Do not overengineer or program defensively
 - Work in small increments. Validate each one before moving on
 - Find and prove the root cause before fixing. No workarounds
-- If a decision is missing or conflicting, do not invent one. Log it under known gaps and in `docs/progress.md`
+- If a decision is missing or conflicting, do not invent one. Log it under known gaps and in the current milestone log
 - Use current APIs
 
 ## Code style
@@ -59,7 +59,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Evidence is pasted check or test output, never hand-edited
 
 ## Upkeep
-- Log notable changes in `docs/progress.md`: append-only, dated, naming the task id
+- Log decisions, gaps, deviations, and PR links in the current milestone log under `docs/progress/`: append-only, dated, naming the task id. `docs/progress.md` is the index and follows its own rules
 - Update the README status table in the same commit that changes a component's state
 - Deferred decisions (DD-nn) live in [docs/open-decisions.md](docs/open-decisions.md). Close an item by updating its row, the affected ADR, and the status table in the same commit
 - ADRs live in `docs/decisions/`. Follow the format and index rules in `docs/decisions/README.md`
