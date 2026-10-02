@@ -62,6 +62,8 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Done: `docs/adrs` and `docs/adrs-006-010` deleted, local and remote
 - Gap: auto-delete of merged branches is off. Stacked PRs need a manual rebase and retarget after the lower PR merges
 - Next: ADR-011 to ADR-015 on `docs/adrs-011-020`
+- Done: ADR-011 to ADR-015 on `docs/adrs-011-020`, index links them
+- Next: PR for ADR-011 to ADR-015, then ADR-016 to ADR-020
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
