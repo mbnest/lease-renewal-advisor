@@ -23,10 +23,14 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 | City | Rate tier | Demand | Homes |
 |---|---|---|---|
 | Highland Park | High | High | 3 to 4 |
-| Plano | Medium | High | about 16 |
-| Dallas | Medium | Mixed | about 16 |
+| Prosper | High | Soft | 3 |
+| Plano | Medium | High | about 13 |
+| Dallas | Medium | Mixed | about 13 |
+| Lewisville | Low | High | 4 |
 | Fort Worth | Low | Mixed | about 12 |
 | Arlington | Low | Softer | about 12 |
+
+- Prosper adds high rent with soft demand, and Lewisville adds low rent with strong demand. Every rate tier then has a contrasting demand value, so tier_swap slots can move a cause across tiers. Prosper also gives scenario 3 a soft city outside the low tier.
 
 **Scenarios**
 
