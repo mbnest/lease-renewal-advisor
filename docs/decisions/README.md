@@ -41,10 +41,10 @@ Index of every ADR, with a one-line summary of each decision.
 | ADR | Title | Decision | Status |
 |---|---|---|---|
 | [ADR-011](ADR-011-databricks-target-local-first-release.md) | Design for a Databricks target, release locally first | Docs describe the Databricks Free Edition target. Release one is local, every stand-in behind a seam | accepted |
-| ADR-021 | Substitution: storage | Delta in Unity Catalog, stood in by Parquet behind the data-access interface | planned |
-| ADR-022 | Substitution: tool access | Managed UC Functions MCP, stood in by the custom thin MCP server | planned |
-| ADR-023 | Substitution: data prep | Pipeline on Databricks, stood in by the seeded Python generator | planned |
-| ADR-024 | Substitution: redaction and answer-key isolation | UC views or column masks, stood in by the Python access layer and a directory allowlist | planned |
+| [ADR-021](ADR-021-substitution-storage.md) | Store data in Parquet for release one, Delta in Unity Catalog as the target | Delta in Unity Catalog, stood in by Parquet behind the data-access interface | accepted |
+| [ADR-022](ADR-022-substitution-tool-access.md) | Serve tools from a custom thin MCP server for release one, managed UC Functions MCP as the target | Managed UC Functions MCP, stood in by the custom thin MCP server | accepted |
+| [ADR-023](ADR-023-substitution-data-prep.md) | Prepare data with a seeded Python generator for release one, a Databricks pipeline as the target | Pipeline on Databricks, stood in by the seeded Python generator | accepted |
+| [ADR-024](ADR-024-substitution-redaction-and-key-isolation.md) | Redact and isolate keys in a Python access layer for release one, UC controls as the target | UC views or column masks, stood in by the Python access layer and a directory allowlist | accepted |
 | ADR-025 | Substitution: observability | Databricks-managed MLflow, stood in by local MLflow in Docker | planned |
 | ADR-026 | Substitution: approval and audit state | Lakebase, stood in by SQLite behind the repository interface | planned |
 | ADR-027 | Substitution: reviewer UI | Streamlit as a Databricks App, stood in by Streamlit in Docker Compose | planned |
@@ -68,5 +68,5 @@ Index of every ADR, with a one-line summary of each decision.
 | ADR-028 | Cost envelope | Lean run plan, provisional $50 ceiling, per-run spend abort | planned |
 
 ## Known gaps and open questions
-- ADRs 021 to 028 are not written yet. Rows link once each file lands
+- ADRs 025 to 028 are not written yet. Rows link once each file lands
 - `docs/open-decisions.md` is not written yet
