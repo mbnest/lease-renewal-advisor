@@ -20,6 +20,7 @@ Scenario 8 plants conflicting signals between specialists to test how disagreeme
 - **Scope:** precedence applies only when specialists conflict. Severity tags (ADR-015) drive the combining rule within a case. Overlap between the two is watched.
 - **Keys:** for scenario 8, the key stores the signals and the expected winner. The validator checks that the winner is the first matching specialist in precedence order.
 - The supervisor's arbitration note explains the code's outcome. It cannot change it.
+- **Order:** arbitration runs in code on the specialist outputs, before the supervisor. The supervisor receives the outcome and writes the note (ADR-001).
 
 ## Alternatives considered
 

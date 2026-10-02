@@ -61,4 +61,3 @@ The target environment is Databricks Free Edition. Its limits shape what can run
 ## Known gaps and open questions
 
 - Free Edition limits for apps, Lakebase, managed MCP, managed MLflow, and quota are not confirmed (DD-06).
-- Substitution ADRs ADR-021 to ADR-027 are planned, not written.

@@ -4,7 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
-| **Related** | ADR-003 (economics and critic stay code), ADR-007 (caching), ADR-008 (tracing), ADR-011 (local-first release), ADR-017 (model gateway) |
+| **Related** | ADR-003 (economics and critic stay code), ADR-007 (caching), ADR-008 (tracing), ADR-011 (local-first release), ADR-017 (model gateway), ADR-018 (arbitration) |
 | **Pending** | None |
 
 ## Context
@@ -12,9 +12,10 @@
 Each case runs the same fixed flow:
 
 1. The condition, market, and resident specialists run in parallel.
-2. The supervisor synthesizes their outputs and calls the economics function as a tool.
-3. Code arbitrates conflicts, clamps the rent change, and runs the critic.
-4. A human approves or rejects later, in the gate, outside the flow.
+2. Code arbitrates any conflict between their outputs (ADR-018).
+3. The supervisor synthesizes the outputs and the arbitration outcome, explains that outcome, and calls the economics function as a tool.
+4. Code clamps the rent change and runs the critic.
+5. A human approves or rejects later, in the gate, outside the flow.
 
 There is no open-ended agent-to-agent chat, no dynamic planning, and no retry loop. Every agent returns schema-validated JSON, with steps and tokens capped per case and low temperature.
 
