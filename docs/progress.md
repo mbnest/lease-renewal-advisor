@@ -56,6 +56,7 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Done: AGENTS.md and progress.md limited to tracked sources
 - Done: ADR-002 to ADR-010, index titles updated
 - Decision: split into two PRs to stay under about 400 lines. PR A: index, ADR-001 to ADR-005, AGENTS.md and progress cleanup. PR B, stacked on A: ADR-006 to ADR-010
+- Done: ADR-006 to ADR-010 on `docs/adrs-006-010`, index links them
 - Next: merge PR A, then PR B
 
 ## Known gaps and open questions

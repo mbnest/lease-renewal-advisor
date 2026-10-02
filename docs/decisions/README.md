@@ -27,15 +27,15 @@ Index of every ADR, with a one-line summary of each decision.
 ### Evaluation and observability
 | ADR | Title | Decision | Status |
 |---|---|---|---|
-| ADR-006 | Grade with separate named counts, not a composite score | Pass/fail on direction and clamp, strict three-way action match, severe misses counted separately | planned |
-| ADR-007 | Use one cache for development and published results | Hash-keyed call cache for dev, frozen snapshot with manifest for published runs | planned |
-| ADR-008 | Trace through the project's own decorator over MLflow | Agent code uses a thin `@traced` decorator. Only it imports MLflow | planned |
+| [ADR-006](ADR-006-evaluation-grading-rules.md) | Grade with separate named counts, not a composite score | Pass/fail on direction and clamp, strict three-way action match, severe misses counted separately | accepted |
+| [ADR-007](ADR-007-one-cache-mechanism-two-lifecycle-points.md) | Use one cache for development and published results | Hash-keyed call cache for dev, frozen snapshot with manifest for published runs | accepted |
+| [ADR-008](ADR-008-mlflow-tracing-behind-own-decorator.md) | Trace through the project's own decorator over MLflow | Agent code uses a thin `@traced` decorator. Only it imports MLflow | accepted |
 
 ### Reviewer experience and guardrails
 | ADR | Title | Decision | Status |
 |---|---|---|---|
-| ADR-009 | Review in Streamlit with append-only SQLite state | Streamlit approval page, card, and dashboard. Append-only SQLite decision events | planned |
-| ADR-010 | Enforce guardrails in code, with an approval gate and an audit record | No send or write capability. Code-enforced approval gate. Minimal audit record per recommendation | planned |
+| [ADR-009](ADR-009-streamlit-reviewer-ui-and-sqlite-state.md) | Review in Streamlit with append-only SQLite state | Streamlit approval page, card, and dashboard. Append-only SQLite decision events | accepted |
+| [ADR-010](ADR-010-guardrails-tiering-and-audit-record.md) | Enforce guardrails in code, with an approval gate and an audit record | No send or write capability. Code-enforced approval gate. Minimal audit record per recommendation | accepted |
 
 ### Platform layer
 | ADR | Title | Decision | Status |
@@ -68,5 +68,5 @@ Index of every ADR, with a one-line summary of each decision.
 | ADR-028 | Cost envelope | Lean run plan, provisional $50 ceiling, per-run spend abort | planned |
 
 ## Known gaps and open questions
-- ADRs 006 to 028 are not written yet. Rows link once each file lands
+- ADRs 011 to 028 are not written yet. Rows link once each file lands
 - `docs/open-decisions.md` is not written yet
