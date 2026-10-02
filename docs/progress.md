@@ -38,6 +38,8 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 - Decision: `docs/reference/` stays untracked, input only
 - Decision: drafts are not copied wholesale. Each tracked doc is written when needed, informed by its draft
 - Next: root `AGENTS.md`, `.gitattributes`, `.env.example`, then 0.1
+- Done: root `AGENTS.md` (agent-neutral, lean; planned docs listed as pointers) and `CLAUDE.md` importing it
+- Next: `.gitattributes`, `.env.example`, then 0.1 starting with the ADRs
 
 ## Known gaps and open questions
 - Repo name, public or private, license, pinned Python version, and folder layout are open
