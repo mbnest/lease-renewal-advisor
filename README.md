@@ -39,4 +39,4 @@ Status: architecture phase. Designed, not built. Last updated 2026-10-02.
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
-- Architecture artifacts (architecture.md, ADRs, open-decisions register) are not generated yet
+- ADRs are in [docs/decisions/](docs/decisions/README.md) and deferred decisions in [docs/open-decisions.md](docs/open-decisions.md). `docs/architecture.md` is not written yet
