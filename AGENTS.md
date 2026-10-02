@@ -59,7 +59,8 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Commit format: `<lane>(<wbs-id>): <summary>`, for example `f(0.1): add progress log`
 - Lanes: a data and keys, b eval and infra, c decision code, d state and UI, e agents, f docs and process
 - Keep PRs small, under about 400 changed lines
-- Fill in the PR template (`.github/pull_request_template.md`)
+- Every PR description follows `.github/pull_request_template.md`. Fill every section. Write "None" or "n/a" rather than deleting one
+- Evidence is pasted check or test output, never hand-edited
 
 ## Upkeep
 - Log notable changes in `docs/progress.md`: append-only, dated, naming the task id
@@ -74,3 +75,4 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
 - Lane directory ownership waits on the folder layout
+- PR template risk ratings (reach, reversibility, exposure, detection) and rigor tiers have no written rubric yet

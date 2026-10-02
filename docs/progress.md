@@ -46,6 +46,8 @@ Roadmap: implementation plan (draft in `docs/reference/`, untracked). Phases, mi
 - Done: `LICENSE`, PR template in `.github/`, repo name and license recorded in README and AGENTS.md
 - Done: `main` protected by a ruleset (PR required, squash only, no force push or deletion)
 - Next: merge this PR, then 0.1 on `docs/adrs`, starting with the ADRs
+- Decision: PR template replaced with the owner's template (summary with risk ratings, requirement, contracts, assumptions, dependencies, evidence, signoffs). Every PR follows it
+- Gap: risk and rigor rubric not written yet. The draft pointed to a missing `docs/Testing.md` section 8 and a `just packet` command, both dropped
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
