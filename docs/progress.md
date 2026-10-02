@@ -9,11 +9,11 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Each entry names the task id it advances
 
 ## Current position
-- Phase: pre-P0 repo setup done. PR #1 merged 2026-10-02 (https://github.com/mbnest/lease-renewal-advisor/pull/1)
+- Phase: P0, architecture docs. ADR index and ADR-001 to ADR-010 merged 2026-10-02 (PR #3, PR #4)
 - Next milestone: M0, architecture exit checklist passed
 - Active task: 0.1, ADRs
-- Next step: merge the PR for the index and ADR-001 to ADR-005 (`docs/adrs`), then the stacked PR for ADR-006 to ADR-010 (`docs/adrs-006-010`). Then ADR-011 to ADR-020
-- Resume prompt: "Read AGENTS.md and docs/progress.md. Continue from the next step above. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
+- Next step: on `docs/adrs-011-020` (this state save is its first commit), write ADR-011 to ADR-015, then ADR-016 to ADR-020. Two PRs to stay under about 400 lines. Then ADR-021 to ADR-028 plus `docs/open-decisions.md`
+- Resume prompt: "Read AGENTS.md and docs/progress.md. Continue from the next step above. ADRs follow the conventions in docs/decisions/README.md, and each written ADR is linked in its index row. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
 
@@ -57,7 +57,13 @@ Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids
 - Done: ADR-002 to ADR-010, index titles updated
 - Decision: split into two PRs to stay under about 400 lines. PR A: index, ADR-001 to ADR-005, AGENTS.md and progress cleanup. PR B, stacked on A: ADR-006 to ADR-010
 - Done: ADR-006 to ADR-010 on `docs/adrs-006-010`, index links them
-- Next: merge PR A, then PR B
+- Done: PR #3 merged (index, ADR-001 to ADR-005, cleanup). https://github.com/mbnest/lease-renewal-advisor/pull/3
+- Done: PR #4 rebased onto `main` after #3, then merged (ADR-006 to ADR-010). https://github.com/mbnest/lease-renewal-advisor/pull/4
+- Done: `docs/adrs` and `docs/adrs-006-010` deleted, local and remote
+- Gap: auto-delete of merged branches is off. Stacked PRs need a manual rebase and retarget after the lower PR merges
+- Next: ADR-011 to ADR-015 on `docs/adrs-011-020`
+- Done: ADR-011 to ADR-015 on `docs/adrs-011-020`, index links them
+- Next: PR for ADR-011 to ADR-015, then ADR-016 to ADR-020
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open

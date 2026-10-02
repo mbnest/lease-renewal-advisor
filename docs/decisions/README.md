@@ -40,7 +40,7 @@ Index of every ADR, with a one-line summary of each decision.
 ### Platform layer
 | ADR | Title | Decision | Status |
 |---|---|---|---|
-| ADR-011 | Databricks target, local-first release | Docs describe the Databricks Free Edition target. Release one is local, every stand-in behind a seam | planned |
+| [ADR-011](ADR-011-databricks-target-local-first-release.md) | Design for a Databricks target, release locally first | Docs describe the Databricks Free Edition target. Release one is local, every stand-in behind a seam | accepted |
 | ADR-021 | Substitution: storage | Delta in Unity Catalog, stood in by Parquet behind the data-access interface | planned |
 | ADR-022 | Substitution: tool access | Managed UC Functions MCP, stood in by the custom thin MCP server | planned |
 | ADR-023 | Substitution: data prep | Pipeline on Databricks, stood in by the seeded Python generator | planned |
@@ -52,14 +52,14 @@ Index of every ADR, with a one-line summary of each decision.
 ### Data and ground truth
 | ADR | Title | Decision | Status |
 |---|---|---|---|
-| ADR-012 | Data scale, scenarios, and variants | 7 scenarios, 60 homes (35 planted, 25 clean), seeded variant slots | planned |
-| ADR-013 | Ground truth and compliance trap | Hand-authored keys checked by a generation-time validator. Counterfactual pairs for the protected reference | planned |
+| [ADR-012](ADR-012-data-scale-scenarios-and-variants.md) | Generate 60 homes across 7 scenarios with seeded variant slots | 7 scenarios, 60 homes (35 planted, 25 clean), seeded variant slots | accepted |
+| [ADR-013](ADR-013-ground-truth-and-compliance-trap.md) | Build ground truth by construction and test the compliance trap with paired controls | Hand-authored keys checked by a generation-time validator. Counterfactual pairs for the protected reference | accepted |
 
 ### Policy and decision logic
 | ADR | Title | Decision | Status |
 |---|---|---|---|
-| ADR-014 | Thresholds in versioned config | Agents see a versioned policy config. No runtime recompute by the critic | planned |
-| ADR-015 | Action definitions with severity tags | Semantic action definitions. Severity tags in config. Highest severity wins | planned |
+| [ADR-014](ADR-014-thresholds-in-versioned-config.md) | Keep policy thresholds in versioned config, with no runtime recompute | Agents see a versioned policy config. No runtime recompute by the critic | accepted |
+| [ADR-015](ADR-015-action-definitions-with-severity-tags.md) | Define actions semantically, with severity tags in config | Semantic action definitions. Severity tags in config. Highest severity wins | accepted |
 | ADR-016 | Distinct BLOCKED state | Critic blocks go to a terminal BLOCKED state and a manual-review queue, counted separately | planned |
 | ADR-017 | One gateway, tiered models | OpenRouter as the single gateway. Smaller models for specialists, larger for supervisor and classifier | planned |
 | ADR-018 | Fixed arbitration precedence | Specialist conflicts resolved by a fixed precedence list in config. Code decides, model explains | planned |
@@ -68,5 +68,5 @@ Index of every ADR, with a one-line summary of each decision.
 | ADR-028 | Cost envelope | Lean run plan, provisional $50 ceiling, per-run spend abort | planned |
 
 ## Known gaps and open questions
-- ADRs 011 to 028 are not written yet. Rows link once each file lands
+- ADRs 016 to 028 are not written yet. Rows link once each file lands
 - `docs/open-decisions.md` is not written yet
