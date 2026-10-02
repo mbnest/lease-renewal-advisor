@@ -34,6 +34,9 @@ Status: architecture phase. Designed, not built. Last updated 2026-10-02.
 - This project is not legal advice
 - Rent pricing recommendations are illustrative only and must not be used for real pricing decisions without legal and compliance review
 
+## License
+- MIT. See [LICENSE](LICENSE)
+
 ## Known gaps and open questions
-- Repo name, public or private, license, pinned Python version, and folder layout are open
+- Pinned Python version and folder layout are open
 - Architecture artifacts (architecture.md, ADRs, open-decisions register) are not generated yet
