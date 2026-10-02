@@ -4,10 +4,10 @@ Status: living index. Last updated 2026-10-02.
 Where the project stands and where to resume. Detail lives in one log per milestone under `docs/progress/`. Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids follow it.
 
 ## Current position
-- Phase: P0, architecture docs. All 28 ADRs and `docs/open-decisions.md` merged 2026-10-02 (PR #3 to PR #8)
+- Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` in review (PR #10)
 - Next milestone: M0, architecture exit checklist passed. Checklist in [docs/progress/m0.md](progress/m0.md)
 - Active task: 0.1, architecture docs
-- Next step: confirm the architecture PR diagrams render on GitHub, tick the M0 item, and merge. Then `docs/scenarios.md`, `docs/eval-plan.md`, `docs/risks.md`, each in its own PR under about 400 lines. Then a README refresh, then one review pass against the M0 checklist
+- Next step: owner merges PR #10 (`docs/scenarios`). Then `docs/eval-plan.md` on `docs/eval-plan`, per ADR-006 and ADR-028, including the bake-off method. Then `docs/risks.md`, each in its own PR under about 400 lines. Then a README refresh, citing the research sources in `docs/scenarios.md`, then one review pass against the M0 checklist
 - Resume prompt: "Read AGENTS.md and docs/progress.md, then the current milestone log. Continue from the next step above. Docs state decisions already made in the ADRs and link to them, and log missing decisions as gaps rather than inventing them. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones

@@ -19,7 +19,7 @@ Deferred decisions (DD-nn) and the standing revisit triggers that live in the AD
 | DD-04 | Rent clamp and city rate calibration to sourced DFW ranges | Needs sourced ranges. 2026 metro rents are falling | README drafting | ADR-012, ADR-020, README | open | |
 | DD-05 | MLflow version pin and span nesting verification | Needs a tracing stub to test against | Tracing stub added | ADR-008, ADR-025 | open | |
 | DD-06 | Free Edition feasibility: apps count, Lakebase, managed MCP, managed MLflow, quota. Model serving is an optional seam only | Published limits conflict across doc versions. Needs a real workspace | Start of the Databricks phase | ADR-005, ADR-009, ADR-011, ADR-022, ADR-025, ADR-026, ADR-027 | open | |
-| DD-07 | Scenario 8 signal vocabulary | Vocabulary is thin until the scenario spec is written | Scenario spec authoring | ADR-012, ADR-018, scenario spec | open | |
+| DD-07 | Scenario 8 signal vocabulary | Vocabulary is thin until the scenario spec is written | Scenario spec authoring | ADR-012, ADR-018, scenario spec | decided | 2026-10-02 |
 | DD-08 | Cost ceiling and measured per-case cost | Estimates rest on assumed prices and token counts | Bake-off and baseline run | ADR-017, ADR-028 | open | |
 | DD-09 | Resolution event disposition vocabulary | Set with the recommendation schema | Recommendation schema authoring | ADR-016, ADR-026 | open | |
 | DD-10 | Coding agent task, branch, and environment mechanics | Not exercised until a coding agent runs a task | First coding agent task | Branching strategy (planned), AGENTS.md | open | |
