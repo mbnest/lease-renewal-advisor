@@ -57,6 +57,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - `main` is protected. Merge through pull requests, squash merge
 - Branch names: `<lane>/<wbs-id>-<slug>`, `contract/<slug>`, `docs/<slug>`, `eval/<run-id>`
 - Commit format: `<lane>(<wbs-id>): <summary>`, for example `f(0.1): add progress log`
+- Commit messages never reference a coding agent. No agent names, no Co-Authored-By or "generated with" trailers
 - Lanes: a data and keys, b eval and infra, c decision code, d state and UI, e agents, f docs and process
 - Keep PRs small, under about 400 changed lines
 - Every PR description follows `.github/pull_request_template.md`. Fill every section. Write "None" or "n/a" rather than deleting one
