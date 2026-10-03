@@ -1,7 +1,7 @@
 # DD-04 calibration data
 
 Status: decided 2026-10-03. Last updated 2026-10-03.
-Source figures and scripts behind DD-04, the rent clamp and city rate tier calibration ([open decisions](../../docs/open-decisions.md)). The clamp is the policy floor and cap on every rent change ([ADR-020](../../docs/decisions/ADR-020-rent-clamp-and-symbolic-bands.md)). Rate tiers are per-city rent levels ([ADR-012](../../docs/decisions/ADR-012-data-scale-scenarios-and-variants.md)).
+Source figures and scripts behind [DD-04](../../docs/open-decisions.md), the rent clamp and city rate tier calibration ([open decisions](../../docs/open-decisions.md)). The clamp is the policy floor and cap on every rent change ([ADR-020](../../docs/decisions/ADR-020-rent-clamp-and-symbolic-bands.md)). Rate tiers are per-city rent levels ([ADR-012](../../docs/decisions/ADR-012-data-scale-scenarios-and-variants.md)).
 
 ## Files
 

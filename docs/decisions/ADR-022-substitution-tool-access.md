@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-002 (prefetched context), ADR-005 (custom MCP server), ADR-011 (local-first release), ADR-021 (storage), ADR-024 (redaction) |
 | **Pending** | DD-06 (Free Edition feasibility, including managed MCP) |
 
 ## Context
 
-Tool access sits behind the same Python access functions that prefetch uses (ADR-002). ADR-005 sets the first-release server and why managed UC Functions MCP is the only managed option that keeps evidence deterministic. This record states the substitution itself.
+Tool access sits behind the same Python access functions that prefetch uses ([ADR-002](ADR-002-prefetched-context-for-specialists.md)). [ADR-005](ADR-005-custom-thin-mcp-server.md) sets the first-release server and why managed UC Functions MCP is the only managed option that keeps evidence deterministic. This record states the substitution itself.
 
 ## Decision
 
@@ -25,7 +26,7 @@ Tool access sits behind the same Python access functions that prefetch uses (ADR
 
 - Tool names, arguments, and return schemas.
 - Fixed, parameterized calls. No generated SQL.
-- Redaction before any tool output leaves the data layer (ADR-024).
+- Redaction before any tool output leaves the data layer ([ADR-024](ADR-024-substitution-redaction-and-key-isolation.md)).
 
 **Not preserved**
 
@@ -53,9 +54,9 @@ Tool access sits behind the same Python access functions that prefetch uses (ADR
 
 ## Revisit when
 
-- The Databricks backend is built (ADR-021). Register the functions in UC, run the equivalence test, and record the comparison here.
+- The Databricks backend is built ([ADR-021](ADR-021-substitution-storage.md)). Register the functions in UC, run the equivalence test, and record the comparison here.
 
 ## Known gaps and open questions
 
-- Managed MCP availability on Free Edition is not confirmed (DD-06).
+- Managed MCP availability on Free Edition is not confirmed ([DD-06](../open-decisions.md)).
 - How UC functions reuse the Python access code, rather than reimplement it in SQL, is not decided.

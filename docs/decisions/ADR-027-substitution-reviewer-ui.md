@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-009 (UI and state), ADR-011 (local-first release), ADR-026 (state substitution) |
 | **Pending** | DD-06 (Free Edition feasibility, including apps) |
 
 ## Context
 
-The reviewer UI is a Streamlit app: approval page, per-home card, and operational dashboard (ADR-009). Streamlit is a supported Databricks Apps framework, so the same app code can run in both places.
+The reviewer UI is a Streamlit app: approval page, per-home card, and operational dashboard ([ADR-009](ADR-009-streamlit-reviewer-ui-and-sqlite-state.md)). Streamlit is a supported Databricks Apps framework, so the same app code can run in both places.
 
 ## Decision
 
@@ -24,7 +25,7 @@ The reviewer UI is a Streamlit app: approval page, per-home card, and operationa
 **Preserved by the stand-in**
 
 - Pages, cards, and the approve and reject flow.
-- Every read and write goes through the same interfaces (ADR-021, ADR-026).
+- Every read and write goes through the same interfaces ([ADR-021](ADR-021-substitution-storage.md), [ADR-026](ADR-026-substitution-approval-and-audit-state.md)).
 
 **Not preserved**
 
@@ -48,7 +49,7 @@ The reviewer UI is a Streamlit app: approval page, per-home card, and operationa
 
 ## Revisit when
 
-- The Databricks phase starts and app support is confirmed in the workspace (DD-06).
+- The Databricks phase starts and app support is confirmed in the workspace ([DD-06](../open-decisions.md)).
 
 ## Known gaps and open questions
 

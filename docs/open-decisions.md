@@ -32,14 +32,14 @@ Revisit conditions that stay open for the life of an ADR. The ADR's "Revisit whe
 
 | Trigger | ADR |
 |---|---|
-| Hybrid retrieval: histories outgrow the context, or cases need drill-down | ADR-002 |
-| Economics or critic logic moves to an agent | ADR-003 |
-| Compliance classifier gaps | ADR-004 |
-| Custom MCP server to the managed server | ADR-005 |
-| Noisy eval: add homes beyond 60 | ADR-006, ADR-012 |
-| Cache staleness: model or provider retired or changed | ADR-007 |
-| Audit explainability after a prompt or policy change | ADR-010 |
-| Critic recompute of thresholds | ADR-014 |
+| Hybrid retrieval: histories outgrow the context, or cases need drill-down | [ADR-002](decisions/ADR-002-prefetched-context-for-specialists.md) |
+| Economics or critic logic moves to an agent | [ADR-003](decisions/ADR-003-economics-and-critic-logic-stay-code.md) |
+| Compliance classifier gaps | [ADR-004](decisions/ADR-004-critic-design.md) |
+| Custom MCP server to the managed server | [ADR-005](decisions/ADR-005-custom-thin-mcp-server.md) |
+| Noisy eval: add homes beyond 60 | [ADR-006](decisions/ADR-006-evaluation-grading-rules.md), [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md) |
+| Cache staleness: model or provider retired or changed | [ADR-007](decisions/ADR-007-one-cache-mechanism-two-lifecycle-points.md) |
+| Audit explainability after a prompt or policy change | [ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md) |
+| Critic recompute of thresholds | [ADR-014](decisions/ADR-014-thresholds-in-versioned-config.md) |
 
 ## Known gaps and open questions
 - Milestones per item are not mapped until the implementation plan is tracked

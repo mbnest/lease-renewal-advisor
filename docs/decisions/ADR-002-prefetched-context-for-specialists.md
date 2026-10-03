@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-001 (orchestration), ADR-005 (tool access), ADR-007 (caching) |
 | **Pending** | None |
 
@@ -11,7 +12,7 @@
 
 Each specialist (condition, market, resident) reasons over one home's history: work orders, comps, payments, complaints, and messages. Per-lease history is small and fits in a model's context.
 
-The data-access functions already exist behind the data-access interface, and can later be wrapped as tools (ADR-005).
+The data-access functions already exist behind the data-access interface, and can later be wrapped as tools ([ADR-005](ADR-005-custom-thin-mcp-server.md)).
 
 Evaluation needs the same inputs on every run of a case, so that a change in score can be attributed to the agent and not to what it happened to fetch.
 
@@ -30,7 +31,7 @@ Evaluation needs the same inputs on every run of a case, so that a change in sco
 
 **Benefits**
 
-- Inputs are deterministic and cacheable (ADR-007).
+- Inputs are deterministic and cacheable ([ADR-007](ADR-007-one-cache-mechanism-two-lifecycle-points.md)).
 - No tool-call loops inside specialists, so step counts stay fixed.
 
 **Costs we accept**

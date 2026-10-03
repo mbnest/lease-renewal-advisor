@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-002 (prefetched context), ADR-011 (local-first release), ADR-012 (tables), ADR-023 (data prep), ADR-024 (redaction) |
 | **Pending** | None |
 
 ## Context
 
-The core tables (homes, leases, payments, work orders, comps) are small, synthetic, and regenerated from a seed (ADR-012). Release one runs locally (ADR-011). Agents and tools read data only through the data-access interface (ADR-002).
+The core tables (homes, leases, payments, work orders, comps) are small, synthetic, and regenerated from a seed ([ADR-012](ADR-012-data-scale-scenarios-and-variants.md)). Release one runs locally ([ADR-011](ADR-011-databricks-target-local-first-release.md)). Agents and tools read data only through the data-access interface ([ADR-002](ADR-002-prefetched-context-for-specialists.md)).
 
 ## Decision
 

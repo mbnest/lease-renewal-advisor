@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-001 (orchestration), ADR-004 (critic design), ADR-020 (rent clamp) |
 | **Pending** | None |
 
@@ -19,7 +20,7 @@ The full design names six roles: supervisor, condition, market, resident, econom
 **LLM agents are limited to the supervisor and the three specialists (condition, market, resident).**
 
 - **Economics is a code function** that the supervisor calls as a tool. It is the one tool-calling loop in the system.
-- **The critic is code**, plus one narrow classifier for compliance (ADR-004).
+- **The critic is code**, plus one narrow classifier for compliance ([ADR-004](ADR-004-critic-design.md)).
 
 ## Alternatives considered
 

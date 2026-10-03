@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-005 (MCP server), ADR-008 (tracing), ADR-010 (guardrails), ADR-013 (ground truth), ADR-021 (storage), ADR-022 (tool access) |
 | **Pending** | None |
 
 ## Context
 
-Protected-characteristic fields must be redacted before any model, span, or trace sees them (ADR-010). Answer keys must stay outside the agent-readable data path, or grading is invalid (ADR-013).
+Protected-characteristic fields must be redacted before any model, span, or trace sees them ([ADR-010](ADR-010-guardrails-tiering-and-audit-record.md)). Answer keys must stay outside the agent-readable data path, or grading is invalid ([ADR-013](ADR-013-ground-truth-and-compliance-trap.md)).
 
 Both rules must hold on every backend, and a backend swap must not weaken them.
 
@@ -26,7 +27,7 @@ Both rules must hold on every backend, and a backend swap must not weaken them.
 **Preserved by the stand-in**
 
 - The same redacted fields and the same redacted output for every access function.
-- No agent, tool, span, or trace receives an unredacted protected field (ADR-008).
+- No agent, tool, span, or trace receives an unredacted protected field ([ADR-008](ADR-008-mlflow-tracing-behind-own-decorator.md)).
 - Keys unreachable from any agent-readable path.
 
 **Not preserved**
@@ -54,7 +55,7 @@ Both rules must hold on every backend, and a backend swap must not weaken them.
 
 ## Revisit when
 
-- The Databricks backend is built. The identical-redaction test is the first seam to validate (ADR-011).
+- The Databricks backend is built. The identical-redaction test is the first seam to validate ([ADR-011](ADR-011-databricks-target-local-first-release.md)).
 
 ## Known gaps and open questions
 

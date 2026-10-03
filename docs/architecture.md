@@ -135,7 +135,7 @@ Field lists only. Schemas are written after M0, and final names may change then.
 ### Approval state
 All append-only, behind one repository interface ([ADR-009](decisions/ADR-009-streamlit-reviewer-ui-and-sqlite-state.md), [ADR-026](decisions/ADR-026-substitution-approval-and-audit-state.md))
 - Decision event: case id, recommendation version, action, reviewer, timestamp, reason
-- Resolution event (BLOCKED, REJECTED): case id, recommendation version, disposition, reviewer, timestamp, reason. Disposition values are open (DD-09)
+- Resolution event (BLOCKED, REJECTED): case id, recommendation version, disposition, reviewer, timestamp, reason. Disposition values are open ([DD-09](open-decisions.md))
 - Audit snapshot: immutable copy of the recommendation version, taken when the critic verdict is recorded and the version leaves DRAFTED for BLOCKED or PENDING_APPROVAL. JSON export for published samples
 - Reproducibility metadata (model id, prompt versions, policy config, git commit, data seed) lives in trace attributes, MLflow run params, and the snapshot manifest, not in the audit record
 
@@ -157,7 +157,7 @@ Decided, not specified. Specified and implemented with the schemas after M0.
 | MODERATE | Above 2 to 4 | Raise |
 | HIGH | Above 4 to 6 | Raise |
 
-- Clamp: floor -5%, cap +6%, calibrated to HUD Small Area Fair Market Rents (DD-04, [ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md))
+- Clamp: floor -5%, cap +6%, calibrated to HUD Small Area Fair Market Rents ([DD-04](open-decisions.md), [ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md))
 - Action: no flags gives renew. Otherwise highest severity wins, escalate over note ([ADR-015](decisions/ADR-015-action-definitions-with-severity-tags.md))
 - Severity: escalate for chronic maintenance and open complaint. Note for late payment pattern, below market, soft demand
 - Arbitration: on a specialist conflict, the first match in precedence sets rent direction: condition escalation, then market, then resident. Severity tags still set the action. Signal vocabulary is in `docs/scenarios.md`
@@ -205,16 +205,16 @@ Full method in [docs/eval-plan.md](eval-plan.md).
 - Agent code traces through `@traced(kind, name)`. Only the decorator imports MLflow. It starts as a no-op stub ([ADR-008](decisions/ADR-008-mlflow-tracing-behind-own-decorator.md))
 - Attributes: case id, run index, cache hit, token counts, schema validation result, critic verdict
 - Cache replay still emits spans, tagged as cache hits
-- Checks: every registered agent and tool is traced. Parallel specialist spans nest under the supervisor span (DD-05)
+- Checks: every registered agent and tool is traced. Parallel specialist spans nest under the supervisor span ([DD-05](open-decisions.md))
 - Eval files are the source of truth. MLflow holds a copy
 
 ## Models
 - OpenRouter is the single gateway ([ADR-017](decisions/ADR-017-one-gateway-tiered-models.md))
 - Smaller tier for specialists. Larger tier for the supervisor and the compliance classifier
 - Tiering note: tiering was chosen partly to keep the project manageable. A production deployment would test model fit per agent
-- Models are not named yet. A baseline bake-off picks them, and tier-to-agent assignment is config (DD-02)
+- Models are not named yet. A baseline bake-off picks them, and tier-to-agent assignment is config ([DD-02](open-decisions.md))
 - Pin model slug and upstream provider, disable fallback routing. Provider, slug, and price at run time go into the cache key and snapshot manifest
-- Spend: provisional $50 ceiling, per-run spend abort in config (DD-08)
+- Spend: provisional $50 ceiling, per-run spend abort in config ([DD-08](open-decisions.md))
 
 ## Reviewer experience
 - Streamlit pages: approval queue, per-home card, operational dashboard with rollups by city. One market, so the market is a header total ([ADR-009](decisions/ADR-009-streamlit-reviewer-ui-and-sqlite-state.md))
@@ -243,8 +243,8 @@ Target components are chosen, not validated ([ADR-011](decisions/ADR-011-databri
 - Evals stay local with cached replay. The Databricks phase starts after the local release is complete and documented
 
 ## Known gaps and open questions
-- The trigger for APPROVED to DONE is not defined (DD-12)
+- The trigger for APPROVED to DONE is not defined ([DD-12](open-decisions.md))
 - Thin model client interface and typed claim vocabulary are not specified ([ADR-001](decisions/ADR-001-plain-python-asyncio-orchestration.md), [ADR-004](decisions/ADR-004-critic-design.md))
 - Protected field list, schema names, and config file name are set with the schemas after M0
-- Tuned thresholds and severity tags (DD-01), model selection (DD-02), promotion thresholds (DD-03), MLflow pin (DD-05), Free Edition feasibility (DD-06), cost (DD-08), disposition vocabulary (DD-09), DONE trigger (DD-12)
+- Tuned thresholds and severity tags ([DD-01](open-decisions.md)), model selection (DD-02), promotion thresholds ([DD-03](open-decisions.md)), MLflow pin (DD-05), Free Edition feasibility ([DD-06](open-decisions.md)), cost (DD-08), disposition vocabulary (DD-09), DONE trigger (DD-12)
 - Checks named here are not yet tied to test ids. The test register is planned

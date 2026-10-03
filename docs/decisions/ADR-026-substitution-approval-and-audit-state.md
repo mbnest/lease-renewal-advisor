@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-009 (UI and state), ADR-010 (audit record), ADR-011 (local-first release), ADR-016 (BLOCKED state), ADR-027 (UI substitution) |
 | **Pending** | DD-06 (Free Edition feasibility, including Lakebase), DD-09 (disposition vocabulary) |
 
 ## Context
 
-Approval state is append-only: decision events, resolution events for BLOCKED and REJECTED (ADR-016), and an immutable audit snapshot per recommendation version (ADR-010). All of it goes through one repository interface (ADR-009).
+Approval state is append-only: decision events, resolution events for BLOCKED and REJECTED ([ADR-016](ADR-016-distinct-blocked-state.md)), and an immutable audit snapshot per recommendation version ([ADR-010](ADR-010-guardrails-tiering-and-audit-record.md)). All of it goes through one repository interface ([ADR-009](ADR-009-streamlit-reviewer-ui-and-sqlite-state.md)).
 
 ## Decision
 
@@ -50,9 +51,9 @@ Approval state is append-only: decision events, resolution events for BLOCKED an
 ## Revisit when
 
 - Multiple or concurrent reviewers are needed (ADR-009).
-- The Databricks phase starts and Lakebase is confirmed in the workspace (DD-06).
+- The Databricks phase starts and Lakebase is confirmed in the workspace ([DD-06](../open-decisions.md)).
 
 ## Known gaps and open questions
 
 - Lakebase support on Free Edition is not confirmed. Doc versions disagree (DD-06).
-- Resolution event disposition values are open (DD-09).
+- Resolution event disposition values are open ([DD-09](../open-decisions.md)).

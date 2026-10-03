@@ -16,18 +16,18 @@ Likelihood and impact are not rated. No rating rubric exists yet.
 
 | Risk | Area | Main mitigation | Owner | Open item |
 |---|---|---|---|---|
-| Routing nondeterminism | Models | Pin slug and upstream provider, no fallback | [ADR-017](decisions/ADR-017-one-gateway-tiered-models.md), [ADR-007](decisions/ADR-007-one-cache-mechanism-two-lifecycle-points.md) | DD-02 |
+| Routing nondeterminism | Models | Pin slug and upstream provider, no fallback | [ADR-017](decisions/ADR-017-one-gateway-tiered-models.md), [ADR-007](decisions/ADR-007-one-cache-mechanism-two-lifecycle-points.md) | [DD-02](open-decisions.md) |
 | Run-to-run variation | Models | Low temperature, 3-run majority, flip rate | [eval plan](eval-plan.md#comparison-and-consistency) | None |
 | Cheap-model schema failures | Models | Structured-output gate, schema-valid rate ranked first | [ADR-017](decisions/ADR-017-one-gateway-tiered-models.md) | DD-02, runtime handling |
 | Model retirement | Models | Frozen snapshot with manifest | [ADR-007](decisions/ADR-007-one-cache-mechanism-two-lifecycle-points.md) | None |
-| Price snapshot staleness | Cost | Price recorded per run, recheck before bake-off | [ADR-028](decisions/ADR-028-cost-envelope.md) | DD-08 |
+| Price snapshot staleness | Cost | Price recorded per run, recheck before bake-off | [ADR-028](decisions/ADR-028-cost-envelope.md) | [DD-08](open-decisions.md) |
 | Spend overrun | Cost | Ceiling, per-run abort, per-case caps | [ADR-028](decisions/ADR-028-cost-envelope.md) | DD-08 |
 | Judge self-preference | Eval | No model grades a case | [ADR-006](decisions/ADR-006-evaluation-grading-rules.md) | Judge deferred |
-| Small samples and leakage | Eval | Counts not percentages, held-out dev set, threshold freeze | [eval plan](eval-plan.md), [ADR-019](decisions/ADR-019-promotion-criteria-and-threshold-freeze.md) | DD-03 |
+| Small samples and leakage | Eval | Counts not percentages, held-out dev set, threshold freeze | [eval plan](eval-plan.md), [ADR-019](decisions/ADR-019-promotion-criteria-and-threshold-freeze.md) | [DD-03](open-decisions.md) |
 | Rent pricing misuse | Domain | Advisory only, human approval, global clamp | [ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md), [ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md) | None |
 | Protected characteristics reach a decision | Domain | Redaction in the data layer, critic | [ADR-024](decisions/ADR-024-substitution-redaction-and-key-isolation.md), [ADR-004](decisions/ADR-004-critic-design.md) | None |
 | Outputs read as legal advice | Domain | Narrow claims, advisory only | This doc | None |
-| Synthetic data limits | Data | Results scoped to known planted cases | [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md), [ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md) | DD-01 |
+| Synthetic data limits | Data | Results scoped to known planted cases | [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md), [ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md) | [DD-01](open-decisions.md) |
 
 ## Models and gateway
 
@@ -89,7 +89,7 @@ Likelihood and impact are not rated. No rating rubric exists yet.
 - **Risk:** algorithmic rent pricing draws legal and regulatory scrutiny. Output could be mistaken for a pricing tool
 - **Mitigation:** the system has no send or write capability. It only recommends and records. A human approves every rent change and resident message. Code clamps every proposal to a global floor and cap. All market data is fictional
 - **Detection:** clamp hits, graded as the pre-clamp row failing while the clamped row passes. Reviewer edits and approvals in the approval state
-- **If it happens:** the clamp bounds the size of any change, and the audit snapshot records what was shown and who decided ([ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md)). The clamp (-5% to +6%) is calibrated to HUD Small Area Fair Market Rents (DD-04)
+- **If it happens:** the clamp bounds the size of any change, and the audit snapshot records what was shown and who decided ([ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md)). The clamp (-5% to +6%) is calibrated to HUD Small Area Fair Market Rents ([DD-04](open-decisions.md))
 
 ### Protected characteristics reach a decision
 - **Risk:** a protected characteristic in a structured field or a resident message shifts the rent or action

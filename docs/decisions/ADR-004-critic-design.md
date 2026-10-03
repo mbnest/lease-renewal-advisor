@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-003 (logic stays code), ADR-014 (thresholds in config), ADR-016 (BLOCKED state) |
 | **Pending** | None |
 
@@ -33,8 +34,8 @@ Before anything reaches a reviewer, the critic must catch two kinds of failure.
 
 - **Claims.** Every claim carries evidence references (record ids and cited values), which code verifies. A typed claim vocabulary limits what agents can assert.
 - **Compliance.** Keyword rules, plus one classifier run on the final rationale and the drafted message. Its output is a schema-validated verdict with a quoted span. It has no tools.
-- The critic does not recompute policy thresholds at runtime (ADR-014).
-- A block puts the recommendation in the BLOCKED state (ADR-016).
+- The critic does not recompute policy thresholds at runtime ([ADR-014](ADR-014-thresholds-in-versioned-config.md)).
+- A block puts the recommendation in the BLOCKED state ([ADR-016](ADR-016-distinct-blocked-state.md)).
 - Ablation: rules only, against rules plus classifier, on explicit and subtle variants.
 
 ## Alternatives considered

@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-006 (grading), ADR-007 (caching), ADR-012 (data scale), ADR-017 (model gateway) |
 | **Pending** | DD-08 (cost ceiling and measured per-case cost) |
 
 ## Context
 
-The project pays for every model call. A full pass with 3 runs for every configuration, plus ablations, means several thousand calls. Dev reruns are the main spend risk, and replay from cache costs nothing (ADR-007).
+The project pays for every model call. A full pass with 3 runs for every configuration, plus ablations, means several thousand calls. Dev reruns are the main spend risk, and replay from cache costs nothing ([ADR-007](ADR-007-one-cache-mechanism-two-lifecycle-points.md)).
 
 ## Decision
 
@@ -19,12 +20,12 @@ The project pays for every model call. A full pass with 3 runs for every configu
 
 - Published results: 3 runs for the baseline and for the full multi-agent configuration only.
 - Per-agent score delta checkpoints and ablations: 1 run.
-- Classifier ablation: compliance trap homes only. Tool ablation: condition agent only (ADR-002).
+- Classifier ablation: compliance trap homes only. Tool ablation: condition agent only ([ADR-002](ADR-002-prefetched-context-for-specialists.md)).
 - Dev: a held-out 20-home set from a separate seed, 1 run, replay from cache. None of its homes is in the 60-home set, which is for published runs.
 
 **Controls**
 
-- Provisional $50 total ceiling, revisited after the bake-off (ADR-017).
+- Provisional $50 total ceiling, revisited after the bake-off ([ADR-017](ADR-017-one-gateway-tiered-models.md)).
 - Per-run spend abort in config.
 - Per-case token and step caps.
 - Account-level spend limit on the gateway key.
@@ -58,7 +59,7 @@ The project pays for every model call. A full pass with 3 runs for every configu
 ## Revisit when
 
 - The spend ceiling is reached, or schema failures dominate results. Then reconsider staged slices.
-- The bake-off shows measured cost per case far from the estimate (DD-08).
+- The bake-off shows measured cost per case far from the estimate ([DD-08](../open-decisions.md)).
 
 ## Known gaps and open questions
 

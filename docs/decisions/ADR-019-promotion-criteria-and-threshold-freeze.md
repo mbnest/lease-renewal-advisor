@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-006 (grading), ADR-010 (tiers and gate states), ADR-012 (data scale) |
 | **Pending** | DD-03 (numeric thresholds, frozen after baseline and before multi-agent results are viewed) |
 
 ## Context
 
-Every recommendation is APPROVAL_REQUIRED in release one (ADR-010). Moving a recommendation type to RECORD_ONLY needs criteria that are set before the evidence that would justify it.
+Every recommendation is APPROVAL_REQUIRED in release one ([ADR-010](ADR-010-guardrails-tiering-and-audit-record.md)). Moving a recommendation type to RECORD_ONLY needs criteria that are set before the evidence that would justify it.
 
 Setting thresholds after seeing multi-agent results would invite tuning them to the result.
 
@@ -41,9 +42,9 @@ Setting thresholds after seeing multi-agent results would invite tuning them to 
 
 ## Revisit when
 
-- The baseline shows the non-negotiables are unattainable on 60 homes. Consider a larger case set (ADR-012).
+- The baseline shows the non-negotiables are unattainable on 60 homes. Consider a larger case set ([ADR-012](ADR-012-data-scale-scenarios-and-variants.md)).
 
 ## Known gaps and open questions
 
-- Numeric thresholds are not set (DD-03).
+- Numeric thresholds are not set ([DD-03](../open-decisions.md)).
 - No mechanism enforces the viewing order. It relies on process alone.

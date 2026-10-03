@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-006 (grading), ADR-014 (thresholds), ADR-016 (BLOCKED state), ADR-018 (arbitration) |
 | **Pending** | DD-01 (tag review after the first generation run) |
 
@@ -51,4 +52,4 @@ The action label must be derivable from data plus policy, or grading is invalid.
 
 ## Known gaps and open questions
 
-- Tag assignments are reviewed after the first generation run (DD-01).
+- Tag assignments are reviewed after the first generation run ([DD-01](../open-decisions.md)).

@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-011 (local-first release), ADR-012 (data scale), ADR-013 (ground truth and validator), ADR-021 (storage), ADR-024 (redaction and key isolation) |
 | **Pending** | None |
 
 ## Context
 
-The dataset is generated from a scenario spec and a seed (ADR-012). A generation-time validator checks every answer key against the evidence and fails generation on mismatch (ADR-013). LLM-written text is generated once and frozen as fixtures.
+The dataset is generated from a scenario spec and a seed ([ADR-012](ADR-012-data-scale-scenarios-and-variants.md)). A generation-time validator checks every answer key against the evidence and fails generation on mismatch ([ADR-013](ADR-013-ground-truth-and-compliance-trap.md)). LLM-written text is generated once and frozen as fixtures.
 
 ## Decision
 
@@ -17,7 +18,7 @@ The dataset is generated from a scenario spec and a seed (ADR-012). A generation
 
 | | |
 |---|---|
-| Target | Lakeflow Spark Declarative Pipelines writing Delta tables (ADR-021) |
+| Target | Lakeflow Spark Declarative Pipelines writing Delta tables ([ADR-021](ADR-021-substitution-storage.md)) |
 | Release one | Seeded Python generator writing Parquet, followed by the validator |
 | Seam | Generator output schema: core tables, answer keys, and frozen text fixtures |
 
@@ -26,7 +27,7 @@ The dataset is generated from a scenario spec and a seed (ADR-012). A generation
 - Output tables and their schemas.
 - Same seed, same data.
 - Validator checks run before any table is published.
-- Answer keys are written outside the agent-readable path (ADR-024).
+- Answer keys are written outside the agent-readable path ([ADR-024](ADR-024-substitution-redaction-and-key-isolation.md)).
 
 **Not preserved**
 
@@ -50,7 +51,7 @@ The dataset is generated from a scenario spec and a seed (ADR-012). A generation
 
 ## Revisit when
 
-- The Databricks phase starts (ADR-011), or data volume outgrows a single local process.
+- The Databricks phase starts ([ADR-011](ADR-011-databricks-target-local-first-release.md)), or data volume outgrows a single local process.
 
 ## Known gaps and open questions
 
