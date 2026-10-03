@@ -66,7 +66,7 @@ Release one, the first release, runs locally in Docker Compose ([platform table]
 
 | Component | Release one | Target | Status | Date |
 |---|---|---|---|---|
-| Architecture docs and ADRs | Docs in this repo | Same | In progress, M0 review open | 2026-10-03 |
+| Architecture docs and ADRs | Docs in this repo | Same | Complete for M0, tag `m0` | 2026-10-03 |
 | Data generator and validator | Seeded Python generator, Parquet | Lakeflow Spark Declarative Pipelines, Delta in Unity Catalog | Decided, not specified. Target chosen, not validated | 2026-10-03 |
 | Redaction and key isolation | Python access layer, directory allowlist | Unity Catalog views or column masks | Decided, not specified. Target chosen, not validated | 2026-10-03 |
 | Agents and orchestration | Plain Python asyncio | Same | Decided, not specified | 2026-10-03 |
