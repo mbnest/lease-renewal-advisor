@@ -50,6 +50,7 @@ Directories are created by the first PR that needs them. Each lane edits only it
 | `src/lease_renewal/prompts/` | Prompt files | e |
 | `tests/` | Tests, mirroring `src/lease_renewal/` | owner of the code under test |
 | `docs/`, `README.md` | Docs | f |
+| `research/` | Source figures and scripts behind calibration decisions. Raw downloads gitignored | f |
 
 - Paths for generated data and the restricted answer-key directory are set with the access layer ([ADR-024](docs/decisions/ADR-024-substitution-redaction-and-key-isolation.md))
 

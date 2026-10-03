@@ -1,0 +1,8 @@
+city,place_fips,median_gross_rent,median_gross_rent_2br,median_gross_rent_3br
+Arlington,04000,1470,1531,1889
+Dallas,19000,1472,1607,1665
+Fort Worth,27000,1509,1483,1823
+Highland Park,33824,1940,3501,-666666666
+Lewisville,42508,1670,1783,2269
+Plano,58016,1841,1956,2340
+Prosper,59696,2176,2167,2700

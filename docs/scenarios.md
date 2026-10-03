@@ -1,6 +1,6 @@
 # Scenarios
 
-Status: designed, not built. Last updated 2026-10-02.
+Status: designed, not built. Last updated 2026-10-03.
 What the synthetic dataset plants, how each case is varied, and what each case should produce. All data is fictional. Field lists live in [docs/architecture.md](architecture.md#contracts). Parameter ranges live in the scenario spec, written after M0.
 
 ## Dataset at a glance
@@ -11,7 +11,7 @@ What the synthetic dataset plants, how each case is varied, and what each case s
 - Every expected outcome must be reachable from the data plus the policy config. A generation-time validator enforces this ([ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md))
 
 ## Cities
-Rate tier and demand are separate attributes. Values are drafts until calibration (DD-04).
+Rate tier and demand are separate attributes. Rate tiers are calibrated to sourced rent ranges, with two deliberate placements (DD-04, [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md)).
 
 | City | Rate tier | Demand | Homes |
 |---|---|---|---|
@@ -37,7 +37,7 @@ Flags, thresholds, and severity come from the versioned policy config ([ADR-014]
 | Soft demand | City demand soft and comp trend flat or down | Note |
 
 - Action: no flags gives renew. Otherwise the highest severity wins
-- Rent change is clamped to -3% to +9% and graded as one of five bands: REDUCE, HOLD, LOW, MODERATE, HIGH ([ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md))
+- Rent change is clamped to -5% to +6% and graded as one of five bands: REDUCE, HOLD, LOW, MODERATE, HIGH ([ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md))
 - Keys store symbolic bands. Band edges live only in the policy config
 
 ## Specialist domains
@@ -199,7 +199,7 @@ Each slot plants one conflict. Winners are spread so every precedence step is te
 - A leakage scan fails generation if any fixture names a scenario label or cause
 
 ## Research notes
-Secondary sources checked 2026-10-02. They shaped the fictional draft values above. They do not calibrate them, which stays with DD-04 and primary sources in the README.
+Secondary sources checked 2026-10-02. They shaped city selection and demand values. Rent levels and the clamp are calibrated to primary sources (DD-04, [research/dd-04-calibration](../research/dd-04-calibration/README.md)).
 
 | Topic | Finding | Source |
 |---|---|---|
@@ -213,7 +213,7 @@ Secondary sources checked 2026-10-02. They shaped the fictional draft values abo
 
 ## Known gaps and open questions
 - Slot parameter ranges, decoys per scenario, and acceptable band sets per slot are set in the scenario spec after M0
-- City counts, rate tiers, thresholds, and severity tags are drafts (DD-01, DD-04). Prosper and Lewisville values rest on 2026 secondary sources and may move at calibration
+- Home counts per city, thresholds, and severity tags are drafts (DD-01). Demand values rest on 2026 secondary sources
 - Required agents per scenario are derived from domain ownership above. The compliance trap entry depends on where each reference sits
 - The specialist output schema must carry the arbitration signal field. Set with the schemas after M0
 - Compliance trap final wording is frozen with the text fixtures. Only the intent is set here

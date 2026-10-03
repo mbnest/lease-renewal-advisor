@@ -1,3 +1,6 @@
 .DS_Store
 .obsidian/
 .env
+
+# Raw source downloads for research notes
+research/*/raw/

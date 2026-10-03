@@ -50,7 +50,7 @@ Full flow, gate states, and contracts: [docs/architecture.md](docs/architecture.
 - In scope: one fictional Dallas-Fort Worth market, 60 homes, recommendations and an audit record, offline evaluation
 - Not in scope:
   - Sending messages or changing rents. The system only recommends and records
-  - Real pricing. Rent values are fictional and not calibrated (DD-04)
+  - Real pricing. Rent values are fictional, anchored to public rent benchmarks (DD-04)
   - State and local rules such as rent caps, notice periods, and local protected classes ([risks](docs/risks.md#outputs-read-as-legal-advice))
 
 ## Data and evaluation
@@ -98,10 +98,10 @@ Release one runs locally. Databricks Free Edition is the target platform. Target
 
 ## Sources
 - City demand, rent ranges, turnover cost, and Fair Housing Act classes rest on secondary sources checked 2026-10-02. Table with links: [scenarios research notes](docs/scenarios.md#research-notes)
-- They shape the fictional draft values. They do not calibrate them
-- Calibration of the rent clamp and city rate tiers is deferred as DD-04 ([open decisions](docs/open-decisions.md)). It will use primary sources:
-  - [HUD Small Area Fair Market Rents](https://www.huduser.gov/portal/datasets/fmr/smallarea/index.html), ZIP-level rents
-  - [U.S. Census Bureau American Community Survey](https://www.census.gov/programs-surveys/acs)
+- They shape city selection and demand values
+- The rent clamp and city rate tier rents are calibrated (DD-04, decided 2026-10-03) to primary sources. Figures, scripts, and re-fetch steps: [research/dd-04-calibration](research/dd-04-calibration/README.md)
+  - [HUD Small Area Fair Market Rents](https://www.huduser.gov/portal/datasets/fmr/smallarea/index.html), FY2026 and FY2027, ZIP-level rents
+  - [U.S. Census Bureau American Community Survey](https://www.census.gov/programs-surveys/acs), 2020 to 2024 5-year
 
 ## Contributing
 - Rules for every contributor, human or coding agent: [AGENTS.md](AGENTS.md)
@@ -119,5 +119,4 @@ Release one runs locally. Databricks Free Edition is the target platform. Target
 - MIT. See [LICENSE](LICENSE)
 
 ## Known gaps and open questions
-- DD-04 calibration is open. It will use HUD FY2027 Small Area Fair Market Rents, in its own PR
 - The implementation plan is not yet tracked

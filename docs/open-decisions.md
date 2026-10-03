@@ -1,6 +1,6 @@
 # Open decisions
 
-Status: living register. Last updated 2026-10-02.
+Status: living register. Last updated 2026-10-03.
 Deferred decisions (DD-nn) and the standing revisit triggers that live in the ADRs.
 
 ## Rules
@@ -16,7 +16,7 @@ Deferred decisions (DD-nn) and the standing revisit triggers that live in the AD
 | DD-01 | Tuned policy thresholds and severity tags | Values need generated data to check against | First generation run | ADR-014, ADR-015, policy config | open | |
 | DD-02 | Model selection and tier-to-agent assignment, including OpenRouter pinning and fallback options | Needs bake-off results and verified gateway options | Baseline bake-off recorded | ADR-007, ADR-017 | open | |
 | DD-03 | Numeric promotion thresholds | Needs the baseline. Must be frozen before multi-agent results are viewed | After baseline, before multi-agent results are viewed | ADR-010, ADR-019 | open | |
-| DD-04 | Rent clamp and city rate calibration to sourced DFW ranges | Needs sourced ranges. 2026 metro rents are falling | README drafting | ADR-012, ADR-020, README | open | |
+| DD-04 | Rent clamp and city rate calibration to sourced DFW ranges | Needs sourced ranges. 2026 metro rents are falling | README drafting | ADR-012, ADR-020, README | decided | 2026-10-03 |
 | DD-05 | MLflow version pin and span nesting verification | Needs a tracing stub to test against | Tracing stub added | ADR-008, ADR-025 | open | |
 | DD-06 | Free Edition feasibility: apps count, Lakebase, managed MCP, managed MLflow, quota. Model serving is an optional seam only | Published limits conflict across doc versions. Needs a real workspace | Start of the Databricks phase | ADR-005, ADR-009, ADR-011, ADR-022, ADR-025, ADR-026, ADR-027 | open | |
 | DD-07 | Conflicting signals scenario: signal vocabulary | Vocabulary is thin until the scenario spec is written | Scenario spec authoring | ADR-012, ADR-018, scenario spec | decided | 2026-10-02 |

@@ -5,7 +5,7 @@
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
 | **Related** | ADR-003 (economics in code), ADR-006 (grading), ADR-009 (reviewer edits), ADR-012 (market calibration), ADR-014 (policy config) |
-| **Pending** | DD-04 (calibrate the clamp and city rate tiers to sourced DFW ranges) |
+| **Pending** | None. DD-04 decided 2026-10-03 |
 
 ## Context
 
@@ -13,23 +13,23 @@ Algorithmic rent pricing draws legal and regulatory scrutiny. The system is advi
 
 Scenario logic should come from evidence and agent reasoning, not from the clamp.
 
-Secondary sources checked on 2026-10-02 show 2026 metro rents falling year over year, so a +9% cap is generous against the trend. README citations will use primary sources: HUD FY2026 Small Area Fair Market Rents and Census ACS.
+Calibration (DD-04, 2026-10-03) used primary sources: HUD Small Area Fair Market Rents (SAFMRs, ZIP-level rent benchmarks) and Census ACS. Across 98 ZIPs in the seven cities, the 3-bedroom SAFMR changed from FY2026 to FY2027 by a median of -5.5%, with a range of -9.9% to +4.2%. The earlier +9% cap was generous against that trend. Figures and scripts: [research/dd-04-calibration](../../research/dd-04-calibration/README.md).
 
 ## Decision
 
 **A global floor and cap clamp every rent proposal in code. Answer keys store one of five named bands, resolved by the policy config.**
 
 - **Model proposes, code enforces.** The economics function supplies guidance, not enforcement (ADR-003).
-- **Clamp:** floor -3%, cap +9%. Fictional placeholders until calibration (DD-04), including whether to lower the cap.
+- **Clamp:** floor -5%, cap +6% (DD-04). The floor reaches the sourced median drop, so soft market reductions are realistic. The cap keeps headroom above the largest sourced rise.
 - **Bands (percent change):**
 
 | Band | Range | Direction |
 |---|---|---|
-| REDUCE | -3 up to but excluding 0 | Reduce |
+| REDUCE | -5 up to but excluding 0 | Reduce |
 | HOLD | Exactly 0 | Hold |
-| LOW | Above 0 to 3 | Raise |
-| MODERATE | Above 3 to 6 | Raise |
-| HIGH | Above 6 to 9 | Raise |
+| LOW | Above 0 to 2 | Raise |
+| MODERATE | Above 2 to 4 | Raise |
+| HIGH | Above 4 to 6 | Raise |
 
 - Keys store symbolic bands. Band edges live only in the policy config.
 - Grading uses direction and band, on both the pre-clamp proposal and the clamped output (ADR-006).
@@ -55,8 +55,8 @@ Secondary sources checked on 2026-10-02 show 2026 metro rents falling year over 
 ## Revisit when
 
 - Band counts are uninformative in the first full eval.
-- Calibration shows the placeholder clamp is unrealistic for the sourced ranges (DD-04).
+- A new HUD SAFMR release moves the pooled year-over-year median below the floor, or its largest rise above the cap.
 
 ## Known gaps and open questions
 
-- Clamp and band edges are placeholders until calibration (DD-04).
+- SAFMR is a 40th percentile benchmark for voucher payment standards, not a renewal increase. The clamp rests on it as the best public primary source.

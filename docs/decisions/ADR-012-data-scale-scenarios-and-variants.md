@@ -5,7 +5,7 @@
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
 | **Related** | ADR-006 (grading), ADR-013 (ground truth), ADR-014 (thresholds), ADR-018 (arbitration), ADR-021 (storage) |
-| **Pending** | DD-04 (rent and city rate calibration) |
+| **Pending** | None. DD-04 decided 2026-10-03 |
 
 ## Context
 
@@ -17,8 +17,8 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 
 **Market and cities**
 
-- Fictional data, calibrated to rough real-world rent ranges. Sources go in the README (DD-04).
-- Cities carry separate rate tier and demand attributes. Draft values:
+- Fictional data, calibrated to HUD Small Area Fair Market Rents (SAFMRs, ZIP-level rent benchmarks) FY2027 and Census ACS 2020 to 2024 (DD-04, 2026-10-03). Figures and scripts: [research/dd-04-calibration](../../research/dd-04-calibration/README.md).
+- Cities carry separate rate tier and demand attributes:
 
 | City | Rate tier | Demand | Homes |
 |---|---|---|---|
@@ -31,6 +31,15 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 | Arlington | Low | Soft | about 12 |
 
 - Prosper adds high rent with soft demand, and Lewisville adds low rent with strong demand. Every rate tier then has a contrasting demand value, so tier_swap slots can move a cause across tiers. Prosper also gives the soft market scenario a soft city outside the low tier.
+- Base monthly rent per rate tier, for a generated single-family home, anchored on the SAFMR FY2027 3-bedroom city medians:
+
+| Rate tier | Base rent range | Sourced 3-bedroom city medians |
+|---|---|---|
+| Low | $1,800 to $2,400 | Dallas $2,090, Fort Worth $2,210, Arlington $2,405 |
+| Medium | $2,400 to $3,000 | Lewisville $2,365, Plano $2,815 |
+| High | $3,000 to $3,600 | Prosper $3,260, Highland Park $3,410 |
+
+- Rate tiers are fictional labels anchored to these ranges. Two placements depart from the sourced ranking: Dallas ranks low, not medium, and Lewisville ranks medium, not low. They are kept so every rate tier has a contrasting demand value for tier_swap slots. Following the sourced ranking would leave the low tier with no high-demand city and the medium tier with only high demand.
 
 **Scenarios**
 
@@ -76,5 +85,5 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 
 ## Known gaps and open questions
 
-- City counts and rate values are drafts until calibration (DD-04).
+- Home counts per city are drafts until the scenario spec assigns slots.
 - Slot parameter ranges are set in the scenario spec (planned).
