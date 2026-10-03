@@ -1,0 +1,212 @@
+{
+  "$defs": {
+    "Band": {
+      "additionalProperties": false,
+      "description": "One named percent range. Edges live here and nowhere else (ADR-020).",
+      "properties": {
+        "lower": {
+          "maximum": 100.0,
+          "minimum": -100.0,
+          "title": "Lower",
+          "type": "number"
+        },
+        "lower_inclusive": {
+          "title": "Lower Inclusive",
+          "type": "boolean"
+        },
+        "upper": {
+          "maximum": 100.0,
+          "minimum": -100.0,
+          "title": "Upper",
+          "type": "number"
+        },
+        "upper_inclusive": {
+          "title": "Upper Inclusive",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "lower",
+        "upper",
+        "lower_inclusive",
+        "upper_inclusive"
+      ],
+      "title": "Band",
+      "type": "object"
+    },
+    "Clamp": {
+      "additionalProperties": false,
+      "description": "The outer guardrail code applies to every rent proposal (ADR-003, ADR-020).",
+      "properties": {
+        "cap_pct": {
+          "maximum": 100.0,
+          "minimum": -100.0,
+          "title": "Cap Pct",
+          "type": "number"
+        },
+        "floor_pct": {
+          "maximum": 100.0,
+          "minimum": -100.0,
+          "title": "Floor Pct",
+          "type": "number"
+        }
+      },
+      "required": [
+        "floor_pct",
+        "cap_pct"
+      ],
+      "title": "Clamp",
+      "type": "object"
+    },
+    "Thresholds": {
+      "additionalProperties": false,
+      "description": "The only values the generation-time validator evaluates (ADR-014).",
+      "properties": {
+        "below_market_pct": {
+          "exclusiveMinimum": 0,
+          "title": "Below Market Pct",
+          "type": "number"
+        },
+        "chronic_cost_pct_of_annual_rent": {
+          "exclusiveMinimum": 0,
+          "title": "Chronic Cost Pct Of Annual Rent",
+          "type": "number"
+        },
+        "chronic_window_months": {
+          "minimum": 1,
+          "title": "Chronic Window Months",
+          "type": "integer"
+        },
+        "chronic_wo_same_system_count": {
+          "minimum": 1,
+          "title": "Chronic Wo Same System Count",
+          "type": "integer"
+        },
+        "late_payment_count": {
+          "minimum": 1,
+          "title": "Late Payment Count",
+          "type": "integer"
+        },
+        "late_payment_window_months": {
+          "minimum": 1,
+          "title": "Late Payment Window Months",
+          "type": "integer"
+        },
+        "open_complaint_days": {
+          "minimum": 1,
+          "title": "Open Complaint Days",
+          "type": "integer"
+        },
+        "soft_demand_city_values": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Soft Demand City Values",
+          "type": "array"
+        },
+        "soft_demand_trend_values": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Soft Demand Trend Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "chronic_wo_same_system_count",
+        "chronic_window_months",
+        "chronic_cost_pct_of_annual_rent",
+        "late_payment_count",
+        "late_payment_window_months",
+        "below_market_pct",
+        "soft_demand_city_values",
+        "soft_demand_trend_values",
+        "open_complaint_days"
+      ],
+      "title": "Thresholds",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A versioned policy config. The version is named in every answer key header.",
+  "properties": {
+    "arbitration_precedence": {
+      "items": {
+        "enum": [
+          "condition",
+          "market",
+          "resident"
+        ],
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Arbitration Precedence",
+      "type": "array"
+    },
+    "bands": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Band"
+      },
+      "propertyNames": {
+        "enum": [
+          "REDUCE",
+          "HOLD",
+          "LOW",
+          "MODERATE",
+          "HIGH"
+        ]
+      },
+      "title": "Bands",
+      "type": "object"
+    },
+    "clamp": {
+      "$ref": "#/$defs/Clamp"
+    },
+    "combining_rule": {
+      "const": "highest_severity_wins",
+      "title": "Combining Rule",
+      "type": "string"
+    },
+    "severity_tags": {
+      "additionalProperties": {
+        "enum": [
+          "escalate",
+          "note"
+        ],
+        "type": "string"
+      },
+      "propertyNames": {
+        "enum": [
+          "chronic_maintenance",
+          "open_complaint",
+          "late_payment_pattern",
+          "below_market",
+          "soft_demand"
+        ]
+      },
+      "title": "Severity Tags",
+      "type": "object"
+    },
+    "thresholds": {
+      "$ref": "#/$defs/Thresholds"
+    },
+    "version": {
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "thresholds",
+    "severity_tags",
+    "combining_rule",
+    "arbitration_precedence",
+    "bands",
+    "clamp"
+  ],
+  "title": "PolicyConfig",
+  "type": "object"
+}

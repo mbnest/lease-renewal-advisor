@@ -1,0 +1,52 @@
+# Policy config v1. Fictional values for synthetic data. Not legal advice.
+# Status: committed contract instance. Last updated 2026-10-03.
+# Shape is the PolicyConfig contract in src/lease_renewal/contracts/policy.py.
+# Agents see this file. The generation-time validator reads it. Nothing
+# recomputes it at runtime (ADR-014).
+#
+# Thresholds are placeholders pending tuning against generated data (DD-01).
+# Clamp and band edges are calibrated to HUD SAFMR and Census ACS (DD-04, ADR-020).
+
+version: "policy_v1"
+
+thresholds:
+  chronic_wo_same_system_count: 3         # work orders on one system inside the window
+  chronic_window_months: 12
+  chronic_cost_pct_of_annual_rent: 5.0    # maintenance cost above this percent of annual rent
+  late_payment_count: 3                   # 1 or 2 late payments is a decoy, not a pattern
+  late_payment_window_months: 12
+  below_market_pct: 8.0                   # rent at least this percent below the comp median
+  soft_demand_city_values: [soft]
+  soft_demand_trend_values: [flat, down]
+  open_complaint_days: 30                 # unresolved this many days or more
+
+# Highest severity wins (ADR-015). escalate: a non-rent human action is needed.
+# note: proceed with a flagged item. No flags: renew.
+severity_tags:
+  chronic_maintenance: escalate
+  open_complaint: escalate
+  late_payment_pattern: note
+  below_market: note
+  soft_demand: note
+
+combining_rule: highest_severity_wins
+
+# Decides rent direction only, and only when specialist signals imply different
+# directions (ADR-018). Compliance sits outside arbitration, in the critic's
+# BLOCKED state (ADR-016).
+arbitration_precedence: [condition, market, resident]
+
+# Percent rent change. Answer keys store band names, never these edges (ADR-020).
+bands:
+  REDUCE:   {lower: -5.0, upper: 0.0, lower_inclusive: true,  upper_inclusive: false}
+  HOLD:     {lower: 0.0,  upper: 0.0, lower_inclusive: true,  upper_inclusive: true}
+  LOW:      {lower: 0.0,  upper: 2.0, lower_inclusive: false, upper_inclusive: true}
+  MODERATE: {lower: 2.0,  upper: 4.0, lower_inclusive: false, upper_inclusive: true}
+  HIGH:     {lower: 4.0,  upper: 6.0, lower_inclusive: false, upper_inclusive: true}
+
+# Outer guardrail only. Model proposes, code enforces (ADR-003, ADR-020).
+# Floor reaches the sourced SAFMR median drop of -5.5 percent. Cap keeps headroom
+# above the largest sourced rise of +4.2 percent.
+clamp:
+  floor_pct: -5.0
+  cap_pct: 6.0

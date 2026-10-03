@@ -38,7 +38,8 @@ Directories are created by the first PR that needs them. Each lane edits only it
 | Path | Holds | Lane |
 |---|---|---|
 | `src/lease_renewal/generator/` | Seeded generator, validator, key writer | a |
-| `schemas/` | JSON schemas for contracts | a, via `contract/` branches |
+| `src/lease_renewal/contracts/` | Pydantic contract models, the source of truth | a, via `contract/` branches |
+| `schemas/` | JSON schemas generated from the contract models | a, via `contract/` branches |
 | `config/` | Policy config and scenario spec | a |
 | `src/lease_renewal/eval/` | Harness, grading, run manifests | b |
 | `src/lease_renewal/infra/` | Access layer, redaction, tracing, cache | b |
@@ -53,6 +54,7 @@ Directories are created by the first PR that needs them. Each lane edits only it
 | `research/` | Source figures and scripts behind calibration decisions. Raw downloads gitignored | f |
 
 - Paths for generated data and the restricted answer-key directory are set with the access layer ([ADR-024](docs/decisions/ADR-024-substitution-redaction-and-key-isolation.md))
+- Contracts are Pydantic models under `src/lease_renewal/contracts/`. `schemas/` is generated from them by `scripts/build_schemas.py`, never hand-edited, and a test fails when the two drift
 
 ## Phase rules
 - No logic code and no schemas until the architecture exit checklist passes (milestone M0)
