@@ -5,7 +5,7 @@ Status: architecture phase. Decided, not specified or built. Last updated 2026-1
 A multi-agent system that reviews single-family leases expiring within 90 days and recommends a renewal action, a rent change, the risks behind it, and a draft resident message. It is advisory only: it has no send or write capability, and a human approves every recommendation. All data is synthetic, and every recommendation is graded against an answer key.
 
 > [!WARNING]
-> Nothing runs yet. This repository holds the architecture: design docs and decision records. Every component below is decided, not specified, built, tested, or evaluated. Status terms: [status ladder](AGENTS.md#status-ladder).
+> Nothing of the system runs yet. This repository holds the architecture, design docs and decision records, plus a repo scaffold with lint and tests. Every component below is decided, not specified, built, tested, or evaluated. Status terms: [status ladder](AGENTS.md#status-ladder).
 
 ## Contents
 - [Problem](#problem)
@@ -80,11 +80,15 @@ Release one, the first release, runs locally in Docker Compose ([platform table]
 - Milestones and the current step: [docs/progress.md](docs/progress.md)
 
 ## How to run
-- Nothing runs yet
-- Planned: Python 3.13 with uv. Docker Compose runs the reviewer UI, MLflow, and the eval runner. Folder layout: [AGENTS.md](AGENTS.md#folder-layout)
+- The system does not run yet. No agent, no data, and no eval
+- Development setup, Python 3.13 with uv:
+  - `uv sync` installs dependencies
+  - `uv run ruff check .` and `uv run ruff format --check .` lint and check formatting
+  - `uv run pytest` runs the tests. CI runs the same three checks on every pull request
 - Copy `.env.example` to `.env`. Never commit `.env`
   - `OPENROUTER_API_KEY`: model calls, through OpenRouter
   - `CENSUS_API_KEY`: only to re-run the DD-04 research pull
+- Planned: Docker Compose runs the reviewer UI, MLflow, and the eval runner. Folder layout: [AGENTS.md](AGENTS.md#folder-layout)
 
 ## Documentation
 

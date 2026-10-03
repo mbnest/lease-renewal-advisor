@@ -2,5 +2,9 @@
 .obsidian/
 .env
 
+# Python
+__pycache__/
+.venv/
+
 # Raw source downloads for research notes
 research/*/raw/

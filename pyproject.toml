@@ -1,0 +1,36 @@
+[project]
+name = "lease-renewal"
+version = "0.1.0"
+description = "Advisory multi-agent lease renewal decision agent, graded against answer keys"
+readme = "README.md"
+authors = [
+    { name = "Matt Nestman", email = "mbnestman@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "ruff>=0.14.0",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "unit: isolated logic, no files and no network",
+    "validator: spec, key, and policy rules",
+    "harness: eval harness and grading",
+    "integration: several components over fixtures",
+    "live: real model calls, never run in CI",
+]
