@@ -6,8 +6,8 @@ Where the project stands and where to resume. Detail lives in one log per milest
 ## Current position
 - Phase: P1, foundations. M0 closed 2026-10-03, tag `m0` (PR #15). P0 history: all 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` merged (PR #10). `docs/eval-plan.md` merged (PR #11). `docs/risks.md` merged (PR #12). README refresh, Python pin, folder layout, and security policy merged (PR #13). [DD-04](open-decisions.md) calibration decided and merged (PR #14)
 - Next milestone: M1, contracts tagged, tests green, mini fixture loads end to end. Checklist in [docs/progress/m1.md](progress/m1.md)
-- Active task: 1.1, repo scaffold and CI
-- Next step: scope task 1.1 on `f/1.1-repo-scaffold` (repo scaffold, CI, AGENTS.md, status table) and confirm it with the owner before building
+- Active task: 1.5, agent spike, on throwaway branch `e/1.5-agent-spike`. Task 1.1 paused on `f/1.1-repo-scaffold`
+- Next step: create `e/1.5-agent-spike` from `main` and start step 1, the single-agent baseline. Plan, rules, and step 2: [M1 log, agent spike plan](progress/m1.md#2026-10-03-agent-spike-plan)
 - Resume prompt: "Read AGENTS.md and docs/progress.md, then the current milestone log. Continue from the next step above. Docs state decisions already made in the ADRs and link to them, and log missing decisions as gaps rather than inventing them. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
