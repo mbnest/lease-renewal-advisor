@@ -33,7 +33,7 @@ Secondary sources checked on 2026-10-02 show 2026 metro rents falling year over 
 
 - Keys store symbolic bands. Band edges live only in the policy config.
 - Grading uses direction and band, on both the pre-clamp proposal and the clamped output (ADR-006).
-- The README cites sources. `docs/risks.md` (planned) notes "not legal advice."
+- The README cites sources. [docs/risks.md](../risks.md#not-legal-advice) notes "not legal advice."
 
 ## Alternatives considered
 

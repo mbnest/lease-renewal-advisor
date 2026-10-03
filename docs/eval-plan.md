@@ -146,7 +146,7 @@ From [ADR-028](decisions/ADR-028-cost-envelope.md).
 - Dev runs replay from cache and cost nothing on a hit
 
 ## Out of scope
-- LLM judge for the drafted message. Deferred. Its family-sharing risk is in `docs/risks.md` (planned)
+- LLM judge for the drafted message. Deferred. Its family-sharing risk is in [risks](risks.md#judge-self-preference)
 - Unsupported-claim rate as an eval count. The critic checks claims in code at runtime ([ADR-004](decisions/ADR-004-critic-design.md))
 
 ## Known gaps and open questions
