@@ -42,7 +42,7 @@ The action label must be derivable from data plus policy, or grading is invalid.
 
 **Costs we accept**
 
-- Scenario 1 (below market, on time) lands on renew with note. Only clean homes get plain renew, so action accuracy is partly collinear with flag presence. Rent band and flag grading carry the extra signal.
+- The below-market, on-time tenant scenario lands on renew with note. Only clean homes get plain renew, so action accuracy is partly collinear with flag presence. Rent band and flag grading carry the extra signal.
 - Severity is fixed per flag type. Context cannot soften or harden it.
 
 ## Revisit when

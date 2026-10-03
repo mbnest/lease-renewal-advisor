@@ -21,7 +21,7 @@ Tiering is chosen partly to keep the project manageable. A production deployment
 - **Models are not named yet.** They are chosen by a baseline bake-off (DD-02).
 - **Hard gates:** structured outputs advertised, tool calling for the supervisor model, a pinnable model slug, a pinnable upstream provider.
 - **Scored:** schema-valid rate, baseline action accuracy and flag recall, flip rate on a repeat run, cost per case, latency.
-- **Bake-off:** baseline prompt only, 5 to 6 candidates, 35 homes (25 clean and 10 planted from the dev subset), 1 run, about 200 calls. Repeat 2 candidates once for flip rate.
+- **Bake-off:** baseline prompt only, 5 to 6 candidates, 35 homes (25 clean and 10 planted from the dev set), 1 run, about 200 calls. Repeat 2 candidates once for flip rate.
 - **Free variants** are for dev smoke tests only, never published runs.
 - **Reproducibility:** pin the model slug and upstream provider, and disable fallback routing. Record upstream provider and price at run time in the cache key and snapshot manifest (ADR-007).
 

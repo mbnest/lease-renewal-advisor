@@ -30,12 +30,12 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 | Fort Worth | Low | Mixed | about 12 |
 | Arlington | Low | Soft | about 12 |
 
-- Prosper adds high rent with soft demand, and Lewisville adds low rent with strong demand. Every rate tier then has a contrasting demand value, so tier_swap slots can move a cause across tiers. Prosper also gives scenario 3 a soft city outside the low tier.
+- Prosper adds high rent with soft demand, and Lewisville adds low rent with strong demand. Every rate tier then has a contrasting demand value, so tier_swap slots can move a cause across tiers. Prosper also gives the soft market scenario a soft city outside the low tier.
 
 **Scenarios**
 
 - 1 below-market on-time tenant, 2 chronic maintenance, 3 soft market, 4 unresolved complaint, 5 compliance trap, 6 repeated late payer with strong demand, 8 conflicting signals.
-- Scenario 7 (pet damage) is left out. It has material impact and would be added before production use. Its number stays reserved.
+- Pet damage (scenario 7) is left out. It has material impact and would be added before production use. Its number stays reserved.
 
 **Variant slots**
 
@@ -56,7 +56,7 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 ## Alternatives considered
 
 - **Several markets, 300 or more homes.** Rejected for release one. Generation, review, and eval cost grow with no new failure modes covered.
-- **Fewer scenarios with more variants each.** Rejected. Fewer causes means fewer agent behaviors tested, and arbitration (scenario 8) and the compliance trap (scenario 5) both need their own scenarios.
+- **Fewer scenarios with more variants each.** Rejected. Fewer causes means fewer agent behaviors tested, and arbitration (conflicting signals scenario) and the compliance trap both need their own scenarios.
 
 ## Consequences
 

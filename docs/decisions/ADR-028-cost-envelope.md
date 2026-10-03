@@ -13,14 +13,14 @@ The project pays for every model call. A full pass with 3 runs for every configu
 
 ## Decision
 
-**Repeat runs only where the headline comparison needs them, develop on a subset from cache, and cap spend in config.**
+**Repeat runs only where the headline comparison needs them, develop on a held-out set from cache, and cap spend in config.**
 
 **Run plan**
 
 - Published results: 3 runs for the baseline and for the full multi-agent configuration only.
 - Per-agent score delta checkpoints and ablations: 1 run.
-- Classifier ablation: scenario 5 homes only. Tool ablation: condition agent only (ADR-002).
-- Dev: a 20-home subset, 1 run, replay from cache. The 60-home set is for published runs.
+- Classifier ablation: compliance trap homes only. Tool ablation: condition agent only (ADR-002).
+- Dev: a held-out 20-home set from a separate seed, 1 run, replay from cache. None of its homes is in the 60-home set, which is for published runs.
 
 **Controls**
 

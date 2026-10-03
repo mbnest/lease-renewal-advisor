@@ -9,7 +9,7 @@
 
 ## Context
 
-Scenario 8 plants conflicting signals between specialists to test how disagreement is handled. The model can explain a resolution, but the resolution itself must be reproducible and gradable.
+The conflicting signals scenario plants opposing signals between specialists to test how disagreement is handled. The model can explain a resolution, but the resolution itself must be reproducible and gradable.
 
 ## Decision
 
@@ -19,7 +19,7 @@ Scenario 8 plants conflicting signals between specialists to test how disagreeme
 - **Compliance is outside arbitration.** The critic handles it through the BLOCKED state (ADR-016).
 - **Scope:** arbitration decides rent direction only, and only when specialist signals imply different directions. Severity tags (ADR-015) still decide the action, so the two never overlap.
 - **Signals:** each specialist output carries one directional signal. Condition: ESCALATE, RAISE, NONE. Market: RAISE, HOLD, NONE. Resident: RAISE, HOLD, NONE. Only ESCALATE matches for condition. Values live in the policy config. Slot design is in `docs/scenarios.md`.
-- **Keys:** for scenario 8, the key stores the signals, the expected winner, and the direction. The validator checks that the winner is the first matching specialist in precedence order and that the direction is the winner's.
+- **Keys:** for the conflicting signals scenario, the key stores the signals, the expected winner, and the direction. The validator checks that the winner is the first matching specialist in precedence order and that the direction is the winner's.
 - The supervisor's arbitration note explains the code's outcome. It cannot change it.
 - **Order:** arbitration runs in code on the specialist outputs, before the supervisor. The supervisor receives the outcome and writes the note (ADR-001).
 
@@ -38,13 +38,13 @@ Scenario 8 plants conflicting signals between specialists to test how disagreeme
 **Costs we accept**
 
 - A fixed order cannot weigh evidence strength.
-- The signal vocabulary is small, so scenario 8 may still be passed for the wrong reason.
+- The signal vocabulary is small, so the conflicting signals scenario may still be passed for the wrong reason.
 - Arbitration cannot change the action, even when the winning specialist's domain would argue for one.
 
 ## Revisit when
 
 - Generated cases show a winner's direction that contradicts the action, such as a raise on an escalate case.
-- Scenario 8 results suggest the vocabulary is too small to separate right and wrong reasoning.
+- Conflicting signals results suggest the vocabulary is too small to separate right and wrong reasoning.
 
 ## Known gaps and open questions
 

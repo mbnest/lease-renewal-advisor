@@ -42,6 +42,10 @@ The evaluation set is 60 homes across 7 scenarios. That gives directional eviden
 - Blocked count, false blocks on clean homes, and threshold misapplied count.
 - Detail table: recall per flag, spurious flags per clean home and per decoy.
 
+**Conflicting signals scenario**
+
+- Arbitration winner and direction against the key, per slot, and each specialist's signal against the key (ADR-018). These expose a right outcome reached for the wrong reason.
+
 **Comparison and consistency**
 
 - Baseline and multi-agent are compared case by case.
@@ -70,4 +74,4 @@ The evaluation set is 60 homes across 7 scenarios. That gives directional eviden
 
 ## Known gaps and open questions
 
-- Exact scoring rules per count are specified in `docs/eval-plan.md` (planned).
+- Exact scoring rules per count are specified in [docs/eval-plan.md](../eval-plan.md).
