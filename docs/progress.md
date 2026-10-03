@@ -4,10 +4,10 @@ Status: living index. Last updated 2026-10-03.
 Where the project stands and where to resume. Detail lives in one log per milestone under `docs/progress/`. Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids follow it.
 
 ## Current position
-- Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` merged (PR #10). `docs/eval-plan.md` merged (PR #11). `docs/risks.md` in review (PR #12)
+- Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` merged (PR #10). `docs/eval-plan.md` merged (PR #11). `docs/risks.md` merged (PR #12). README refresh in review (PR #13)
 - Next milestone: M0, architecture exit checklist passed. Checklist in [docs/progress/m0.md](progress/m0.md)
 - Active task: 0.1, architecture docs
-- Next step: owner merges PR #12 (`docs/risks`). Then a README refresh on `docs/readme`, citing the research sources in `docs/scenarios.md`, then one review pass against the M0 checklist
+- Next step: owner reviews and merges PR #13 (`docs/readme`). Then DD-04 calibration against HUD FY2027 Small Area Fair Market Rents on its own branch. Then one review pass against the M0 checklist
 - Resume prompt: "Read AGENTS.md and docs/progress.md, then the current milestone log. Continue from the next step above. Docs state decisions already made in the ADRs and link to them, and log missing decisions as gaps rather than inventing them. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
@@ -33,5 +33,4 @@ Where the project stands and where to resume. Detail lives in one log per milest
 - Edit the current position when the next step changes. Edit milestone rows only when a milestone changes
 
 ## Known gaps and open questions
-- Pinned Python version and folder layout are open
 - Link to the tracked implementation plan once it is written
