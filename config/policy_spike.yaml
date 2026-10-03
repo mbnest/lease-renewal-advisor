@@ -1,0 +1,47 @@
+# Policy config for the task 1.5 agent spike. Fictional values. Not legal advice.
+# Status: spike only. Binds nothing. Last updated 2026-10-03.
+# Values come from the accepted ADRs: ADR-014 thresholds, ADR-015 severity tags,
+# ADR-018 arbitration, ADR-020 clamp and bands. Thresholds are untuned (DD-01).
+# The committed contract version is written in task 1.2. This file is not it.
+
+version: "policy_spike"
+
+thresholds:
+  chronic_wo_same_system_count: 3         # work orders on one system inside the window
+  chronic_window_months: 12
+  chronic_cost_pct_of_annual_rent: 5.0    # maintenance cost above this percent of annual rent
+  late_payment_count: 3                   # 1 or 2 late payments is a decoy, not a pattern
+  late_payment_window_months: 12
+  below_market_pct: 8.0                   # rent at least this percent below the comp median
+  soft_demand_city_values: [soft]
+  soft_demand_trend_values: [flat, down]
+  open_complaint_days: 30                 # unresolved this many days or more
+
+# Actions (ADR-015). escalate: a non-rent human action is needed.
+# renew_with_note: proceed with a flagged item. renew: no flags.
+severity_tags:
+  chronic_maintenance: escalate
+  open_complaint: escalate
+  late_payment_pattern: note
+  below_market: note
+  soft_demand: note
+
+combining_rule: highest_severity_wins
+
+# Decides rent direction only, and only when specialist signals conflict (ADR-018).
+# Compliance sits outside arbitration and is handled by the critic BLOCKED state.
+arbitration_precedence: [condition, market, resident]
+
+# Percent rent change. Answer keys store the symbolic band name, never the edges (ADR-020).
+bands:
+  REDUCE:   {lower: -5.0, upper: 0.0, lower_inclusive: true,  upper_inclusive: false}
+  HOLD:     {lower: 0.0,  upper: 0.0, lower_inclusive: true,  upper_inclusive: true}
+  LOW:      {lower: 0.0,  upper: 2.0, lower_inclusive: false, upper_inclusive: true}
+  MODERATE: {lower: 2.0,  upper: 4.0, lower_inclusive: false, upper_inclusive: true}
+  HIGH:     {lower: 4.0,  upper: 6.0, lower_inclusive: false, upper_inclusive: true}
+
+# Outer guardrail only. Model proposes, code enforces (ADR-003, ADR-020).
+# Floor reaches the sourced SAFMR median drop. Cap keeps headroom above the largest sourced rise.
+clamp:
+  floor_pct: -5.0
+  cap_pct: 6.0

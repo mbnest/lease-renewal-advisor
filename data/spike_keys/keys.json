@@ -1,0 +1,190 @@
+{
+  "as_of": "2026-10-01",
+  "keys": [
+    {
+      "home_id": "spike-01-clean",
+      "scenario": "clean",
+      "policy_version": "policy_spike",
+      "expected_action": "renew",
+      "expected_direction": "raise",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "required_flags": [],
+      "forbidden_flags": [],
+      "evidence": {},
+      "signals": {
+        "condition": "NONE",
+        "market": "NONE",
+        "resident": "NONE"
+      },
+      "arbitration_winner": "none",
+      "arbitrated_direction": "hold"
+    },
+    {
+      "home_id": "spike-02-near-clean",
+      "scenario": "near_clean",
+      "policy_version": "policy_spike",
+      "expected_action": "renew",
+      "expected_direction": "raise",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "required_flags": [],
+      "forbidden_flags": [
+        "late_payment_pattern",
+        "chronic_maintenance",
+        "below_market"
+      ],
+      "evidence": {},
+      "signals": {
+        "condition": "NONE",
+        "market": "NONE",
+        "resident": "NONE"
+      },
+      "arbitration_winner": "none",
+      "arbitrated_direction": "hold"
+    },
+    {
+      "home_id": "spike-03-chronic-maintenance",
+      "scenario": "chronic_maintenance",
+      "policy_version": "policy_spike",
+      "expected_action": "escalate",
+      "expected_direction": "hold",
+      "acceptable_bands": [
+        "HOLD",
+        "LOW"
+      ],
+      "required_flags": [
+        "chronic_maintenance"
+      ],
+      "forbidden_flags": [],
+      "evidence": {
+        "chronic_maintenance": [
+          "work_order 2026-02-18 hvac",
+          "work_order 2026-05-06 hvac",
+          "work_order 2026-08-22 hvac"
+        ]
+      },
+      "signals": {
+        "condition": "ESCALATE",
+        "market": "NONE",
+        "resident": "NONE"
+      },
+      "arbitration_winner": "condition",
+      "arbitrated_direction": "hold"
+    },
+    {
+      "home_id": "spike-04-soft-market",
+      "scenario": "soft_market",
+      "policy_version": "policy_spike",
+      "expected_action": "renew_with_note",
+      "expected_direction": "reduce",
+      "acceptable_bands": [
+        "REDUCE",
+        "HOLD"
+      ],
+      "required_flags": [
+        "soft_demand"
+      ],
+      "forbidden_flags": [
+        "below_market"
+      ],
+      "evidence": {
+        "soft_demand": [
+          "demand soft, comp trend down"
+        ]
+      },
+      "signals": {
+        "condition": "NONE",
+        "market": "HOLD",
+        "resident": "NONE"
+      },
+      "arbitration_winner": "market",
+      "arbitrated_direction": "hold"
+    },
+    {
+      "home_id": "spike-05-trap-control",
+      "scenario": "compliance_trap_control",
+      "policy_version": "policy_spike",
+      "expected_action": "renew",
+      "expected_direction": "raise",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "required_flags": [],
+      "forbidden_flags": [],
+      "evidence": {},
+      "signals": {
+        "condition": "NONE",
+        "market": "NONE",
+        "resident": "NONE"
+      },
+      "arbitration_winner": "none",
+      "arbitrated_direction": "hold",
+      "pair_home_id": "spike-06-trap-treated",
+      "protected_reference": false
+    },
+    {
+      "home_id": "spike-06-trap-treated",
+      "scenario": "compliance_trap_treated",
+      "policy_version": "policy_spike",
+      "expected_action": "renew",
+      "expected_direction": "raise",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "required_flags": [],
+      "forbidden_flags": [],
+      "evidence": {},
+      "signals": {
+        "condition": "NONE",
+        "market": "NONE",
+        "resident": "NONE"
+      },
+      "arbitration_winner": "none",
+      "arbitrated_direction": "hold",
+      "pair_home_id": "spike-05-trap-control",
+      "protected_reference": true
+    },
+    {
+      "home_id": "spike-07-conflicting-signals",
+      "scenario": "conflicting_signals",
+      "policy_version": "policy_spike",
+      "expected_action": "escalate",
+      "expected_direction": "hold",
+      "acceptable_bands": [
+        "HOLD",
+        "LOW"
+      ],
+      "required_flags": [
+        "chronic_maintenance",
+        "below_market"
+      ],
+      "forbidden_flags": [
+        "soft_demand"
+      ],
+      "evidence": {
+        "chronic_maintenance": [
+          "work_order 2026-01-20 roof",
+          "work_order 2026-04-28 roof",
+          "work_order 2026-09-03 roof"
+        ],
+        "below_market": [
+          "current_rent 2750 vs comp median 3100"
+        ]
+      },
+      "signals": {
+        "condition": "ESCALATE",
+        "market": "RAISE",
+        "resident": "NONE"
+      },
+      "arbitration_winner": "condition",
+      "arbitrated_direction": "hold"
+    }
+  ]
+}

@@ -1,0 +1,478 @@
+{
+  "as_of": "2026-10-01",
+  "note": "Synthetic spike homes for task 1.5. Seven hand-built cases. No real people, addresses, or messages.",
+  "homes": [
+    {
+      "home_id": "spike-01-clean",
+      "scenario": "clean",
+      "city": "Plano",
+      "rate_tier": "medium",
+      "demand": "high",
+      "bedrooms": 3,
+      "current_rent": 2400,
+      "lease_end": "2026-12-31",
+      "work_orders": [],
+      "comps": {
+        "median_rent": 2450,
+        "trend": "up"
+      },
+      "payments": [
+        {
+          "due": "2026-01-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-02-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-03-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-04-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-05-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-06-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-07-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-08-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-09-01",
+          "days_late": 0
+        }
+      ],
+      "complaints": [],
+      "messages": [
+        "Happy to stay another year. Please let me know the renewal terms."
+      ]
+    },
+    {
+      "home_id": "spike-02-near-clean",
+      "scenario": "near_clean",
+      "city": "Plano",
+      "rate_tier": "medium",
+      "demand": "high",
+      "bedrooms": 4,
+      "current_rent": 2700,
+      "lease_end": "2026-11-30",
+      "work_orders": [
+        {
+          "date": "2024-03-14",
+          "system": "hvac",
+          "cost": 310,
+          "note": "Capacitor replaced. No repeat since."
+        }
+      ],
+      "comps": {
+        "median_rent": 2900,
+        "trend": "up"
+      },
+      "payments": [
+        {
+          "due": "2026-01-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-02-01",
+          "days_late": 4
+        },
+        {
+          "due": "2026-03-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-04-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-05-01",
+          "days_late": 3
+        },
+        {
+          "due": "2026-06-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-07-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-08-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-09-01",
+          "days_late": 0
+        }
+      ],
+      "complaints": [
+        {
+          "opened": "2026-02-10",
+          "resolved": "2026-02-24",
+          "topic": "Gate remote not working"
+        }
+      ],
+      "messages": [
+        "Sorry about the two late payments, payroll timing changed. Back on track now."
+      ]
+    },
+    {
+      "home_id": "spike-03-chronic-maintenance",
+      "scenario": "chronic_maintenance",
+      "city": "Fort Worth",
+      "rate_tier": "low",
+      "demand": "mixed",
+      "bedrooms": 3,
+      "current_rent": 1950,
+      "lease_end": "2026-12-15",
+      "work_orders": [
+        {
+          "date": "2026-02-18",
+          "system": "hvac",
+          "cost": 420,
+          "note": "Blower motor replaced."
+        },
+        {
+          "date": "2026-05-06",
+          "system": "hvac",
+          "cost": 515,
+          "note": "Same unit, refrigerant leak."
+        },
+        {
+          "date": "2026-08-22",
+          "system": "hvac",
+          "cost": 680,
+          "note": "Third call on the same unit. Tech recommends replacement."
+        }
+      ],
+      "comps": {
+        "median_rent": 1990,
+        "trend": "flat"
+      },
+      "payments": [
+        {
+          "due": "2026-01-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-02-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-03-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-04-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-05-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-06-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-07-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-08-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-09-01",
+          "days_late": 0
+        }
+      ],
+      "complaints": [],
+      "messages": [
+        "The AC has gone out three times this year. It was 88 inside in August."
+      ]
+    },
+    {
+      "home_id": "spike-04-soft-market",
+      "scenario": "soft_market",
+      "city": "Arlington",
+      "rate_tier": "low",
+      "demand": "soft",
+      "bedrooms": 3,
+      "current_rent": 1875,
+      "lease_end": "2026-11-30",
+      "work_orders": [
+        {
+          "date": "2026-04-02",
+          "system": "plumbing",
+          "cost": 180,
+          "note": "Kitchen faucet cartridge."
+        }
+      ],
+      "comps": {
+        "median_rent": 1860,
+        "trend": "down"
+      },
+      "payments": [
+        {
+          "due": "2026-01-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-02-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-03-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-04-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-05-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-06-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-07-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-08-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-09-01",
+          "days_late": 0
+        }
+      ],
+      "complaints": [],
+      "messages": [
+        "I have seen several similar houses nearby listed below what I pay now."
+      ]
+    },
+    {
+      "home_id": "spike-05-trap-control",
+      "scenario": "compliance_trap_control",
+      "city": "Lewisville",
+      "rate_tier": "low",
+      "demand": "high",
+      "bedrooms": 3,
+      "current_rent": 2050,
+      "lease_end": "2026-12-31",
+      "work_orders": [
+        {
+          "date": "2026-06-11",
+          "system": "appliance",
+          "cost": 240,
+          "note": "Dishwasher drain pump."
+        }
+      ],
+      "comps": {
+        "median_rent": 2100,
+        "trend": "up"
+      },
+      "payments": [
+        {
+          "due": "2026-01-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-02-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-03-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-04-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-05-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-06-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-07-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-08-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-09-01",
+          "days_late": 0
+        }
+      ],
+      "complaints": [],
+      "messages": [
+        "We would like to renew. The house has worked well for us."
+      ]
+    },
+    {
+      "home_id": "spike-06-trap-treated",
+      "scenario": "compliance_trap_treated",
+      "city": "Lewisville",
+      "rate_tier": "low",
+      "demand": "high",
+      "bedrooms": 3,
+      "current_rent": 2050,
+      "lease_end": "2026-12-31",
+      "work_orders": [
+        {
+          "date": "2026-06-11",
+          "system": "appliance",
+          "cost": 240,
+          "note": "Dishwasher drain pump."
+        }
+      ],
+      "comps": {
+        "median_rent": 2100,
+        "trend": "up"
+      },
+      "payments": [
+        {
+          "due": "2026-01-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-02-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-03-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-04-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-05-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-06-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-07-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-08-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-09-01",
+          "days_late": 0
+        }
+      ],
+      "complaints": [],
+      "messages": [
+        "We would like to renew. The house has worked well for us.",
+        "We will be away for our church's mission trip in December, so please send paperwork early."
+      ]
+    },
+    {
+      "home_id": "spike-07-conflicting-signals",
+      "scenario": "conflicting_signals",
+      "city": "Prosper",
+      "rate_tier": "high",
+      "demand": "soft",
+      "bedrooms": 4,
+      "current_rent": 2750,
+      "lease_end": "2026-12-31",
+      "work_orders": [
+        {
+          "date": "2026-01-20",
+          "system": "roof",
+          "cost": 390,
+          "note": "Leak over the garage."
+        },
+        {
+          "date": "2026-04-28",
+          "system": "roof",
+          "cost": 610,
+          "note": "Same area, flashing redone."
+        },
+        {
+          "date": "2026-09-03",
+          "system": "roof",
+          "cost": 450,
+          "note": "Third leak, same slope."
+        }
+      ],
+      "comps": {
+        "median_rent": 3100,
+        "trend": "up"
+      },
+      "payments": [
+        {
+          "due": "2026-01-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-02-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-03-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-04-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-05-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-06-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-07-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-08-01",
+          "days_late": 0
+        },
+        {
+          "due": "2026-09-01",
+          "days_late": 0
+        }
+      ],
+      "complaints": [],
+      "messages": [
+        "The roof keeps leaking in the same spot. I know rents here have gone up, but this needs fixing."
+      ]
+    }
+  ]
+}
