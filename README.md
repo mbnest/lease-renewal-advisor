@@ -39,4 +39,4 @@ Status: architecture phase. Designed, not built. Last updated 2026-10-02.
 
 ## Known gaps and open questions
 - Pinned Python version and folder layout are open
-- Architecture is in [docs/architecture.md](docs/architecture.md), ADRs in [docs/decisions/](docs/decisions/README.md), and deferred decisions in [docs/open-decisions.md](docs/open-decisions.md). Scenarios, eval plan, and risks docs are not written yet
+- Architecture is in [docs/architecture.md](docs/architecture.md), ADRs in [docs/decisions/](docs/decisions/README.md), deferred decisions in [docs/open-decisions.md](docs/open-decisions.md), scenarios in [docs/scenarios.md](docs/scenarios.md), eval plan in [docs/eval-plan.md](docs/eval-plan.md), and risks in [docs/risks.md](docs/risks.md)
