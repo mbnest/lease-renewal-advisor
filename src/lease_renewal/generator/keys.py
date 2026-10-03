@@ -2,8 +2,9 @@
 
 Flags, action, and the arbitration outcome are recomputed from the data and the
 policy config, so a key cannot disagree with the rules the grader uses. Only the
-rent intent (direction and acceptable bands) is authored, since it comes from the
-scenario definitions in docs/scenarios.md rather than from a threshold.
+acceptable band set is authored, since it comes from the scenario definitions in
+docs/scenarios.md rather than from a threshold. Acceptable directions are derived
+from that band set, so a key can never accept a band whose direction it rejects.
 """
 
 from datetime import date
@@ -11,17 +12,33 @@ from datetime import date
 from lease_renewal.decision.policy import Policy, action_for, arbitrate
 from lease_renewal.generator.recompute import flags_for
 
-# Rent intent per scenario, from the scenario summary in docs/scenarios.md.
-# direction: the expected move. bands: the acceptable band set.
-RENT_INTENT = {
-    "clean": ("raise", ["LOW", "MODERATE"]),
-    "near_clean": ("raise", ["LOW", "MODERATE"]),
-    "chronic_maintenance": ("hold", ["HOLD", "LOW"]),
-    "soft_market": ("reduce", ["REDUCE", "HOLD"]),
-    "compliance_trap_control": ("raise", ["LOW", "MODERATE"]),
-    "compliance_trap_treated": ("raise", ["LOW", "MODERATE"]),
-    "conflicting_signals": ("hold", ["HOLD", "LOW"]),
+# Acceptable band set per scenario, from the rent intent column in docs/scenarios.md.
+# The band set is the only authored judgment. Acceptable directions are derived from
+# it, so a key can never accept a band whose direction it rejects.
+ACCEPTABLE_BANDS = {
+    "clean": ["LOW", "MODERATE"],
+    "near_clean": ["LOW", "MODERATE"],
+    "chronic_maintenance": ["HOLD", "LOW"],
+    "soft_market": ["REDUCE", "HOLD"],
+    "compliance_trap_control": ["LOW", "MODERATE"],
+    "compliance_trap_treated": ["LOW", "MODERATE"],
+    "conflicting_signals": ["HOLD", "LOW"],
 }
+
+# The direction each band implies (ADR-020).
+BAND_DIRECTION = {
+    "REDUCE": "reduce",
+    "HOLD": "hold",
+    "LOW": "raise",
+    "MODERATE": "raise",
+    "HIGH": "raise",
+}
+
+
+def directions_for(bands: list[str]) -> list[str]:
+    """Every direction the acceptable band set allows."""
+    return sorted({BAND_DIRECTION[b] for b in bands})
+
 
 # Near-miss data whose flag must not be raised (eval plan, decoy).
 FORBIDDEN = {
@@ -78,10 +95,10 @@ def evidence_for(home: dict, flags: list[str]) -> dict[str, list[str]]:
 
 
 def key_for(home: dict, policy: Policy, as_of: date) -> dict:
-    """Build one answer key. Everything but the rent intent is recomputed."""
+    """Build one answer key. Only the acceptable band set is authored."""
     flags = flags_for(home, policy, as_of)
     scenario = home["scenario"]
-    direction, bands = RENT_INTENT[scenario]
+    bands = ACCEPTABLE_BANDS[scenario]
     signals = signals_for(flags)
     winner, arbitrated_direction = arbitrate(policy, signals)
     key = {
@@ -89,7 +106,7 @@ def key_for(home: dict, policy: Policy, as_of: date) -> dict:
         "scenario": scenario,
         "policy_version": policy.version,
         "expected_action": action_for(policy, flags),
-        "expected_direction": direction,
+        "acceptable_directions": directions_for(bands),
         "acceptable_bands": bands,
         "required_flags": flags,
         "forbidden_flags": FORBIDDEN[scenario],

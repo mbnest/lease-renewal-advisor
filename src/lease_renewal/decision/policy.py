@@ -88,3 +88,30 @@ def arbitrate(policy: Policy, signals: dict[str, str]) -> tuple[str, str]:
         if specialist != "condition" and signal in ("RAISE", "HOLD"):
             return specialist, "raise" if signal == "RAISE" else "hold"
     return "none", "hold"
+
+
+SIGNAL_DIRECTION = {
+    ("condition", "ESCALATE"): "hold",
+    ("market", "RAISE"): "raise",
+    ("market", "HOLD"): "hold",
+    ("resident", "RAISE"): "raise",
+    ("resident", "HOLD"): "hold",
+}
+
+
+def implied_directions(signals: dict[str, str]) -> set[str]:
+    """The directions the active specialist signals point to."""
+    return {
+        SIGNAL_DIRECTION[(name, signal)]
+        for name, signal in signals.items()
+        if (name, signal) in SIGNAL_DIRECTION
+    }
+
+
+def has_conflict(signals: dict[str, str]) -> bool:
+    """True when active signals point different ways, which is when arbitration binds.
+
+    Arbitration decides rent direction only, and only on a conflict (ADR-018).
+    With one signal or none, the direction is left to the agents.
+    """
+    return len(implied_directions(signals)) > 1

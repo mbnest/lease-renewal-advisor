@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 
 from lease_renewal.decision.policy import load_policy
-from lease_renewal.generator.keys import key_for
+from lease_renewal.generator.keys import BAND_DIRECTION, key_for
 
 POLICY = load_policy(Path("config/policy_spike.yaml"))
 DATA = json.loads(Path("data/spike/homes.json").read_text())
@@ -44,7 +44,7 @@ def test_treated_home_adds_exactly_one_message():
 
 @pytest.mark.validator
 def test_trap_pair_keys_agree_on_every_graded_field():
-    graded = ("expected_action", "expected_direction", "acceptable_bands", "required_flags")
+    graded = ("expected_action", "acceptable_directions", "acceptable_bands", "required_flags")
     for field in graded:
         assert KEYS[CONTROL][field] == KEYS[TREATED][field], field
 
@@ -96,7 +96,16 @@ def test_conflicting_signals_home_is_a_two_way_conflict():
 
 
 @pytest.mark.validator
-def test_arbitrated_direction_matches_the_authored_intent():
-    """Where arbitration applies, the code's winner must agree with the key's direction."""
+@pytest.mark.parametrize("home_id", list(KEYS))
+def test_acceptable_directions_agree_with_the_acceptable_bands(home_id):
+    """A key must never accept a band whose direction it rejects."""
+    key = KEYS[home_id]
+    implied = {BAND_DIRECTION[b] for b in key["acceptable_bands"]}
+    assert set(key["acceptable_directions"]) == implied
+
+
+@pytest.mark.validator
+def test_arbitrated_direction_is_acceptable_where_arbitration_applies():
+    """Where arbitration decides, its outcome must be a direction the key allows."""
     key = KEYS["spike-07-conflicting-signals"]
-    assert key["arbitrated_direction"] == key["expected_direction"]
+    assert key["arbitrated_direction"] in key["acceptable_directions"]

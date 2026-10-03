@@ -26,7 +26,7 @@ def main() -> None:
     for key in keys:
         print(
             f"{key['home_id']:32} {key['expected_action']:16} "
-            f"{key['expected_direction']:7} {key['acceptable_bands']} "
+            f"{'/'.join(key['acceptable_directions']):12} {key['acceptable_bands']} "
             f"flags={key['required_flags']}"
         )
 

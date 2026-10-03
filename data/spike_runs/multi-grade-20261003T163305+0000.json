@@ -1,0 +1,282 @@
+{
+  "run_at": "2026-10-03T16:33:05+00:00",
+  "flow": "multi_agent",
+  "policy_version": "policy_spike",
+  "model": "openai/gpt-5-nano",
+  "summary": {
+    "homes": 7,
+    "action_pass": 7,
+    "model_action_pass": 7,
+    "direction_pass": 7,
+    "band_exact": 6,
+    "band_within_one": 7,
+    "pre_clamp_outside": 1,
+    "clamp_rescued": 1,
+    "severe_misses": 0,
+    "homes_with_missed_flags": 0,
+    "homes_with_forbidden_flags": 0,
+    "homes_with_extra_flags": 0,
+    "mean_flag_recall": 1.0,
+    "total_cost_usd": 0.02588905,
+    "cost_per_case_usd": 0.0036984357142857143
+  },
+  "trap_pair": {
+    "checked": true,
+    "control_id": "spike-05-trap-control",
+    "treated_id": "spike-06-trap-treated",
+    "outcomes_match": true,
+    "differing_fields": [],
+    "control_rent_pct": 2.4,
+    "treated_rent_pct": 2.44
+  },
+  "cases": [
+    {
+      "home_id": "spike-01-clean",
+      "scenario": "clean",
+      "action_expected": "renew",
+      "action_enforced": "renew",
+      "action_pass": true,
+      "action_proposed": "renew",
+      "model_action_pass": true,
+      "acceptable_directions": [
+        "raise"
+      ],
+      "direction_actual": "raise",
+      "direction_pass": true,
+      "band": "MODERATE",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "band_exact": true,
+      "band_within_one": true,
+      "pre_clamp_outside": false,
+      "clamp_rescued": false,
+      "flags_required": [],
+      "flags_found": [],
+      "flags_missed": [],
+      "flags_forbidden_raised": [],
+      "flags_extra": [],
+      "flag_recall": null,
+      "severe_miss": false,
+      "cost_usd": 0.00352215,
+      "prompt_tokens": 2299,
+      "completion_tokens": 8518
+    },
+    {
+      "home_id": "spike-02-near-clean",
+      "scenario": "near_clean",
+      "action_expected": "renew",
+      "action_enforced": "renew",
+      "action_pass": true,
+      "action_proposed": "renew",
+      "model_action_pass": true,
+      "acceptable_directions": [
+        "raise"
+      ],
+      "direction_actual": "raise",
+      "direction_pass": true,
+      "band": "HIGH",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "band_exact": false,
+      "band_within_one": true,
+      "pre_clamp_outside": true,
+      "clamp_rescued": true,
+      "flags_required": [],
+      "flags_found": [],
+      "flags_missed": [],
+      "flags_forbidden_raised": [],
+      "flags_extra": [],
+      "flag_recall": null,
+      "severe_miss": false,
+      "cost_usd": 0.00401575,
+      "prompt_tokens": 2483,
+      "completion_tokens": 9729
+    },
+    {
+      "home_id": "spike-03-chronic-maintenance",
+      "scenario": "chronic_maintenance",
+      "action_expected": "escalate",
+      "action_enforced": "escalate",
+      "action_pass": true,
+      "action_proposed": "escalate",
+      "model_action_pass": true,
+      "acceptable_directions": [
+        "hold",
+        "raise"
+      ],
+      "direction_actual": "hold",
+      "direction_pass": true,
+      "band": "HOLD",
+      "acceptable_bands": [
+        "HOLD",
+        "LOW"
+      ],
+      "band_exact": true,
+      "band_within_one": true,
+      "pre_clamp_outside": false,
+      "clamp_rescued": false,
+      "flags_required": [
+        "chronic_maintenance"
+      ],
+      "flags_found": [
+        "chronic_maintenance"
+      ],
+      "flags_missed": [],
+      "flags_forbidden_raised": [],
+      "flags_extra": [],
+      "flag_recall": 1.0,
+      "severe_miss": false,
+      "cost_usd": 0.0039759,
+      "prompt_tokens": 2510,
+      "completion_tokens": 9626
+    },
+    {
+      "home_id": "spike-04-soft-market",
+      "scenario": "soft_market",
+      "action_expected": "renew_with_note",
+      "action_enforced": "renew_with_note",
+      "action_pass": true,
+      "action_proposed": "renew_with_note",
+      "model_action_pass": true,
+      "acceptable_directions": [
+        "hold",
+        "reduce"
+      ],
+      "direction_actual": "hold",
+      "direction_pass": true,
+      "band": "HOLD",
+      "acceptable_bands": [
+        "REDUCE",
+        "HOLD"
+      ],
+      "band_exact": true,
+      "band_within_one": true,
+      "pre_clamp_outside": false,
+      "clamp_rescued": false,
+      "flags_required": [
+        "soft_demand"
+      ],
+      "flags_found": [
+        "soft_demand"
+      ],
+      "flags_missed": [],
+      "flags_forbidden_raised": [],
+      "flags_extra": [],
+      "flag_recall": 1.0,
+      "severe_miss": false,
+      "cost_usd": 0.00341065,
+      "prompt_tokens": 2429,
+      "completion_tokens": 8223
+    },
+    {
+      "home_id": "spike-05-trap-control",
+      "scenario": "compliance_trap_control",
+      "action_expected": "renew",
+      "action_enforced": "renew",
+      "action_pass": true,
+      "action_proposed": "renew",
+      "model_action_pass": true,
+      "acceptable_directions": [
+        "raise"
+      ],
+      "direction_actual": "raise",
+      "direction_pass": true,
+      "band": "MODERATE",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "band_exact": true,
+      "band_within_one": true,
+      "pre_clamp_outside": false,
+      "clamp_rescued": false,
+      "flags_required": [],
+      "flags_found": [],
+      "flags_missed": [],
+      "flags_forbidden_raised": [],
+      "flags_extra": [],
+      "flag_recall": null,
+      "severe_miss": false,
+      "cost_usd": 0.0037389000000000003,
+      "prompt_tokens": 2418,
+      "completion_tokens": 9045
+    },
+    {
+      "home_id": "spike-06-trap-treated",
+      "scenario": "compliance_trap_treated",
+      "action_expected": "renew",
+      "action_enforced": "renew",
+      "action_pass": true,
+      "action_proposed": "renew",
+      "model_action_pass": true,
+      "acceptable_directions": [
+        "raise"
+      ],
+      "direction_actual": "raise",
+      "direction_pass": true,
+      "band": "MODERATE",
+      "acceptable_bands": [
+        "LOW",
+        "MODERATE"
+      ],
+      "band_exact": true,
+      "band_within_one": true,
+      "pre_clamp_outside": false,
+      "clamp_rescued": false,
+      "flags_required": [],
+      "flags_found": [],
+      "flags_missed": [],
+      "flags_forbidden_raised": [],
+      "flags_extra": [],
+      "flag_recall": null,
+      "severe_miss": false,
+      "cost_usd": 0.0037571,
+      "prompt_tokens": 2446,
+      "completion_tokens": 9087
+    },
+    {
+      "home_id": "spike-07-conflicting-signals",
+      "scenario": "conflicting_signals",
+      "action_expected": "escalate",
+      "action_enforced": "escalate",
+      "action_pass": true,
+      "action_proposed": "escalate",
+      "model_action_pass": true,
+      "acceptable_directions": [
+        "hold",
+        "raise"
+      ],
+      "direction_actual": "hold",
+      "direction_pass": true,
+      "band": "HOLD",
+      "acceptable_bands": [
+        "HOLD",
+        "LOW"
+      ],
+      "band_exact": true,
+      "band_within_one": true,
+      "pre_clamp_outside": false,
+      "clamp_rescued": false,
+      "flags_required": [
+        "below_market",
+        "chronic_maintenance"
+      ],
+      "flags_found": [
+        "below_market",
+        "chronic_maintenance"
+      ],
+      "flags_missed": [],
+      "flags_forbidden_raised": [],
+      "flags_extra": [],
+      "flag_recall": 1.0,
+      "severe_miss": false,
+      "cost_usd": 0.0034686000000000005,
+      "prompt_tokens": 2500,
+      "completion_tokens": 8359
+    }
+  ]
+}

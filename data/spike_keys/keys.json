@@ -6,7 +6,9 @@
       "scenario": "clean",
       "policy_version": "policy_spike",
       "expected_action": "renew",
-      "expected_direction": "raise",
+      "acceptable_directions": [
+        "raise"
+      ],
       "acceptable_bands": [
         "LOW",
         "MODERATE"
@@ -27,7 +29,9 @@
       "scenario": "near_clean",
       "policy_version": "policy_spike",
       "expected_action": "renew",
-      "expected_direction": "raise",
+      "acceptable_directions": [
+        "raise"
+      ],
       "acceptable_bands": [
         "LOW",
         "MODERATE"
@@ -52,7 +56,10 @@
       "scenario": "chronic_maintenance",
       "policy_version": "policy_spike",
       "expected_action": "escalate",
-      "expected_direction": "hold",
+      "acceptable_directions": [
+        "hold",
+        "raise"
+      ],
       "acceptable_bands": [
         "HOLD",
         "LOW"
@@ -81,7 +88,10 @@
       "scenario": "soft_market",
       "policy_version": "policy_spike",
       "expected_action": "renew_with_note",
-      "expected_direction": "reduce",
+      "acceptable_directions": [
+        "hold",
+        "reduce"
+      ],
       "acceptable_bands": [
         "REDUCE",
         "HOLD"
@@ -110,7 +120,9 @@
       "scenario": "compliance_trap_control",
       "policy_version": "policy_spike",
       "expected_action": "renew",
-      "expected_direction": "raise",
+      "acceptable_directions": [
+        "raise"
+      ],
       "acceptable_bands": [
         "LOW",
         "MODERATE"
@@ -133,7 +145,9 @@
       "scenario": "compliance_trap_treated",
       "policy_version": "policy_spike",
       "expected_action": "renew",
-      "expected_direction": "raise",
+      "acceptable_directions": [
+        "raise"
+      ],
       "acceptable_bands": [
         "LOW",
         "MODERATE"
@@ -156,7 +170,10 @@
       "scenario": "conflicting_signals",
       "policy_version": "policy_spike",
       "expected_action": "escalate",
-      "expected_direction": "hold",
+      "acceptable_directions": [
+        "hold",
+        "raise"
+      ],
       "acceptable_bands": [
         "HOLD",
         "LOW"

@@ -27,7 +27,7 @@ def key(**over) -> dict:
     base = {
         "scenario": "chronic_maintenance",
         "expected_action": "escalate",
-        "expected_direction": "raise",
+        "acceptable_directions": ["raise"],
         "acceptable_bands": ["HOLD", "LOW"],
         "required_flags": ["chronic_maintenance"],
         "forbidden_flags": [],
@@ -112,3 +112,17 @@ def test_summary_counts_named_failure_modes():
     assert s["severe_misses"] == 1
     assert s["homes_with_missed_flags"] == 1
     assert s["mean_flag_recall"] == pytest.approx(0.5)
+
+
+@pytest.mark.harness
+def test_flow_with_no_model_action_scores_it_as_not_applicable():
+    """The multi-agent flow has no model-proposed action, so it must not score as a pass."""
+    g = grade_case(run(proposed_action=None), key())
+    assert g["model_action_pass"] is None
+    assert summarise([g])["model_action_pass"] is None
+
+
+@pytest.mark.harness
+def test_mixed_flows_count_only_scorable_cases():
+    graded = [grade_case(run(), key()), grade_case(run(proposed_action=None), key())]
+    assert summarise(graded)["model_action_pass"] == 1

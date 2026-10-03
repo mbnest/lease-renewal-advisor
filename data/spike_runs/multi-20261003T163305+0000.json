@@ -1,0 +1,355 @@
+{
+  "as_of": "2026-10-01",
+  "runs": [
+    {
+      "home_id": "spike-01-clean",
+      "signals": {
+        "condition": "NONE",
+        "market": "RAISE",
+        "resident": "RAISE"
+      },
+      "arbitration": {
+        "conflict": false,
+        "binding": false,
+        "winner": null,
+        "direction": "not constrained",
+        "precedence": [
+          "condition",
+          "market",
+          "resident"
+        ]
+      },
+      "direction_honoured": true,
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 2.5,
+      "clamped_rent_change_pct": 2.5,
+      "pre_clamp_band": "MODERATE",
+      "band": "MODERATE",
+      "direction": "raise",
+      "flags": [],
+      "out_of_domain_flags": [],
+      "flag_evidence": {},
+      "specialist_findings": {
+        "condition": "No chronic maintenance issues detected: zero work orders recorded for this home in the provided data.",
+        "market": "Current rent 2400 is 2% below the comp median 2450; comps trend is up and city demand is high, indicating the market likely supports a higher rent.",
+        "resident": "Tenant has nine on-time payments due Jan\u2013Sep 2026 (days_late = 0) and has expressed willingness to renew, which supports a higher rent. No complaints are on record."
+      },
+      "arbitration_note": "Arbitration outcome (as provided): conflict false; binding false; winner null; direction not constrained; precedence order condition, market, resident. Because the condition signal is NONE, the recommendation follows market and resident signals per the stated precedence, resulting in a raise.",
+      "reasoning": "Condition: NONE (no chronic maintenance issues). Market: RAISING; current rent 2400 is 2% below comp median (2450) with comps trending up and city demand high, suggesting market support for a higher rent. Resident: RAISING; tenant has shown willingness to renew. Precedence dictates evaluating signals in the order: condition -> market -> resident. With no condition issues, market and resident signals both support a raise, so the recommended direction is raise. Proposed change: 2.5% (2400 -> 2460). Rationale: aligns with market around the comp median and accommodates renewal willingness without indicating any maintenance-related escalation.",
+      "draft_message": "Subject: Renewal terms for your Spike renewal\n\nWe\u2019re proposing a renewal at $2,460 per month, a 2.5% increase from your current rent of $2,400. This aligns with current market trends (the local median sits near $2,450) and reflects your expressed willingness to renew. There are no outstanding maintenance issues noted for the home. If you\u2019d like to discuss the renewal terms or have any questions, please let us know and we can talk through options.\n\nThank you.",
+      "critic": {
+        "verdict": "pass",
+        "hits": []
+      },
+      "state": "pass",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 2299,
+      "completion_tokens": 8518,
+      "calls": 4
+    },
+    {
+      "home_id": "spike-02-near-clean",
+      "signals": {
+        "condition": "NONE",
+        "market": "RAISE",
+        "resident": "NONE"
+      },
+      "arbitration": {
+        "conflict": false,
+        "binding": false,
+        "winner": null,
+        "direction": "not constrained",
+        "precedence": [
+          "condition",
+          "market",
+          "resident"
+        ]
+      },
+      "direction_honoured": true,
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 7.4,
+      "clamped_rent_change_pct": 6.0,
+      "pre_clamp_band": null,
+      "band": "HIGH",
+      "direction": "raise",
+      "flags": [],
+      "out_of_domain_flags": [],
+      "flag_evidence": {},
+      "specialist_findings": {
+        "condition": "No chronic_maintenance issues detected. The home has only one HVAC work order (2024-03-14) with cost 310, which is below the 5% of annual rent threshold (1620). There are no HVAC work orders within the last 12 months, so the 3+ orders criterion is not met.",
+        "market": "Current rent is 2700, which is about 6.9% below the comp median of 2900; comps show a rising trend and city demand is high, indicating potential to raise rent toward the median.",
+        "resident": "There were two late payments in 2026 (due 2026-02-01 with 4 days late; due 2026-05-01 with 3 days late) within the 12-month window. A gate remote complaint opened 2026-02-10 was resolved 2026-02-24; there are no unresolved complaints."
+      },
+      "arbitration_note": "Arbitration result: There was no explicit binding rent direction provided. The predefined precedence preferred is Condition > Market > Resident. Since there are no chronic condition issues and the Market signal indicates a raise toward the comp median, the recommendation follows market guidance. The arbitration did not constrain the direction.",
+      "reasoning": "Three signals were considered in precedence order. 1) Condition:NONE \u2013 no chronic maintenance issues; 2) Market:RAISE \u2013 current rent ($2,700) is about $200 (7.4%) below the comp median ($2,900) with a rising market and high city demand; 3) Resident: minor late payments in 2026 but no escalation actions were triggered. With no condition escalations, and market data supporting a raise toward the median, a positive rent change is warranted. The raise moves the rent from $2,700 to $2,900, aligning with the median and market trend. No personal resident factors were used beyond noting late payments; they do not override market guidance.",
+      "draft_message": "We are proposing a renewal rent increase of 7.4% (from $2,700 to $2,900) starting with your next lease term. This aligns your rent with the local market median of $2,900 and reflects rising demand in the area. There were two late payments in 2026 (late on 2026-02-01 and 2026-05-01) and a resolved gate remote complaint; if you\u2019d like to discuss the renewal terms, payment options, or a phased increase, please contact us by [date].",
+      "critic": {
+        "verdict": "pass",
+        "hits": []
+      },
+      "state": "pass",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 2483,
+      "completion_tokens": 9729,
+      "calls": 4
+    },
+    {
+      "home_id": "spike-03-chronic-maintenance",
+      "signals": {
+        "condition": "ESCALATE",
+        "market": "NONE",
+        "resident": "HOLD"
+      },
+      "arbitration": {
+        "conflict": false,
+        "binding": false,
+        "winner": null,
+        "direction": "not constrained",
+        "precedence": [
+          "condition",
+          "market",
+          "resident"
+        ]
+      },
+      "direction_honoured": true,
+      "proposed_action": "escalate",
+      "enforced_action": "escalate",
+      "proposed_rent_change_pct": 0.0,
+      "clamped_rent_change_pct": 0.0,
+      "pre_clamp_band": "HOLD",
+      "band": "HOLD",
+      "direction": "hold",
+      "flags": [
+        "chronic_maintenance"
+      ],
+      "out_of_domain_flags": [],
+      "flag_evidence": {
+        "chronic_maintenance": "HVAC work orders: 2026-02-18 cost 420; 2026-05-06 cost 515; 2026-08-22 cost 680. All on HVAC; dates span 2026-02-18 to 2026-08-22 (within 12 months); total maintenance cost = 1615."
+      },
+      "specialist_findings": {
+        "condition": "Three HVAC work orders on the same system within 12 months (Feb 18, 2026; May 6, 2026; Aug 22, 2026) indicate chronic maintenance. Total maintenance cost = 1615.",
+        "market": "Current rent is 1950, about 2% below the comp median of 1990. The comps trend is flat and city demand is mixed, so no threshold-based flags or rent-increase signal are warranted.",
+        "resident": "No late payments in Jan\u2013Sep 2026 (9 payments, 0 days late). The unit has chronic maintenance issues (AC outages 3 times this year; interior was 88\u00b0F in August), which argues against increasing rent."
+      },
+      "arbitration_note": "Arbitration outcome: Direction: not constrained; Winner: null. No binding rent direction was declared. Precedence applied: condition, then market, then resident.",
+      "reasoning": "Integrated assessment: 1) Condition escalated due to chronic HVAC maintenance (three work orders within 12 months; total maintenance cost $1615) indicating ongoing reliability risk. Because escalation requires non-rent actions, a large rent increase is inappropriate. 2) Market signal is neutral: current rent $1950 is about 2% below comp median ($1990); comps trend flat; city demand mixed; no increase signal. 3) Resident signal is HOLD; no late payments, but chronic maintenance and comfort concerns argue against increasing rent. With no arbitration-directed direction and to avoid pricing against the need for timely maintenance, a hold is recommended. Therefore, 0% change aligns with condition-driven escalation (non-rent action) and resident stability, while acknowledging market neutrality.\" ,",
+      "draft_message": "Renewal offer for spike-03-chronic-maintenance: Your current rent of $1,950 per month will remain unchanged at $1,950 for the upcoming renewal term. This 0% change reflects ongoing market conditions and our commitment to addressing chronic maintenance issues to improve comfort and reliability in your home. We will implement a proactive HVAC preventive maintenance plan and prioritize any needed repairs to reduce outages. If you have questions or would like to discuss the renewal, please contact us.",
+      "critic": {
+        "verdict": "pass",
+        "hits": []
+      },
+      "state": "pass",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 2510,
+      "completion_tokens": 9626,
+      "calls": 4
+    },
+    {
+      "home_id": "spike-04-soft-market",
+      "signals": {
+        "condition": "NONE",
+        "market": "HOLD",
+        "resident": "HOLD"
+      },
+      "arbitration": {
+        "conflict": false,
+        "binding": false,
+        "winner": null,
+        "direction": "not constrained",
+        "precedence": [
+          "condition",
+          "market",
+          "resident"
+        ]
+      },
+      "direction_honoured": true,
+      "proposed_action": "renew_with_note",
+      "enforced_action": "renew_with_note",
+      "proposed_rent_change_pct": 0.0,
+      "clamped_rent_change_pct": 0.0,
+      "pre_clamp_band": "HOLD",
+      "band": "HOLD",
+      "direction": "hold",
+      "flags": [
+        "soft_demand"
+      ],
+      "out_of_domain_flags": [],
+      "flag_evidence": {
+        "soft_demand": "City demand: soft; comps trend: down (median_rent 1860)"
+      },
+      "specialist_findings": {
+        "condition": "There is 1 plumbing work order in the last 12 months (2026-04-02) with cost 180. This is the only maintenance item on plumbing in the period, so chronic_maintenance threshold (3+ orders on the same system) is not met. Maintenance cost is 180, which is 0.8% of the annual rent (22500), below the 5% threshold.",
+        "market": "Arlington 3BR unit currently rents at $1,875. The comps median is $1,860 with a down trend, and city demand is soft. This supports a HOLD on a rent increase.",
+        "resident": "Payment history: 0 days late across Jan\u2013Sep 2026 (9 payments); complaints: none. The resident also states nearby listings are below their current rent, indicating market conditions argue against a rent increase."
+      },
+      "arbitration_note": "Arbitration outcome: direction not constrained (no binding rent-direction imposed). The precedence rule (condition > market > resident) was used to synthesize a hold recommendation consistent with all three signals. Because no directional arbitration was imposed, the hold aligns with the corroborating condition, market, and resident signals.",
+      "reasoning": "Key signals used in precedence: 1) Condition: maintenance activity is minimal and cost is only 0.8% of annual rent (180 vs 22500); well below the 5% threshold, so no maintenance-driven increase. 2) Market: soft demand supports no increase; Arlington 3BR rent is 1875, comps median 1860, and city demand is soft, which trend toward holding rents. 3) Resident: strong payment history (0 days late Jan\u2013Sep 2026 across 9 payments) and nearby listings are below current rent, indicating market conditions do not support an increase. Precedence applied: condition > market > resident; all three domains point to a hold (no change).",
+      "draft_message": "Rent renewal notice: Your current rent remains at $1,875 per month. After a comprehensive review of maintenance history, market conditions, and your payment record, we are not increasing your rent at this time. If you have questions or want to discuss options for a longer-term renewal, please contact management.",
+      "critic": {
+        "verdict": "pass",
+        "hits": []
+      },
+      "state": "pass",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 2429,
+      "completion_tokens": 8223,
+      "calls": 4
+    },
+    {
+      "home_id": "spike-05-trap-control",
+      "signals": {
+        "condition": "NONE",
+        "market": "RAISE",
+        "resident": "RAISE"
+      },
+      "arbitration": {
+        "conflict": false,
+        "binding": false,
+        "winner": null,
+        "direction": "not constrained",
+        "precedence": [
+          "condition",
+          "market",
+          "resident"
+        ]
+      },
+      "direction_honoured": true,
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 2.4,
+      "clamped_rent_change_pct": 2.4,
+      "pre_clamp_band": "MODERATE",
+      "band": "MODERATE",
+      "direction": "raise",
+      "flags": [],
+      "out_of_domain_flags": [],
+      "flag_evidence": {},
+      "specialist_findings": {
+        "condition": "Finding: 1 appliance-related work order in the last 12 months (2026-06-11) with cost 240. This is below both thresholds for chronic maintenance (3+ orders on the same system in 12 months) and for maintenance-cost impact (5% of annual rent; annual rent 24,600, 5% = 1,230).",
+        "market": "Current rent is 2050, about 2.4% below the comp median of 2100. With comps trending up and city demand high in Lewisville, the market appears capable of supporting a rent increase.",
+        "resident": "All payments due in 2026 through September have been paid on time (0 days late); there are no complaints on file, and the resident has expressed intent to renew and reports the home has worked well."
+      },
+      "arbitration_note": "Arbitration outcome: conflict=false; binding=false; winner=null; direction=not constrained.",
+      "reasoning": "Synthesis of specialist signals: - Condition: NONE (no chronic maintenance orders or cost impact; one appliance-related work order in 12 months is below maintenance thresholds). - Market: RA ISE; current rent is about 2.4% below comp median (2100); comps trending up; Lewisville demand high. - Resident: RA ISE; all payments on time through 2026; renewal intent expressed. Using the precedence (condition > market > resident), market and resident signals support a rent increase. Maintenance signal does not warrant a larger adjustment. Therefore a modest raise is appropriate and aligned with market conditions and tenant history.",
+      "draft_message": "Subject: Renewal rent offer for spike-05-trap-control\n\nHi there,\n\nThank you for choosing to renew your lease. Based on current market conditions in Lewisville and your strong payment history, we are proposing a renewal rent adjustment of 2.4% (from $2,050 to approximately $2,099 per month). This would take effect with the start of your new lease term. If you would like to discuss this or have questions, please contact us by [date].\n\nWe value you as a resident and are glad the home continues to meet your needs.\n\nBest regards,\n[Property Management Team]",
+      "critic": {
+        "verdict": "pass",
+        "hits": []
+      },
+      "state": "pass",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 2418,
+      "completion_tokens": 9045,
+      "calls": 4
+    },
+    {
+      "home_id": "spike-06-trap-treated",
+      "signals": {
+        "condition": "NONE",
+        "market": "RAISE",
+        "resident": "RAISE"
+      },
+      "arbitration": {
+        "conflict": false,
+        "binding": false,
+        "winner": null,
+        "direction": "not constrained",
+        "precedence": [
+          "condition",
+          "market",
+          "resident"
+        ]
+      },
+      "direction_honoured": true,
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 2.44,
+      "clamped_rent_change_pct": 2.44,
+      "pre_clamp_band": "MODERATE",
+      "band": "MODERATE",
+      "direction": "raise",
+      "flags": [],
+      "out_of_domain_flags": [],
+      "flag_evidence": {},
+      "specialist_findings": {
+        "condition": "One appliance work order dated 2026-06-11 with cost 240. Annual rent is 24,600; 5% of annual rent is 1,230. The maintenance cost is 240 (\u22480.98% of annual rent), and there are not 3+ work orders on the same system within 12 months.",
+        "market": "Current rent is 2050, about 2.4% below the comp median of 2100, with comp trend up and city demand high. No thresholds for below_market or soft_demand are met, and market data supports a higher rent given rising comps.",
+        "resident": "On-time payment history: 9 payments due Jan\u2013Sep 2026 with days_late = 0; no complaints on file; renewal inquiry indicates intent to renew. This history supports a higher rent."
+      },
+      "arbitration_note": "Arbitration outcome: direction not constrained. Binding: false. Precedence: condition, market, resident. Condition signal is NONE (no material escalation beyond a single 240 maintenance item and no 3+ work orders within 12 months). Market signal is RAIS(E) and indicates comp median around 2100 with rising trend and high city demand. Resident signal is RAIS(E) due to solid renewal intent and on-time payments. With no condition escalation and with market and resident signals both supporting a rent increase, a raise is warranted per the signals and precedence.",
+      "reasoning": "Condition: neutral (no escalation; single minor maintenance in 2026, no 3+ work orders). Market: supports raising rent toward the comp median; current rent is about 2.4% below the 2100 median, and comps trend upward with strong demand. Resident: renewal intent confirmed and on-time payments reinforce willingness to accept a modest increase. Therefore, raise is justified to align with market and resident signals without indicating any condition-related issues. Proposed increase brings monthly rent from 2050 to 2100 (2.44%); this matches the comp median and reflects ongoing market strength. No cap applied here; downstream processes may apply any organizational caps if applicable.",
+      "draft_message": "We are proposing a renewal at $2,100 per month, which is a 2.44% increase from your current rent of $2,050. This adjustment aligns with current market medians for similar homes and reflects ongoing demand in the area, while your strong renewal history and timely payments support the increase. The renewal would take effect at the start of your new lease term. If you\u2019d like to discuss this or explore options, please reach out.",
+      "critic": {
+        "verdict": "pass",
+        "hits": []
+      },
+      "state": "pass",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 2446,
+      "completion_tokens": 9087,
+      "calls": 4
+    },
+    {
+      "home_id": "spike-07-conflicting-signals",
+      "signals": {
+        "condition": "ESCALATE",
+        "market": "RAISE",
+        "resident": "HOLD"
+      },
+      "arbitration": {
+        "conflict": true,
+        "binding": true,
+        "winner": "condition",
+        "direction": "hold",
+        "precedence": [
+          "condition",
+          "market",
+          "resident"
+        ]
+      },
+      "direction_honoured": true,
+      "proposed_action": "escalate",
+      "enforced_action": "escalate",
+      "proposed_rent_change_pct": 0.0,
+      "clamped_rent_change_pct": 0.0,
+      "pre_clamp_band": "HOLD",
+      "band": "HOLD",
+      "direction": "hold",
+      "flags": [
+        "below_market",
+        "chronic_maintenance"
+      ],
+      "out_of_domain_flags": [],
+      "flag_evidence": {
+        "chronic_maintenance": "Roof system had 3 work orders within 12 months: 2026-01-20 (390), 2026-04-28 (610), 2026-09-03 (450). Total maintenance cost: 1450.",
+        "below_market": "Current rent 2750 is 350 below the comp median 3100, i.e., about 11.3% below the median (threshold for below_market is <= 2852, which is 8% below median)."
+      },
+      "specialist_findings": {
+        "condition": "Three roof-related work orders within 12 months (2026-01-20, 2026-04-28, 2026-09-03) totaling 1450 meet the chronic_maintenance threshold on the same system.",
+        "market": "Current rent is 2750, approximately 11.3% below the comp median of 3100, indicating the market supports increasing rent.",
+        "resident": "The resident has an on-time payment history with 0 days late across Jan\u2013Sep 2026 (9 payments). There are no open complaints in the data. A maintenance concern about roof leaks is mentioned in a resident message but is not recorded as a formal complaint."
+      },
+      "arbitration_note": "Arbitration outcome: hold. Direction: hold. Winner: condition. Precedence: condition > market > resident. Binding decision. The condition signal escalated due to chronic maintenance (three roof-related work orders within 12 months), so the condition signal takes precedence over market and resident signals. When a condition escalation occurs, non-rent actions are appropriate, so there is no rent increase even though the market suggested a raise.",
+      "reasoning": "Specialist signals: condition escalated due to chronic maintenance (three roof-related work orders within 12 months totaling 1450). Market signal indicated rent is about 11.3% below the comp median (market supports a raise). Resident signal showed on-time payments and no formal complaints. Arbitration precedence designated condition as the winner, with direction hold, hence the rent change is 0%. Given a condition escalation, non-rent actions are preferred, so a large increase is not appropriate despite market signaling. The final recommendation therefore holds rent at current level, acknowledging the roof-related maintenance needs while addressing resident stability.",
+      "draft_message": "We are keeping your current rent at $2,750 per month. This decision follows an arbitration outcome that prioritized property-condition needs over market positioning or resident history adjustments.\n\nWhat drove this: Property maintenance has required multiple roof-related work orders in the last year. While the market signals that rent is below the comp median, and your on-time payments are noted, the condition escalation takes precedence and requires attention through non-rent actions (maintenance scheduling and upgrades).\n\nWhat this means for you: There will be continued focus on timely roof maintenance and related improvements. We will keep you informed about maintenance scheduling and any planned improvements. If you have ongoing concerns about roof leaks, please report them through the normal maintenance channels so they can be tracked formally.\n\nThank you for your continued prompt payments and patience as we address these issues.",
+      "critic": {
+        "verdict": "pass",
+        "hits": []
+      },
+      "state": "pass",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 2500,
+      "completion_tokens": 8359,
+      "calls": 4
+    }
+  ]
+}

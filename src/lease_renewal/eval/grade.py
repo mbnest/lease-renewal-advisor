@@ -37,10 +37,15 @@ def grade_case(run: dict, key: dict) -> dict:
         "action_enforced": run["enforced_action"],
         "action_pass": run["enforced_action"] == key["expected_action"],
         "action_proposed": run["proposed_action"],
-        "model_action_pass": run["proposed_action"] == key["expected_action"],
-        "direction_expected": key["expected_direction"],
+        # None where the flow has no model-proposed action to score.
+        "model_action_pass": (
+            None
+            if run["proposed_action"] is None
+            else run["proposed_action"] == key["expected_action"]
+        ),
+        "acceptable_directions": key["acceptable_directions"],
         "direction_actual": run["direction"],
-        "direction_pass": run["direction"] == key["expected_direction"],
+        "direction_pass": run["direction"] in key["acceptable_directions"],
         "band": run["band"],
         "acceptable_bands": key["acceptable_bands"],
         "band_exact": distance == 0,
@@ -87,7 +92,11 @@ def summarise(graded: list[dict]) -> dict:
     return {
         "homes": total,
         "action_pass": sum(g["action_pass"] for g in graded),
-        "model_action_pass": sum(g["model_action_pass"] for g in graded),
+        "model_action_pass": (
+            sum(g["model_action_pass"] for g in graded if g["model_action_pass"] is not None)
+            if any(g["model_action_pass"] is not None for g in graded)
+            else None
+        ),
         "direction_pass": sum(g["direction_pass"] for g in graded),
         "band_exact": sum(g["band_exact"] for g in graded),
         "band_within_one": sum(g["band_within_one"] for g in graded),
