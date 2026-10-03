@@ -5,7 +5,7 @@
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
 | **Related** | ADR-001 (orchestration), ADR-007 (caching), ADR-024 (redaction), ADR-025 (observability substitution) |
-| **Pending** | DD-05 (MLflow version pin and span nesting check) |
+| **Pending** | DD-05 (MLflow version pin and span nesting check), DD-06 (Free Edition feasibility) |
 
 ## Context
 
@@ -52,4 +52,4 @@ Tracing should be in place from the start, and confirmed for each component as i
 ## Known gaps and open questions
 
 - The exact MLflow version is not pinned yet (DD-05).
-- Managed MLflow availability on Free Edition is not confirmed.
+- Managed MLflow availability on Free Edition is not confirmed (DD-06).

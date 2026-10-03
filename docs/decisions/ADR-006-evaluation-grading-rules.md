@@ -74,4 +74,4 @@ The evaluation set is 60 homes across 7 scenarios. That gives directional eviden
 
 ## Known gaps and open questions
 
-- Exact scoring rules per count are specified in [docs/eval-plan.md](../eval-plan.md).
+- None. Exact scoring rules per count live in [docs/eval-plan.md](../eval-plan.md).

@@ -248,4 +248,3 @@ Target components are chosen, not validated ([ADR-011](decisions/ADR-011-databri
 - Protected field list, schema names, and config file name are set with the schemas after M0
 - Tuned thresholds and severity tags (DD-01), model selection (DD-02), promotion thresholds (DD-03), MLflow pin (DD-05), Free Edition feasibility (DD-06), cost (DD-08), disposition vocabulary (DD-09), DONE trigger (DD-12)
 - Checks named here are not yet tied to test ids. The test register is planned
-- `docs/eval-plan.md` and `docs/scenarios.md` are not written yet
