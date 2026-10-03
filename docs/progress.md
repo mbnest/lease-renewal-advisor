@@ -4,10 +4,10 @@ Status: living index. Last updated 2026-10-03.
 Where the project stands and where to resume. Detail lives in one log per milestone under `docs/progress/`. Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids follow it.
 
 ## Current position
-- Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` merged (PR #10). `docs/eval-plan.md` merged (PR #11). `docs/risks.md` merged (PR #12). README refresh, Python pin, folder layout, and security policy merged (PR #13). DD-04 calibration decided
+- Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` merged (PR #10). `docs/eval-plan.md` merged (PR #11). `docs/risks.md` merged (PR #12). README refresh, Python pin, folder layout, and security policy merged (PR #13). DD-04 calibration decided and merged (PR #14)
 - Next milestone: M0, architecture exit checklist passed. Checklist in [docs/progress/m0.md](progress/m0.md)
 - Active task: 0.1, architecture docs
-- Next step: one review pass against the M0 checklist (status lines, last-updated dates, known gaps sections, no built or tested claims). DD-04 decided 2026-10-03 on `docs/dd-04-calibration`
+- Next step: one review pass against the M0 checklist on `docs/m0-review` (status lines, last-updated dates, known gaps sections, no built or tested claims), with findings resolved or logged in the M0 log
 - Resume prompt: "Read AGENTS.md and docs/progress.md, then the current milestone log. Continue from the next step above. Docs state decisions already made in the ADRs and link to them, and log missing decisions as gaps rather than inventing them. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
