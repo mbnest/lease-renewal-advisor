@@ -1,4 +1,4 @@
-# Lease renewal decision agent
+# Lease Renewal Decision Agent
 
 Status: architecture phase. Designed, not built. Last updated 2026-10-03.
 
