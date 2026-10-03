@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-006 (grading), ADR-010 (guardrails), ADR-012 (data scale), ADR-014 (thresholds), ADR-024 (redaction and key isolation) |
 | **Pending** | None |
 
@@ -25,13 +26,13 @@ The compliance trap scenario tests whether a reference to a protected characteri
 
 **Isolation and leakage**
 
-- Keys live in a restricted directory outside the agent-readable data path (ADR-024).
+- Keys live in a restricted directory outside the agent-readable data path ([ADR-024](ADR-024-substitution-redaction-and-key-isolation.md)).
 - Opaque home ids and shuffled row order.
 - A leakage scan on frozen text fixtures: no scenario labels or cause names.
 
 **Compliance trap scenario**
 
-- Preventive control: protected-characteristic structured fields are redacted before any specialist sees them (ADR-010).
+- Preventive control: protected-characteristic structured fields are redacted before any specialist sees them ([ADR-010](ADR-010-guardrails-tiering-and-audit-record.md)).
 - Explicit, subtle, and proxy variants. Measure the catch rate and whether redaction held.
 - **Counterfactual pairs:** the treated home is a clean base home plus the protected reference. Its matched control is the original clean home, drawn from the 25 clean homes.
   - The key stores pair id and role.

@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-002 (prefetched context), ADR-011 (local-first release), ADR-022 (tool access substitution), ADR-024 (redaction) |
 | **Pending** | DD-06 (Free Edition feasibility, including managed MCP) |
 
@@ -11,16 +12,16 @@
 
 Data access sits behind Python functions. Tool names and their Pydantic schemas are the contract, so agent code does not depend on the backend.
 
-- Redaction of protected fields lives in the data layer, for any server (ADR-024).
+- Redaction of protected fields lives in the data layer, for any server ([ADR-024](ADR-024-substitution-redaction-and-key-isolation.md)).
 - Evaluation needs deterministic evidence, so every answer key can be derived from the data plus the policy.
-- The first release runs locally (ADR-011).
+- The first release runs locally ([ADR-011](ADR-011-databricks-target-local-first-release.md)).
 
 ## Decision
 
 **A thin custom MCP server wraps the same Python access functions. It is added after evals are measurable.**
 
 - Parquet backend first. A Databricks SQL backend is stubbed and documented.
-- The target is the managed Databricks MCP server for Unity Catalog functions (ADR-022). It is the only managed option whose calls are fixed, parameterized, and deterministic.
+- The target is the managed Databricks MCP server for Unity Catalog functions ([ADR-022](ADR-022-substitution-tool-access.md)). It is the only managed option whose calls are fixed, parameterized, and deterministic.
 - Any swap between servers is gated by an equivalence test: the same calls return the same evidence.
 
 ## Alternatives considered
@@ -34,7 +35,7 @@ Data access sits behind Python functions. Tool names and their Pydantic schemas 
 **Benefits**
 
 - Runs locally and in Docker with no workspace.
-- The same access functions serve prefetch (ADR-002) and the server, so there is one code path to test.
+- The same access functions serve prefetch ([ADR-002](ADR-002-prefetched-context-for-specialists.md)) and the server, so there is one code path to test.
 
 **Costs we accept**
 
@@ -47,5 +48,5 @@ Data access sits behind Python functions. Tool names and their Pydantic schemas 
 
 ## Known gaps and open questions
 
-- Managed MCP availability on Free Edition is not confirmed (DD-06).
+- Managed MCP availability on Free Edition is not confirmed ([DD-06](../open-decisions.md)).
 - The managed server's release status needs confirming in the workspace. The older labs UC server is the one marked Beta and deprecated.

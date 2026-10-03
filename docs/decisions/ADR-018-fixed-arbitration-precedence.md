@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-003 (logic stays code), ADR-012 (scenarios), ADR-013 (ground truth), ADR-015 (severity tags), ADR-016 (BLOCKED state) |
 | **Pending** | None |
 
@@ -16,12 +17,12 @@ The conflicting signals scenario plants opposing signals between specialists to 
 **A fixed precedence list in the policy config decides conflicts. Code decides, the model explains.**
 
 - **Order:** condition escalation, then market, then resident.
-- **Compliance is outside arbitration.** The critic handles it through the BLOCKED state (ADR-016).
-- **Scope:** arbitration decides rent direction only, and only when specialist signals imply different directions. Severity tags (ADR-015) still decide the action, so the two never overlap.
+- **Compliance is outside arbitration.** The critic handles it through the BLOCKED state ([ADR-016](ADR-016-distinct-blocked-state.md)).
+- **Scope:** arbitration decides rent direction only, and only when specialist signals imply different directions. Severity tags ([ADR-015](ADR-015-action-definitions-with-severity-tags.md)) still decide the action, so the two never overlap.
 - **Signals:** each specialist output carries one directional signal. Condition: ESCALATE, RAISE, NONE. Market: RAISE, HOLD, NONE. Resident: RAISE, HOLD, NONE. Only ESCALATE matches for condition. Values live in the policy config. Slot design is in `docs/scenarios.md`.
 - **Keys:** for the conflicting signals scenario, the key stores the signals, the expected winner, and the direction. The validator checks that the winner is the first matching specialist in precedence order and that the direction is the winner's.
 - The supervisor's arbitration note explains the code's outcome. It cannot change it.
-- **Order:** arbitration runs in code on the specialist outputs, before the supervisor. The supervisor receives the outcome and writes the note (ADR-001).
+- **Order:** arbitration runs in code on the specialist outputs, before the supervisor. The supervisor receives the outcome and writes the note ([ADR-001](ADR-001-plain-python-asyncio-orchestration.md)).
 
 ## Alternatives considered
 

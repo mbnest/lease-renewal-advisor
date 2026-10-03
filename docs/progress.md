@@ -4,10 +4,10 @@ Status: living index. Last updated 2026-10-03.
 Where the project stands and where to resume. Detail lives in one log per milestone under `docs/progress/`. Roadmap: implementation plan (not yet tracked). Phases, milestones, and task ids follow it.
 
 ## Current position
-- Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` merged (PR #10). `docs/eval-plan.md` merged (PR #11). `docs/risks.md` merged (PR #12). README refresh, Python pin, folder layout, and security policy merged (PR #13). DD-04 calibration decided
+- Phase: P0, architecture docs. All 28 ADRs, `docs/open-decisions.md`, and `docs/architecture.md` merged 2026-10-02 (PR #3 to PR #9). `docs/scenarios.md` merged (PR #10). `docs/eval-plan.md` merged (PR #11). `docs/risks.md` merged (PR #12). README refresh, Python pin, folder layout, and security policy merged (PR #13). [DD-04](open-decisions.md) calibration decided and merged (PR #14)
 - Next milestone: M0, architecture exit checklist passed. Checklist in [docs/progress/m0.md](progress/m0.md)
 - Active task: 0.1, architecture docs
-- Next step: one review pass against the M0 checklist (status lines, last-updated dates, known gaps sections, no built or tested claims). DD-04 decided 2026-10-03 on `docs/dd-04-calibration`
+- Next step: open the PR for `docs/m0-review` (M0 review pass, status ladder, id links, ADR last-updated rows). On merge, close the M0 log and tag `m0`
 - Resume prompt: "Read AGENTS.md and docs/progress.md, then the current milestone log. Continue from the next step above. Docs state decisions already made in the ADRs and link to them, and log missing decisions as gaps rather than inventing them. Every PR follows .github/pull_request_template.md. Use bullets, keep outputs succinct, and avoid em dashes."
 
 ## Milestones
@@ -18,8 +18,8 @@ Where the project stands and where to resume. Detail lives in one log per milest
 | M1 | Contracts tagged, tests green, mini fixture loads end to end | open | | m1 | |
 | M2a | Harness scores the oracle perfectly and the null agent as expected on the mini fixture | open | | m2a | |
 | M2b | Full dataset reproducible from a seed, validator passes, keys isolated, identical-redaction test passes | open | | m2b | |
-| M3 | Baseline scores recorded. DD-02, DD-03, DD-08 closed | open | | m3 | |
-| M4 | Score delta versus baseline per agent, span nesting verified (DD-05) | open | | m4 | |
+| M3 | Baseline scores recorded. [DD-02](open-decisions.md), [DD-03](open-decisions.md), [DD-08](open-decisions.md) closed | open | | m3 | |
+| M4 | Score delta versus baseline per agent, span nesting verified ([DD-05](open-decisions.md)) | open | | m4 | |
 | M5 | Compliance trap caught, clean-home false positives measured, compliance trap influenced-before-critic count reported | open | | m5 | |
 | M6 | A stranger can run it, full eval reproducible from the snapshot | open | | m6 | |
 

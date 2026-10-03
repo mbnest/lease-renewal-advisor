@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-006 (grading), ADR-013 (ground truth), ADR-014 (thresholds), ADR-018 (arbitration), ADR-021 (storage) |
 | **Pending** | None. DD-04 decided 2026-10-03 |
 
@@ -17,7 +18,7 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 
 **Market and cities**
 
-- Fictional data, calibrated to HUD Small Area Fair Market Rents (SAFMRs, ZIP-level rent benchmarks) FY2027 and Census ACS 2020 to 2024 (DD-04, 2026-10-03). Figures and scripts: [research/dd-04-calibration](../../research/dd-04-calibration/README.md).
+- Fictional data, calibrated to HUD Small Area Fair Market Rents (SAFMRs, ZIP-level rent benchmarks) FY2027 and Census ACS 2020 to 2024 ([DD-04](../open-decisions.md), 2026-10-03). Figures and scripts: [research/dd-04-calibration](../../research/dd-04-calibration/README.md).
 - Cities carry separate rate tier and demand attributes:
 
 | City | Rate tier | Demand | Homes |
@@ -53,14 +54,14 @@ Grading needs planted, known causes plus clean background homes, so every key ca
 - Signal channel is set by slot role:
   - Strong: structured fields and text agree.
   - Moderate and weak: the signal leans on text, or structured fields are incomplete.
-  - Near-boundary: structured values sit at the policy threshold (ADR-014).
+  - Near-boundary: structured values sit at the policy threshold ([ADR-014](ADR-014-thresholds-in-versioned-config.md)).
 - Clean homes include near-clean types (one late payment, one old work order) to test discrimination.
 
 **Tables and text**
 
 - Core tables: homes, leases, payments, work orders, comps. `market_id` on every table.
 - LLM-written text only for messy fields (notes, messages), generated once and frozen as fixtures.
-- Storage is Parquet (ADR-021). Reporting uses counts per scenario (ADR-006).
+- Storage is Parquet ([ADR-021](ADR-021-substitution-storage.md)). Reporting uses counts per scenario ([ADR-006](ADR-006-evaluation-grading-rules.md)).
 
 ## Alternatives considered
 

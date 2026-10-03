@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-008 (tracing), ADR-017 (model gateway), ADR-028 (cost envelope) |
 | **Pending** | DD-02 (model and upstream provider selection) |
 
@@ -11,7 +12,7 @@
 
 A full evaluation makes thousands of model calls. Development reruns the same cases many times, and published results must be reproducible by anyone later.
 
-Under a gateway (ADR-017), the same model slug can be served by different upstream providers, at different prices and with different behavior.
+Under a gateway ([ADR-017](ADR-017-one-gateway-tiered-models.md)), the same model slug can be served by different upstream providers, at different prices and with different behavior.
 
 ## Decision
 
@@ -20,7 +21,7 @@ Under a gateway (ADR-017), the same model slug can be served by different upstre
 - **Development.** A per-call cache. The key covers gateway, upstream provider, model slug, parameters, messages, and output schema. The run index is part of the key, so repeated runs stay independent samples.
 - **Published results.** A frozen snapshot of the cache, with a manifest: model slug, upstream provider, price at run time, git commit, and data seed.
 - **Replay fails loudly** on a cache miss. It never falls through to a live call.
-- Replay still emits trace spans (ADR-008), tagged as cache hits.
+- Replay still emits trace spans ([ADR-008](ADR-008-mlflow-tracing-behind-own-decorator.md)), tagged as cache hits.
 - A change of model or upstream provider invalidates cached results.
 
 ## Alternatives considered
@@ -32,7 +33,7 @@ Under a gateway (ADR-017), the same model slug can be served by different upstre
 
 **Benefits**
 
-- Reruns from cache cost nothing, which keeps development within the cost envelope (ADR-028).
+- Reruns from cache cost nothing, which keeps development within the cost envelope ([ADR-028](ADR-028-cost-envelope.md)).
 - Anyone can reproduce published scores from the snapshot, with no model access.
 
 **Costs we accept**

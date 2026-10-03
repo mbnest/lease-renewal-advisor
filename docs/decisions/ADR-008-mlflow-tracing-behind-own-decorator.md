@@ -4,8 +4,9 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-001 (orchestration), ADR-007 (caching), ADR-024 (redaction), ADR-025 (observability substitution) |
-| **Pending** | DD-05 (MLflow version pin and span nesting check) |
+| **Pending** | DD-05 (MLflow version pin and span nesting check), DD-06 (Free Edition feasibility) |
 
 ## Context
 
@@ -24,7 +25,7 @@ Tracing should be in place from the start, and confirmed for each component as i
 - MLflow autolog is optional inside the wrapper for LLM spans. The cache layer emits its own span, tagged `cache_hit`.
 - **Backend:** a local MLflow store in Docker, with a persistent volume and a UI container. From MLflow 3.7.0 the default backend is SQLite.
 - Traces are tagged with grading outcome after the fact. Eval results are also logged as MLflow runs. Eval files stay the source of truth, and MLflow holds a copy.
-- **Redaction boundary:** only post-redaction data reaches spans or trace storage (ADR-024).
+- **Redaction boundary:** only post-redaction data reaches spans or trace storage ([ADR-024](ADR-024-substitution-redaction-and-key-isolation.md)).
 - Tests: every registered agent and tool is traced, and parallel specialist spans nest under the supervisor.
 
 ## Alternatives considered
@@ -37,7 +38,7 @@ Tracing should be in place from the start, and confirmed for each component as i
 **Benefits**
 
 - One place sets trace attributes and enforces the redaction boundary.
-- Moving to managed MLflow (ADR-025) changes the decorator, not the agents.
+- Moving to managed MLflow ([ADR-025](ADR-025-substitution-observability.md)) changes the decorator, not the agents.
 
 **Costs we accept**
 
@@ -51,5 +52,5 @@ Tracing should be in place from the start, and confirmed for each component as i
 
 ## Known gaps and open questions
 
-- The exact MLflow version is not pinned yet (DD-05).
-- Managed MLflow availability on Free Edition is not confirmed.
+- The exact MLflow version is not pinned yet ([DD-05](../open-decisions.md)).
+- Managed MLflow availability on Free Edition is not confirmed ([DD-06](../open-decisions.md)).

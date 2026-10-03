@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-004 (critic), ADR-006 (grading), ADR-009 (approval state), ADR-010 (gate states), ADR-026 (state substitution) |
 | **Pending** | DD-09 (resolution event disposition vocabulary) |
 
@@ -15,7 +16,7 @@ When the critic blocks a case, the result must not be mistaken for an action rec
 
 **A critic block moves the case to a terminal BLOCKED state and a manual-review queue. It is counted separately and never graded as an action.**
 
-- **Grading:** report the blocked count and false blocks on clean homes. The pre-block proposal is graded separately (ADR-006).
+- **Grading:** report the blocked count and false blocks on clean homes. The pre-block proposal is graded separately ([ADR-006](ADR-006-evaluation-grading-rules.md)).
 - **Pre-block proposal:** retained on the recommendation for grading. Never shown as a draft.
 - **BLOCKED card:** shows the critic reason and no draft message.
 - **Terminal states:** BLOCKED and REJECTED are both terminal gate states.
@@ -47,4 +48,4 @@ When the critic blocks a case, the result must not be mistaken for an action rec
 
 ## Known gaps and open questions
 
-- Disposition values are not defined yet (DD-09). They are set when the recommendation schema is written.
+- Disposition values are not defined yet ([DD-09](../open-decisions.md)). They are set when the recommendation schema is written.

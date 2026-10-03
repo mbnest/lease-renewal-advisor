@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-004 (critic), ADR-006 (grading), ADR-013 (ground truth), ADR-015 (action definitions) |
 | **Pending** | DD-01 (tuned threshold values) |
 
@@ -26,8 +27,8 @@ Draft thresholds. Fictional placeholders, tuned after the first generation run:
 **Thresholds live in one versioned policy config that agents see. Nothing recomputes them at runtime.**
 
 - The generation-time validator is the only code that evaluates thresholds. It reads the same config.
-- The critic still verifies every cited value and record id (ADR-004). It does not re-derive flags.
-- Misapplied thresholds are found at grading time, as a "threshold misapplied" count (ADR-006).
+- The critic still verifies every cited value and record id ([ADR-004](ADR-004-critic-design.md)). It does not re-derive flags.
+- Misapplied thresholds are found at grading time, as a "threshold misapplied" count ([ADR-006](ADR-006-evaluation-grading-rules.md)).
 - The policy version is recorded on every recommendation.
 
 ## Alternatives considered
@@ -52,5 +53,5 @@ Draft thresholds. Fictional placeholders, tuned after the first generation run:
 
 ## Known gaps and open questions
 
-- Threshold values are placeholders until the first generation run (DD-01).
+- Threshold values are placeholders until the first generation run ([DD-01](../open-decisions.md)).
 - Config file name and format are set with the schemas (after M0).

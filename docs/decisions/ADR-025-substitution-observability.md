@@ -4,12 +4,13 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-007 (caching), ADR-008 (tracing decorator), ADR-011 (local-first release), ADR-024 (redaction) |
 | **Pending** | DD-05 (MLflow version pin and span nesting), DD-06 (Free Edition feasibility, including managed MLflow) |
 
 ## Context
 
-Agent code traces only through the project's `@traced` decorator, and only the decorator imports MLflow (ADR-008). Eval results are logged as MLflow runs, while eval files stay the source of truth.
+Agent code traces only through the project's `@traced` decorator, and only the decorator imports MLflow ([ADR-008](ADR-008-mlflow-tracing-behind-own-decorator.md)). Eval results are logged as MLflow runs, while eval files stay the source of truth.
 
 ## Decision
 
@@ -25,7 +26,7 @@ Agent code traces only through the project's `@traced` decorator, and only the d
 
 - Span tree, span kinds, and trace attributes set by the decorator.
 - Eval runs with the same params and metrics.
-- Only post-redaction data in spans (ADR-024).
+- Only post-redaction data in spans ([ADR-024](ADR-024-substitution-redaction-and-key-isolation.md)).
 
 **Not preserved**
 
@@ -34,7 +35,7 @@ Agent code traces only through the project's `@traced` decorator, and only the d
 
 ## Alternatives considered
 
-- **Managed MLflow from the start.** Not chosen for release one. Every dev trace would need a workspace (ADR-011).
+- **Managed MLflow from the start.** Not chosen for release one. Every dev trace would need a workspace ([ADR-011](ADR-011-databricks-target-local-first-release.md)).
 
 ## Consequences
 
@@ -45,12 +46,12 @@ Agent code traces only through the project's `@traced` decorator, and only the d
 
 **Costs we accept**
 
-- Trace sharing is limited to whoever runs the local stack. Durable records are the eval files and snapshots (ADR-007).
+- Trace sharing is limited to whoever runs the local stack. Durable records are the eval files and snapshots ([ADR-007](ADR-007-one-cache-mechanism-two-lifecycle-points.md)).
 
 ## Revisit when
 
-- The Databricks phase starts and managed MLflow is available in the target workspace (DD-06).
-- The pinned MLflow version fails the span nesting check (DD-05).
+- The Databricks phase starts and managed MLflow is available in the target workspace ([DD-06](../open-decisions.md)).
+- The pinned MLflow version fails the span nesting check ([DD-05](../open-decisions.md)).
 
 ## Known gaps and open questions
 

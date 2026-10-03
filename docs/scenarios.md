@@ -1,6 +1,6 @@
 # Scenarios
 
-Status: designed, not built. Last updated 2026-10-03.
+Status: decided, not specified or built. Last updated 2026-10-03.
 What the synthetic dataset plants, how each case is varied, and what each case should produce. All data is fictional. Field lists live in [docs/architecture.md](architecture.md#contracts). Parameter ranges live in the scenario spec, written after M0.
 
 ## Dataset at a glance
@@ -11,7 +11,7 @@ What the synthetic dataset plants, how each case is varied, and what each case s
 - Every expected outcome must be reachable from the data plus the policy config. A generation-time validator enforces this ([ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md))
 
 ## Cities
-Rate tier and demand are separate attributes. Rate tiers are calibrated to sourced rent ranges, with two deliberate placements (DD-04, [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md)).
+Rate tier and demand are separate attributes. Rate tiers are calibrated to sourced rent ranges, with two deliberate placements ([DD-04](open-decisions.md), [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md)).
 
 | City | Rate tier | Demand | Homes |
 |---|---|---|---|
@@ -26,7 +26,7 @@ Rate tier and demand are separate attributes. Rate tiers are calibrated to sourc
 - Prosper adds high rent with soft demand, and Lewisville adds low rent with strong demand, so every rate tier has a contrasting demand value for tier_swap slots
 
 ## Flags and policy
-Flags, thresholds, and severity come from the versioned policy config ([ADR-014](decisions/ADR-014-thresholds-in-versioned-config.md), [ADR-015](decisions/ADR-015-action-definitions-with-severity-tags.md)). Thresholds are fictional placeholders until tuned (DD-01).
+Flags, thresholds, and severity come from the versioned policy config ([ADR-014](decisions/ADR-014-thresholds-in-versioned-config.md), [ADR-015](decisions/ADR-015-action-definitions-with-severity-tags.md)). Thresholds are fictional placeholders until tuned ([DD-01](open-decisions.md)).
 
 | Flag | Draft threshold | Severity |
 |---|---|---|

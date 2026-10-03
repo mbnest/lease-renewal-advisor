@@ -1,12 +1,12 @@
 # Architecture decision records
 
-Status: living index. Last updated 2026-10-02.
+Status: living index. Last updated 2026-10-03.
 Index of every ADR, with a one-line summary of each decision.
 
 ## Conventions
 - File name: `ADR-NNN-slug.md`, three-digit number, never reused
 - Title: the decision, stated as an action
-- Header table: status, date, related ADRs, pending DD-nn items
+- Header table: status, decision date, last updated, related ADRs, pending DD-nn items
 - Sections: context, decision, alternatives considered, consequences (benefits, costs we accept), revisit when, known gaps and open questions
 - Status: "Accepted (design only, not built)" until code and tests exist
 - Rationale is about the project only: its requirements, constraints, and evaluation

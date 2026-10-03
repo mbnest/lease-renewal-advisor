@@ -4,6 +4,7 @@
 |---|---|
 | **Status** | Accepted (design only, not built) |
 | **Date** | 2026-10-02 |
+| **Last updated** | 2026-10-03 |
 | **Related** | ADR-012 (data scale), ADR-013 (ground truth), ADR-016 (BLOCKED state), ADR-020 (rent clamp and bands), ADR-028 (run plan) |
 | **Pending** | None |
 
@@ -44,12 +45,12 @@ The evaluation set is 60 homes across 7 scenarios. That gives directional eviden
 
 **Conflicting signals scenario**
 
-- Arbitration winner and direction against the key, per slot, and each specialist's signal against the key (ADR-018). These expose a right outcome reached for the wrong reason.
+- Arbitration winner and direction against the key, per slot, and each specialist's signal against the key ([ADR-018](ADR-018-fixed-arbitration-precedence.md)). These expose a right outcome reached for the wrong reason.
 
 **Comparison and consistency**
 
 - Baseline and multi-agent are compared case by case.
-- Repeated runs are scored by majority, with flip rate reported separately. Which configurations get repeated runs is set in ADR-028.
+- Repeated runs are scored by majority, with flip rate reported separately. Which configurations get repeated runs is set in [ADR-028](ADR-028-cost-envelope.md).
 
 ## Alternatives considered
 
@@ -70,8 +71,8 @@ The evaluation set is 60 homes across 7 scenarios. That gives directional eviden
 
 ## Revisit when
 
-- The first full eval is too noisy to interpret. Add homes beyond 60 (ADR-012).
+- The first full eval is too noisy to interpret. Add homes beyond 60 ([ADR-012](ADR-012-data-scale-scenarios-and-variants.md)).
 
 ## Known gaps and open questions
 
-- Exact scoring rules per count are specified in [docs/eval-plan.md](../eval-plan.md).
+- None. Exact scoring rules per count live in [docs/eval-plan.md](../eval-plan.md).

@@ -1,11 +1,11 @@
 # Lease Renewal Decision Agent
 
-Status: architecture phase. Designed, not built. Last updated 2026-10-03.
+Status: architecture phase. Decided, not specified or built. Last updated 2026-10-03.
 
 A multi-agent system that reviews single-family leases expiring within 90 days and recommends a renewal action, a rent change, the risks behind it, and a draft resident message. It is advisory only: it has no send or write capability, and a human approves every recommendation. All data is synthetic, and every recommendation is graded against an answer key.
 
 > [!WARNING]
-> Nothing runs yet. This repository holds the architecture: design docs and decision records. Every component below is designed, not built, tested, or evaluated.
+> Nothing runs yet. This repository holds the architecture: design docs and decision records. Every component below is decided, not specified, built, tested, or evaluated. Status terms: [status ladder](AGENTS.md#status-ladder).
 
 ## Contents
 - [Problem](#problem)
@@ -50,7 +50,7 @@ Full flow, gate states, and contracts: [docs/architecture.md](docs/architecture.
 - In scope: one fictional Dallas-Fort Worth market, 60 homes, recommendations and an audit record, offline evaluation
 - Not in scope:
   - Sending messages or changing rents. The system only recommends and records
-  - Real pricing. Rent values are fictional, anchored to public rent benchmarks (DD-04)
+  - Real pricing. Rent values are fictional, anchored to public rent benchmarks ([DD-04](docs/open-decisions.md))
   - State and local rules such as rent caps, notice periods, and local protected classes ([risks](docs/risks.md#outputs-read-as-legal-advice))
 
 ## Data and evaluation
@@ -62,27 +62,29 @@ Full flow, gate states, and contracts: [docs/architecture.md](docs/architecture.
 - No results exist yet. Results tables appear only after a recorded run
 
 ## Status
-Release one runs locally. Databricks Free Edition is the target platform. Target components are designed, not validated ([ADR-011](docs/decisions/ADR-011-databricks-target-local-first-release.md)).
+Release one, the first release, runs locally in Docker Compose ([platform table](docs/architecture.md#platform-target-versus-release-one)). Databricks Free Edition is the target platform. Target components are chosen, not validated ([ADR-011](docs/decisions/ADR-011-databricks-target-local-first-release.md)). Free Edition feasibility is open ([DD-06](docs/open-decisions.md)).
 
 | Component | Release one | Target | Status | Date |
 |---|---|---|---|---|
 | Architecture docs and ADRs | Docs in this repo | Same | In progress, M0 review open | 2026-10-03 |
-| Data generator and validator | Seeded Python generator, Parquet | Lakeflow Spark Declarative Pipelines, Delta in Unity Catalog | Designed, not built. Target designed, not validated | 2026-10-03 |
-| Redaction and key isolation | Python access layer, directory allowlist | Unity Catalog views or column masks | Designed, not built. Target designed, not validated | 2026-10-03 |
-| Agents and orchestration | Plain Python asyncio | Same | Designed, not built | 2026-10-03 |
-| Tool access | Custom thin MCP server, after evals | Managed Unity Catalog Functions MCP | Designed, not built. Target designed, not validated | 2026-10-03 |
-| Observability | Local MLflow | Databricks-managed MLflow | Designed, not built. Target designed, not validated | 2026-10-03 |
-| Approval and audit state | SQLite | Lakebase | Designed, not built. Target designed, not validated | 2026-10-03 |
-| Reviewer UI | Streamlit in Docker Compose | Streamlit as a Databricks App | Designed, not built. Target designed, not validated | 2026-10-03 |
-| Eval harness | Local, cached replay | Same | Designed, not built | 2026-10-03 |
+| Data generator and validator | Seeded Python generator, Parquet | Lakeflow Spark Declarative Pipelines, Delta in Unity Catalog | Decided, not specified. Target chosen, not validated | 2026-10-03 |
+| Redaction and key isolation | Python access layer, directory allowlist | Unity Catalog views or column masks | Decided, not specified. Target chosen, not validated | 2026-10-03 |
+| Agents and orchestration | Plain Python asyncio | Same | Decided, not specified | 2026-10-03 |
+| Tool access | Custom thin MCP server, after evals | Managed Unity Catalog Functions MCP | Decided, not specified. Target chosen, not validated | 2026-10-03 |
+| Observability | Local MLflow | Databricks-managed MLflow | Decided, not specified. Target chosen, not validated | 2026-10-03 |
+| Approval and audit state | SQLite | Lakebase | Decided, not specified. Target chosen, not validated | 2026-10-03 |
+| Reviewer UI | Streamlit in Docker Compose | Streamlit as a Databricks App | Decided, not specified. Target chosen, not validated | 2026-10-03 |
+| Eval harness | Local, cached replay | Same | Decided, not specified | 2026-10-03 |
 
 - Local stand-ins do not preserve Unity Catalog governance, on-behalf-of auth, concurrency, or scale
 - Milestones and the current step: [docs/progress.md](docs/progress.md)
 
 ## How to run
 - Nothing runs yet
-- Planned: Python 3.13 with uv, Docker Compose for the app, MLflow, and eval runner. Folder layout: [AGENTS.md](AGENTS.md#folder-layout)
-- Model calls go through OpenRouter. Copy `.env.example` to `.env` for the key. Never commit `.env`
+- Planned: Python 3.13 with uv. Docker Compose runs the reviewer UI, MLflow, and the eval runner. Folder layout: [AGENTS.md](AGENTS.md#folder-layout)
+- Copy `.env.example` to `.env`. Never commit `.env`
+  - `OPENROUTER_API_KEY`: model calls, through OpenRouter
+  - `CENSUS_API_KEY`: only to re-run the DD-04 research pull
 
 ## Documentation
 
@@ -97,9 +99,9 @@ Release one runs locally. Databricks Free Edition is the target platform. Target
 | [Progress](docs/progress.md) | Current position, milestones, and per-milestone logs |
 
 ## Sources
-- City demand, rent ranges, turnover cost, and Fair Housing Act classes rest on secondary sources checked 2026-10-02. Table with links: [scenarios research notes](docs/scenarios.md#research-notes)
+- City demand, turnover cost, and Fair Housing Act classes rest on secondary sources checked 2026-10-02. Table with links: [scenarios research notes](docs/scenarios.md#research-notes)
 - They shape city selection and demand values
-- The rent clamp and city rate tier rents are calibrated (DD-04, decided 2026-10-03) to primary sources. Figures, scripts, and re-fetch steps: [research/dd-04-calibration](research/dd-04-calibration/README.md)
+- The rent clamp and city rate tier rents are calibrated ([DD-04](docs/open-decisions.md), decided 2026-10-03) to primary sources. Figures, scripts, and re-fetch steps: [research/dd-04-calibration](research/dd-04-calibration/README.md)
   - [HUD Small Area Fair Market Rents](https://www.huduser.gov/portal/datasets/fmr/smallarea/index.html), FY2026 and FY2027, ZIP-level rents
   - [U.S. Census Bureau American Community Survey](https://www.census.gov/programs-surveys/acs), 2020 to 2024 5-year
 
@@ -120,3 +122,4 @@ Release one runs locally. Databricks Free Edition is the target platform. Target
 
 ## Known gaps and open questions
 - The implementation plan is not yet tracked
+- Open deferred decisions, such as placeholder thresholds ([DD-01](docs/open-decisions.md)), live in [docs/open-decisions.md](docs/open-decisions.md)

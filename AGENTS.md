@@ -5,7 +5,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 
 ## Project
 - Lease renewal decision agent: multi-agent, advisory, synthetic data, graded against answer keys
-- Phase: architecture. Everything is designed, not built, until a commit says otherwise
+- Phase: architecture. Every component is decided, not specified or built, until a commit says otherwise. Terms: [status ladder](#status-ladder)
 - Overview: [README.md](README.md)
 - Repo: `mbnest/lease-renewal-advisor` on GitHub, public, MIT license
 - Current state, next step, and resume prompt: [docs/progress.md](docs/progress.md). Read it first, then the current milestone log it links
@@ -14,8 +14,8 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Succinct. Bullets. Sentence case headings. Exception: the README title is the project name in title case, "Lease Renewal Decision Agent"
 - No em dashes anywhere, docs included. Use plain sentence breaks
 - No emojis in code, docs, or commits
-- Each doc starts with a status line and last-updated date, and ends with a known gaps and open questions section
-- Docs are self-descriptive. Name things, never bare numbers: scenarios by name (for example "conflicting signals"). ADR and DD ids are fine when linked
+- Each doc starts with a status line and last-updated date, and ends with a known gaps and open questions section. ADRs carry status and dates in their header table. Exempt: the PR template, whose text opens every PR, and `CLAUDE.md`, a pointer to this file
+- Docs are self-descriptive. Name things, never bare numbers: scenarios by name (for example "conflicting signals"). ADR and DD ids are fine when linked: link the first mention of each id in a doc. Later mentions, headings, ADR header tables, and register rows stay plain
 - Define a term briefly where it is used and link to the doc that owns its definition or scope
 
 ## Working method
@@ -58,7 +58,16 @@ Directories are created by the first PR that needs them. Each lane edits only it
 - No logic code and no schemas until the architecture exit checklist passes (milestone M0)
 - Do not claim anything is built, tested, or evaluated unless a test or a recorded run shows it
 - No results tables until real eval numbers exist
-- Target Databricks components are "designed, not validated"
+- Target Databricks components are "chosen, not validated"
+
+## Status ladder
+Component status uses these terms, in order. A component moves up only with the evidence named.
+- Decided: accepted ADRs, component boundaries, and contract field lists
+- Specified: a spec sheet with schemas, interfaces, build steps, and an acceptance test per step
+- Built: code merged to `main`
+- Tested: tests for it pass
+- Evaluated: a recorded eval run scores it
+- Target platform components are "chosen, not validated" until they run in a real workspace ([DD-06](docs/open-decisions.md))
 
 ## Safety and design rules (carry into code)
 - The system has no send or write capability. It only recommends and records
@@ -95,3 +104,4 @@ Directories are created by the first PR that needs them. Each lane edits only it
 
 ## Known gaps and open questions
 - PR template risk ratings (reach, reversibility, exposure, detection) and rigor tiers have no written rubric yet
+- Spec sheets have no set location or format, and reaching specified is not yet a milestone gate
