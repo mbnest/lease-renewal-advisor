@@ -1,7 +1,7 @@
 # Risks
 
-Status: designed, not built. Last updated 2026-10-03.
-What could make the results wrong, unreproducible, too costly, or misused, and how the design mitigates each. Every mitigation here is designed, not built or tested. Decisions live in the linked ADRs and the [deferred decisions register](open-decisions.md). This doc does not add new ones.
+Status: decided, not specified or built. Last updated 2026-10-03.
+What could make the results wrong, unreproducible, too costly, or misused, and how the design mitigates each. Every mitigation here is decided, not built or tested. Decisions live in the linked ADRs and the [deferred decisions register](open-decisions.md). This doc does not add new ones.
 
 ## How to read this
 Every risk has the same four fields. A field with no decision behind it says "not decided" and points to the known gaps below.

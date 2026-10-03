@@ -32,7 +32,7 @@ The target environment is Databricks Free Edition. Its limits shape what can run
 | Reviewer UI | Streamlit as a Databricks App | Streamlit in Docker Compose | ADR-027 |
 | Orchestration | Hand-coded asyncio | Same | ADR-001 |
 
-- **Fidelity rule:** target components are marked "designed, not validated" in the README status table. Each substitution ADR states what the stand-in does not preserve: UC governance, on-behalf-of auth, concurrency, scale.
+- **Fidelity rule:** target components are marked "chosen, not validated" in the README status table. Each substitution ADR states what the stand-in does not preserve: UC governance, on-behalf-of auth, concurrency, scale.
 - **Packaging:** Docker Compose with app, MLflow, and eval runner services on shared volumes. SQLite is single-user.
 - **Evals stay local** with cached replay (ADR-007). A live Free Edition app can be deleted or shut down by quota, so the durable record is the repo, the ADRs, frozen eval snapshots, and recorded demos.
 - **Timing:** the Databricks phase starts after the local release is complete and documented.

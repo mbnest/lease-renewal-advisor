@@ -1,6 +1,6 @@
 # Scenarios
 
-Status: designed, not built. Last updated 2026-10-03.
+Status: decided, not specified or built. Last updated 2026-10-03.
 What the synthetic dataset plants, how each case is varied, and what each case should produce. All data is fictional. Field lists live in [docs/architecture.md](architecture.md#contracts). Parameter ranges live in the scenario spec, written after M0.
 
 ## Dataset at a glance

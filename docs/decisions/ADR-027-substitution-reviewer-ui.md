@@ -53,4 +53,4 @@ The reviewer UI is a Streamlit app: approval page, per-home card, and operationa
 ## Known gaps and open questions
 
 - Free Edition app count is not confirmed. Doc versions disagree (DD-06).
-- How the reviewer is identified in local decision events is not designed.
+- How the reviewer is identified in local decision events is not decided.

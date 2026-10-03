@@ -58,4 +58,4 @@ Tool access sits behind the same Python access functions that prefetch uses (ADR
 ## Known gaps and open questions
 
 - Managed MCP availability on Free Edition is not confirmed (DD-06).
-- How UC functions reuse the Python access code, rather than reimplement it in SQL, is not designed.
+- How UC functions reuse the Python access code, rather than reimplement it in SQL, is not decided.

@@ -1,6 +1,6 @@
 # Architecture
 
-Status: designed, not built. Last updated 2026-10-03.
+Status: decided, not specified or built. Last updated 2026-10-03.
 How the lease renewal decision agent fits together. All data is synthetic. Output is advisory. Each decision links to its ADR in [docs/decisions/](decisions/README.md). Deferred items (DD-nn) live in [docs/open-decisions.md](open-decisions.md).
 
 ## System summary
@@ -144,7 +144,7 @@ All append-only, behind one repository interface ([ADR-009](decisions/ADR-009-st
 - Calls are fixed and parameterized. No generated SQL
 
 ## Validator and policy rules
-Designed, not built. Implemented with the schemas after M0.
+Decided, not specified. Specified and implemented with the schemas after M0.
 
 ### Policy resolution
 - Band for a rent change: HOLD at exactly 0. Otherwise the band whose range holds the value ([ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md))
@@ -225,7 +225,7 @@ Full method in [docs/eval-plan.md](eval-plan.md).
 - No eval page in the app
 
 ## Platform: target versus release one
-Target components are designed, not validated ([ADR-011](decisions/ADR-011-databricks-target-local-first-release.md)). The target is Databricks Free Edition.
+Target components are chosen, not validated ([ADR-011](decisions/ADR-011-databricks-target-local-first-release.md)). The target is Databricks Free Edition.
 
 | Concern | Target | Release one | Seam | ADR |
 |---|---|---|---|---|

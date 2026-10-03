@@ -1,6 +1,6 @@
 # Eval plan
 
-Status: designed, not built. Last updated 2026-10-02.
+Status: decided, not specified or built. Last updated 2026-10-03.
 How agent quality is measured against the answer keys: what is graded, what is reported, which configurations run, and how models are picked. Evals are measurements. They never gate a PR. Tests and checks live in the test register (planned).
 
 ## Principles

@@ -55,4 +55,4 @@ The dataset is generated from a scenario spec and a seed (ADR-012). A generation
 ## Known gaps and open questions
 
 - Not decided: whether the target pipeline reruns generation on the platform, or ingests the generator's validated output.
-- How validator checks map onto pipeline expectations is not designed.
+- How validator checks map onto pipeline expectations is not decided.
