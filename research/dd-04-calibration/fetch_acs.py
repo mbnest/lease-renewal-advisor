@@ -31,12 +31,14 @@ OUT = Path(__file__).parent / f"acs_places_{YEAR}.csv"
 
 def fetch_places() -> list[list[str]]:
     """Return ACS rows for every Texas place."""
-    query = urlencode({
-        "get": ",".join(["NAME", *VARIABLES]),
-        "for": "place:*",
-        "in": "state:48",
-        "key": os.environ["CENSUS_API_KEY"],
-    })
+    query = urlencode(
+        {
+            "get": ",".join(["NAME", *VARIABLES]),
+            "for": "place:*",
+            "in": "state:48",
+            "key": os.environ["CENSUS_API_KEY"],
+        }
+    )
     with urlopen(f"https://api.census.gov/data/{YEAR}/acs/acs5?{query}") as resp:
         return json.load(resp)
 
@@ -44,7 +46,7 @@ def fetch_places() -> list[list[str]]:
 def main() -> None:
     """Keep the seven cities and write them to CSV."""
     header, *rows = fetch_places()
-    picked = [dict(zip(header, r)) for r in rows if r[0] in CITIES]
+    picked = [dict(zip(header, r, strict=True)) for r in rows if r[0] in CITIES]
     with OUT.open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["city", "place_fips", *VARIABLES.values()])

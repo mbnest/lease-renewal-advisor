@@ -29,7 +29,9 @@ def safmr_by_city() -> dict[str, list[dict]]:
     city_of = {r["zip"]: r["city"] for r in read("city_zips.csv")}
     out = defaultdict(list)
     for r in read("safmr_city_zips.csv"):
-        out[city_of[r["zip"]]].append({k: v if k in ("zip", "hud_area_code") else int(v) for k, v in r.items()})
+        out[city_of[r["zip"]]].append(
+            {k: v if k in ("zip", "hud_area_code") else int(v) for k, v in r.items()}
+        )
     return out
 
 
@@ -39,22 +41,31 @@ def city_row(city: str, rows: list[dict], acs: dict) -> str:
     yoy = [pct(r["fy2026_3br"], r["fy2027_3br"]) for r in rows]
     acs3 = acs["median_gross_rent_3br"]
     acs3 = "suppressed" if acs3.startswith("-") else acs3
-    return (f"| {city} | {acs['median_gross_rent']} | {acs3} | {len(rows)} | {median(rent3):.0f} "
-            f"| {min(rent3)} to {max(rent3)} | {median(yoy):+.1f} | {min(yoy):+.1f} to {max(yoy):+.1f} |")
+    return (
+        f"| {city} | {acs['median_gross_rent']} | {acs3} | {len(rows)} | {median(rent3):.0f} "
+        f"| {min(rent3)} to {max(rent3)} | {median(yoy):+.1f} "
+        f"| {min(yoy):+.1f} to {max(yoy):+.1f} |"
+    )
 
 
 def main() -> None:
     """Print the per-city table and the pooled year-over-year spread."""
     acs = {r["city"]: r for r in read("acs_places_2024.csv")}
     by_city = safmr_by_city()
-    print("| City | ACS median gross rent | ACS 3BR | ZIPs | SAFMR FY2027 3BR median | 3BR range "
-          "| 3BR FY26 to FY27 median % | 3BR FY26 to FY27 range % |")
+    print(
+        "| City | ACS median gross rent | ACS 3BR | ZIPs | SAFMR FY2027 3BR median | 3BR range "
+        "| 3BR FY26 to FY27 median % | 3BR FY26 to FY27 range % |"
+    )
     print("|---|---|---|---|---|---|---|---|")
     for city in ORDER:
         print(city_row(city, by_city[city], acs[city]))
-    allyoy = sorted(pct(r["fy2026_3br"], r["fy2027_3br"]) for rows in by_city.values() for r in rows)
-    print(f"\nPooled 3BR FY26 to FY27 across {len(allyoy)} ZIPs: median {median(allyoy):+.1f}%, "
-          f"min {allyoy[0]:+.1f}%, max {allyoy[-1]:+.1f}%")
+    allyoy = sorted(
+        pct(r["fy2026_3br"], r["fy2027_3br"]) for rows in by_city.values() for r in rows
+    )
+    print(
+        f"\nPooled 3BR FY26 to FY27 across {len(allyoy)} ZIPs: median {median(allyoy):+.1f}%, "
+        f"min {allyoy[0]:+.1f}%, max {allyoy[-1]:+.1f}%"
+    )
 
 
 if __name__ == "__main__":
