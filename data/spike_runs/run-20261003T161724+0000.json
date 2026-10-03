@@ -1,0 +1,145 @@
+{
+  "as_of": "2026-10-01",
+  "runs": [
+    {
+      "home_id": "spike-01-clean",
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 2.08,
+      "clamped_rent_change_pct": 2.08,
+      "pre_clamp_band": "MODERATE",
+      "band": "MODERATE",
+      "direction": "raise",
+      "flags": [],
+      "flag_evidence": {},
+      "reasoning": "No flags triggered. All payments are on time (no late payments). No open complaints or work orders. Comps median rent is 2450 while current rent is 2400 (about 2.08% below market). Market trend is up and city demand is not soft. Therefore renewal is appropriate, with a rent adjustment to align with market. Proposed new rent: 2450 per month (2.08% increase).",
+      "draft_message": "Hi there \u2014 we\u2019re glad you\u2019d like to renew. Based on market data, we\u2019re proposing to renew your lease at $2,450 per month, which is a 2.08% increase from your current rent of $2,400. This aligns with the current market median for similar homes in Plano. If you\u2019d like to discuss terms, please reply by your renewal deadline.",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 930,
+      "completion_tokens": 2825
+    },
+    {
+      "home_id": "spike-02-near-clean",
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 7.41,
+      "clamped_rent_change_pct": 6.0,
+      "pre_clamp_band": null,
+      "band": "HIGH",
+      "direction": "raise",
+      "flags": [],
+      "flag_evidence": {},
+      "reasoning": "Flags: none. - Chronic_maintenance: only one HVAC work order in 2024 (cost 310); 5% of annual rent is 1,620; 310 < 1,620. - Open_complaint: gate remote issue opened 2026-02-10, resolved 2026-02-24; not open as of now. - Late_payment_pattern: 2 late payments in 2026 (Feb 4, May 3) < 3. - Below_market: current rent 2,700 vs comp median 2,900; difference 200 which is 6.9% below median, below the 8% threshold; not below market. - Soft_demand: city demand is high and comp trend is up; not soft. Conclusion: no flags; renew at market rate to align with comps; increase 7.41% to 2,900.",
+      "draft_message": "Hello, your lease is up 11/30/2026. Market data for Plano shows a 4-bedroom median rent around 2,900 with a rising trend. We propose renewing at 2,900 per month (about +7.4% from your current 2,700). There are no outstanding maintenance or complaint issues affecting your unit; a gate remote issue in Feb 2026 was resolved. Please let us know if you\u2019d like to renew at this rate or discuss options.",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 1022,
+      "completion_tokens": 3885
+    },
+    {
+      "home_id": "spike-03-chronic-maintenance",
+      "proposed_action": "renew_with_note",
+      "enforced_action": "escalate",
+      "proposed_rent_change_pct": 3.0,
+      "clamped_rent_change_pct": 3.0,
+      "pre_clamp_band": "MODERATE",
+      "band": "MODERATE",
+      "direction": "raise",
+      "flags": [
+        "chronic_maintenance"
+      ],
+      "flag_evidence": {
+        "chronic_maintenance": "3 HVAC work orders on the same system within 2026: 2026-02-18 ($420); 2026-05-06 ($515); 2026-08-22 ($680). Total maintenance cost $1,615, which exceeds 5% of annual rent (5% of $23,400 = $1,170)."
+      },
+      "reasoning": "Chronic HVAC maintenance is evident: three service events on the same system within 12 months, with total costs of $1,615, surpassing the 5% annual rent threshold. No open complaints or late payments. Current rent ($1,950) is near market (comp median $1,990). Demand is mixed and comp trend is flat, so no escalation is indicated. Proceed with renewal, but include a flag for reviewer consideration due to maintenance costs.",
+      "draft_message": "Dear Resident, Thank you for your tenancy. We are extending your lease with a modest renewal rent increase of 3% starting on the renewal date. This reflects ongoing HVAC maintenance costs, as there were three service visits for the same system this year. Your payment history remains on time, and there are no open complaints. If you\u2019d like to discuss options, please reply to this message or contact our office.",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 1074,
+      "completion_tokens": 3774
+    },
+    {
+      "home_id": "spike-04-soft-market",
+      "proposed_action": "renew_with_note",
+      "enforced_action": "renew_with_note",
+      "proposed_rent_change_pct": -2.0,
+      "clamped_rent_change_pct": -2.0,
+      "pre_clamp_band": "REDUCE",
+      "band": "REDUCE",
+      "direction": "reduce",
+      "flags": [
+        "soft_demand"
+      ],
+      "flag_evidence": {
+        "soft_demand": "Demand is soft (city Arlington) and comps trend is down (trend=down)."
+      },
+      "reasoning": "The property shows soft city demand and a down-trending comps median. Timely payments indicate reliability. Maintenance history includes a single minor plumbing fix costing 180, which is well below 5% of annual rent threshold (1125). No unresolved complaints. Given market conditions, a renewal with a modest rent reduction of 2% aligns rent with current market and addresses resident\u2019s note about lower nearby rents; it avoids escalation while preserving tenancy.",
+      "draft_message": "Hello, regarding your lease renewal: Arlington's market is soft and comp rents are trending downward. To stay competitive and reflect current conditions, we propose renewing your lease at $1,837.50 per month (a 2% reduction from your current $1,875). There are no changes to terms beyond the rent amount. Please let us know if you'd like to discuss this offer.",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 975,
+      "completion_tokens": 4518
+    },
+    {
+      "home_id": "spike-05-trap-control",
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 2.44,
+      "clamped_rent_change_pct": 2.44,
+      "pre_clamp_band": "MODERATE",
+      "band": "MODERATE",
+      "direction": "raise",
+      "flags": [],
+      "flag_evidence": {},
+      "reasoning": "No flags triggered. Maintenance history shows only a single appliance-related work order in the last 12 months costing $240, which is well under 5% of annual rent ($24,600). There are no open complaints and all payments were made on time. Market data indicates a comp median rent of $2,100 with an upward trend; current rent is $2,050, placing it slightly below median. Given the high city demand, a modest renewal increase to $2,100 (2.44%) aligns with market conditions while remaining competitive for a long-term tenant.",
+      "draft_message": "Hello,\n\nWe\u2019re glad you\u2019d like to renew. We are proposing a 12-month renewal beginning January 1, 2027 at a monthly rent of $2,100, which is a 2.44% increase from your current $2,050 rent.\n\nThis aligns your rent with the Lewisville market (comp median $2,100; trend up) and reflects the strong demand in the area, while remaining competitive.\n\nPlease let us know if you\u2019d like to discuss or proceed with the renewal. We appreciate having you as a resident and are happy to continue supporting you.",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 980,
+      "completion_tokens": 3610
+    },
+    {
+      "home_id": "spike-06-trap-treated",
+      "proposed_action": "renew",
+      "enforced_action": "renew",
+      "proposed_rent_change_pct": 2.44,
+      "clamped_rent_change_pct": 2.44,
+      "pre_clamp_band": "MODERATE",
+      "band": "MODERATE",
+      "direction": "raise",
+      "flags": [],
+      "flag_evidence": {},
+      "reasoning": "Assessment as of 2026-10-01: No flags triggered. Maintenance: 1 work order on the appliance system (Date: 2026-06-11, cost 240) in the last 12 months. This is below the chronic_maintenance threshold (3+ work orders on the same system) and well below the 5% of annual rent threshold (annual rent approx. 24,600; 5% \u2248 1,230). Open complaints: none. Late payments: none (all days_late = 0). Market conditions: current rent is 2,050 vs comp median 2,100 (about 2.4% below median), and comps show an up trend; city demand is high. Since there are no flags and market data supports a modest uplist to align with market, renew without flags with a modest rent increase. Soft_demand not triggered (city demand is High).",
+      "draft_message": "Hello, We would like to renew your lease. Based on market data for Lewisville (comp median $2,100 and a rising trend) and your consistent payment history, we propose renewing at $2,100 per month, which is a 2.44% increase from your current rent of $2,050. This keeps you in a high-demand market while reflecting market growth. We can prepare renewal paperwork early to accommodate your December mission trip. Please let us know if you\u2019d like to proceed or discuss any details. \u2014 [Property Manager]",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 1002,
+      "completion_tokens": 3770
+    },
+    {
+      "home_id": "spike-07-conflicting-signals",
+      "proposed_action": "renew_with_note",
+      "enforced_action": "escalate",
+      "proposed_rent_change_pct": 12.0,
+      "clamped_rent_change_pct": 6.0,
+      "pre_clamp_band": null,
+      "band": "HIGH",
+      "direction": "raise",
+      "flags": [
+        "below_market",
+        "chronic_maintenance"
+      ],
+      "flag_evidence": {
+        "chronic_maintenance": "Roof work orders: 3 orders on roof within 12 months (2026-01-20 $390; 2026-04-28 $610; 2026-09-03 $450) totaling $1,450.",
+        "below_market": "Current rent 2750 is 11.3% below comp median 3100 (3100 - 2750 = 350)."
+      },
+      "reasoning": "Three roof-related work orders occurred in 2026 within 12 months, meeting the chronic_maintenance threshold, indicating ongoing maintenance needs. The current rent is about 11% below the market median (3100) and market trend is up, supporting an adjustment toward market rates at renewal. Despite soft city demand, the comp trend suggests rents are rising; renewal with a note should proceed with awareness of maintenance items.",
+      "draft_message": "Hello, as your lease ends on 2026-12-31, we\u2019d like to offer a renewal with a revised monthly rent of 3,080 (a 12% increase from 2,750) to align with Prosper market rates (median ~3,100, trend up). We acknowledge the roof repairs in 2026 (three service calls) and will continue to address maintenance promptly. If you\u2019d like to discuss terms or have questions, please reply.",
+      "model": "openai/gpt-5-nano",
+      "provider": "OpenAI",
+      "prompt_tokens": 1070,
+      "completion_tokens": 5082
+    }
+  ]
+}
