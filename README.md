@@ -17,6 +17,7 @@ A multi-agent system that reviews single-family leases expiring within 90 days a
 - [Documentation](#documentation)
 - [Sources](#sources)
 - [Contributing](#contributing)
+- [Security](#security)
 - [Caution](#caution)
 - [License](#license)
 - [Known gaps and open questions](#known-gaps-and-open-questions)
@@ -80,7 +81,7 @@ Release one runs locally. Databricks Free Edition is the target platform. Target
 
 ## How to run
 - Nothing runs yet
-- Planned: uv for Python packages, Docker Compose for the app, MLflow, and eval runner. The pinned Python version is open
+- Planned: Python 3.13 with uv, Docker Compose for the app, MLflow, and eval runner. Folder layout: [AGENTS.md](AGENTS.md#folder-layout)
 - Model calls go through OpenRouter. Copy `.env.example` to `.env` for the key. Never commit `.env`
 
 ## Documentation
@@ -106,6 +107,10 @@ Release one runs locally. Databricks Free Edition is the target platform. Target
 - Rules for every contributor, human or coding agent: [AGENTS.md](AGENTS.md)
 - Every pull request follows [the PR template](.github/pull_request_template.md)
 
+## Security
+- Do not open a public issue for a suspected vulnerability. Report it privately as described in [SECURITY.md](SECURITY.md)
+- Usage questions and non-security bugs go to [issues](https://github.com/mbnest/lease-renewal-advisor/issues)
+
 ## Caution
 - This project is not legal advice
 - Rent recommendations are illustrative only and must not be used for real pricing or tenancy decisions without legal and compliance review
@@ -114,7 +119,5 @@ Release one runs locally. Databricks Free Edition is the target platform. Target
 - MIT. See [LICENSE](LICENSE)
 
 ## Known gaps and open questions
-- Pinned Python version and folder layout are open
-- DD-04 calibration is open. HUD now publishes FY2027 Small Area Fair Market Rents. Which fiscal year to calibrate against is not decided
-- No security policy or support route is set. No `SECURITY.md` exists
+- DD-04 calibration is open. It will use HUD FY2027 Small Area Fair Market Rents, in its own PR
 - The implementation plan is not yet tracked

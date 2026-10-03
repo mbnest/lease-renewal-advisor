@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Status: living rules. Last updated 2026-10-02.
+Status: living rules. Last updated 2026-10-03.
 Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 
 ## Project
@@ -27,9 +27,31 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 
 ## Code style
 - Python package manager is uv. Use `uv run` and `uv add`. Never `python3` directly or `pip install`
+- Python 3.13, pinned in `.python-version`
 - Short modules and functions, named clearly
 - Clear, concise docstrings. Sparing comments elsewhere
 - Exception handling only where needed
+
+## Folder layout
+Directories are created by the first PR that needs them. Each lane edits only its own.
+
+| Path | Holds | Lane |
+|---|---|---|
+| `src/lease_renewal/generator/` | Seeded generator, validator, key writer | a |
+| `schemas/` | JSON schemas for contracts | a, via `contract/` branches |
+| `config/` | Policy config and scenario spec | a |
+| `src/lease_renewal/eval/` | Harness, grading, run manifests | b |
+| `src/lease_renewal/infra/` | Access layer, redaction, tracing, cache | b |
+| `src/lease_renewal/decision/` | Policy resolution, clamp, economics, arbitration | c |
+| `src/lease_renewal/critic/` | Claim checks, keyword rules, classifier flow | c |
+| `src/lease_renewal/state/` | Gate, approval events, audit snapshot | d |
+| `src/lease_renewal/ui/` | Streamlit reviewer UI | d |
+| `src/lease_renewal/agents/` | Baseline, specialists, supervisor | e |
+| `src/lease_renewal/prompts/` | Prompt files | e |
+| `tests/` | Tests, mirroring `src/lease_renewal/` | owner of the code under test |
+| `docs/`, `README.md` | Docs | f |
+
+- Paths for generated data and the restricted answer-key directory are set with the access layer ([ADR-024](docs/decisions/ADR-024-substitution-redaction-and-key-isolation.md))
 
 ## Phase rules
 - No logic code and no schemas until the architecture exit checklist passes (milestone M0)
@@ -71,6 +93,4 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Test register and CI rules in `docs/testing-strategy.md`. No live model calls in CI
 
 ## Known gaps and open questions
-- Pinned Python version and folder layout are open
-- Lane directory ownership waits on the folder layout
 - PR template risk ratings (reach, reversibility, exposure, detection) and rigor tiers have no written rubric yet
