@@ -38,7 +38,7 @@ When the critic blocks a case, the result must not be mistaken for an action rec
 **Costs we accept**
 
 - A reviewer cannot resolve a blocked case in the app beyond recording a disposition.
-- A strong critic can hide a weak specialist. Scenario 5 reports treated homes influenced before the critic acted as a separate count (ADR-006).
+- A strong critic can hide a weak specialist. The compliance trap scenario reports treated homes influenced before the critic acted as a separate count (ADR-006).
 
 ## Revisit when
 

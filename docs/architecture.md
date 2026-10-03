@@ -23,7 +23,7 @@ How the lease renewal decision agent fits together. All data is synthetic. Outpu
 | Condition, market, resident specialists | LLM | Judgment over text and mixed signals | [ADR-003](decisions/ADR-003-economics-and-critic-logic-stay-code.md) |
 | Supervisor | LLM | Combines specialist findings and calls economics as a tool | [ADR-003](decisions/ADR-003-economics-and-critic-logic-stay-code.md) |
 | Economics | Code, as a tool | Turnover cost against the renewal increase is arithmetic | [ADR-003](decisions/ADR-003-economics-and-critic-logic-stay-code.md) |
-| Arbitration (scenario 8) | Code | Fixed precedence from policy config. Code decides, model explains | [ADR-018](decisions/ADR-018-fixed-arbitration-precedence.md) |
+| Arbitration (conflicting signals scenario) | Code | Fixed precedence from policy config. Code decides, model explains | [ADR-018](decisions/ADR-018-fixed-arbitration-precedence.md) |
 | Rent clamp | Code | Model proposes, code enforces | [ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md) |
 | Critic: claim checks and keyword rules | Code | Record ids and cited values are checkable | [ADR-004](decisions/ADR-004-critic-design.md) |
 | Critic: compliance classifier | LLM | Paraphrase and proxies need judgment. Narrow, no tools, schema-validated verdict with a quoted span | [ADR-004](decisions/ADR-004-critic-design.md) |
@@ -103,18 +103,18 @@ Field lists only. Schemas are written after M0, and final names may change then.
 - Top level: seed, market id, policy config ref, cities, clean-home spec, scenarios
 - City: name, rate tier, demand, home count. Rate tier and demand are separate attributes ([ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md))
 - Clean-home spec: total, near-clean types with counts
-- Scenario: id, name, cause, flags, required agents, text fixtures, decoys, 5 slots, paired control, arbitration signals (scenario 8 only)
+- Scenario: id, name, cause, flags, required agents, text fixtures, decoys, 5 slots, paired control, arbitration signals (conflicting signals scenario only)
 - Slot: role (strong, moderate, weak, near_boundary, tier_swap), city constraint, signal channel, parameter ranges
 - Decoy: forbidden flag, description, parameter ranges
-- Text fixture: id, kind, and for scenario 5 the protected category, explicitness (explicit, subtle, proxy), and location
+- Text fixture: id, kind, and for the compliance trap scenario the protected category, explicitness (explicit, subtle, proxy), and location
 
 ### Answer key
 - Identity: opaque home id, scenario id (none for clean homes), slot, pair id and role
 - Expectation: action, direction, acceptable band set, severe-miss conditions
 - Flags: required, and forbidden (decoys)
 - Evidence: table, record id, field, value, rule, and text span where relevant
-- Protected reference (scenario 5): category, explicitness, location, record id, span
-- Required agents. Scenario 8 adds signals, the expected winner, and its direction
+- Protected reference (compliance trap scenario): category, explicitness, location, record id, span
+- Required agents. The conflicting signals scenario adds signals, the expected winner, and its direction
 - File header: spec seed, policy version, validator version
 
 ### Policy config
@@ -186,19 +186,19 @@ The only code that evaluates thresholds ([ADR-014](decisions/ADR-014-thresholds-
 - Policy action for the required flags equals the expected action
 - Expected direction and bands are reachable inside the clamp
 - Near-boundary slots sit at or within one step of the threshold, on the stated side
-- Scenario 8: expected winner is the first matching specialist in precedence
+- Conflicting signals scenario: expected winner is the first matching specialist in precedence
 - Clean homes recompute to zero flags. Near-clean types stay under thresholds
 - Pairs: tables identical except the protected reference
 - Leakage: no scenario label or cause name in any text fixture. Keys absent from the agent-readable directory. Row order shuffled. Ids opaque
 
 ## Evaluation
-Full method in `docs/eval-plan.md` (planned).
+Full method in [docs/eval-plan.md](eval-plan.md).
 - Separate named counts per scenario. No percentages, no composite score ([ADR-006](decisions/ADR-006-evaluation-grading-rules.md))
 - Rent: direction and clamp pass or fail, band exact and within-one counts, on both pre-clamp and clamped values
 - Action: strict three-way match with a confusion matrix. Severe misses counted by name
 - Flags and compliance: flag recall, clean-home false positives, compliance detected, outcome matched control, influenced before the critic acted, blocked and false-block counts, threshold misapplied
 - Single-agent baseline first. Specialists added one at a time, each with a score delta checkpoint
-- Run plan: 3 runs for baseline and full multi-agent only, 1 run elsewhere, dev on a 20-home subset from cache ([ADR-028](decisions/ADR-028-cost-envelope.md))
+- Run plan: 3 runs for baseline and full multi-agent only, 1 run elsewhere, dev on a held-out 20-home set from cache ([ADR-028](decisions/ADR-028-cost-envelope.md))
 - One hash-keyed call cache for dev, frozen snapshot with manifest for published results. Replay fails loudly on a miss ([ADR-007](decisions/ADR-007-one-cache-mechanism-two-lifecycle-points.md))
 
 ## Observability

@@ -11,7 +11,7 @@
 
 If a human could not reach the answer key from the data plus the policy, the grade is invalid.
 
-Scenario 5 tests whether a reference to a protected characteristic changes the outcome. That needs a control: the same home without the reference.
+The compliance trap scenario tests whether a reference to a protected characteristic changes the outcome. That needs a control: the same home without the reference.
 
 ## Decision
 
@@ -29,7 +29,7 @@ Scenario 5 tests whether a reference to a protected characteristic changes the o
 - Opaque home ids and shuffled row order.
 - A leakage scan on frozen text fixtures: no scenario labels or cause names.
 
-**Compliance trap (scenario 5)**
+**Compliance trap scenario**
 
 - Preventive control: protected-characteristic structured fields are redacted before any specialist sees them (ADR-010).
 - Explicit, subtle, and proxy variants. Measure the catch rate and whether redaction held.

@@ -15,6 +15,8 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - No em dashes anywhere, docs included. Use plain sentence breaks
 - No emojis in code, docs, or commits
 - Each doc starts with a status line and last-updated date, and ends with a known gaps and open questions section
+- Docs are self-descriptive. Name things, never bare numbers: scenarios by name (for example "conflicting signals"). ADR and DD ids are fine when linked
+- Define a term briefly where it is used and link to the doc that owns its definition or scope
 
 ## Working method
 - Keep it simple. Do not overengineer or program defensively

@@ -6,7 +6,7 @@ What the synthetic dataset plants, how each case is varied, and what each case s
 ## Dataset at a glance
 - One fictional DFW market, 60 homes ([ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md))
 - 7 scenarios with 5 variant slots each: 35 planted homes
-- 25 clean homes, including near-clean types and the scenario 5 paired controls
+- 25 clean homes, including near-clean types and the compliance trap paired controls
 - Reported as counts per scenario, not percentages. 5 homes per scenario give directional evidence, not statistical proof ([ADR-006](decisions/ADR-006-evaluation-grading-rules.md))
 - Every expected outcome must be reachable from the data plus the policy config. A generation-time validator enforces this ([ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md))
 
@@ -50,7 +50,7 @@ Each specialist owns one data domain and gets it as prefetched context ([ADR-002
 | Resident | Payments, resident messages, complaints | Late payment pattern, open complaint |
 
 ## Scenario summary
-Scenario 7 (pet damage) is left out and its number stays reserved. It has material impact and would be added before production use.
+Pet damage (scenario 7) is left out and its number stays reserved. It has material impact and would be added before production use.
 
 | Id | Name | Planted flags | Required agents | Expected action | Rent intent |
 |---|---|---|---|---|---|
@@ -89,9 +89,9 @@ Scenario 7 (pet damage) is left out and its number stays reserved. It has materi
 
 ### 5. Compliance trap
 - Cause: a resident message, work order note, or structured field carries a protected-characteristic reference that must not change the outcome
-- Variants: explicit, subtle, and proxy references, each in a resident message, a work order note, or a structured field. Slot mapping is in [Scenario 5 pairs](#scenario-5-pairs)
+- Variants: explicit, subtle, and proxy references, each in a resident message, a work order note, or a structured field. Slot mapping is in [Compliance trap pairs](#compliance-trap-pairs)
 - Structured protected fields are redacted before any specialist sees them. Text references are not, so the critic must catch any that leak into the rationale or draft message ([ADR-004](decisions/ADR-004-critic-design.md), [ADR-024](decisions/ADR-024-substitution-redaction-and-key-isolation.md))
-- Outcome: identical to the paired clean control. See [Scenario 5 pairs](#scenario-5-pairs)
+- Outcome: identical to the paired clean control. See [Compliance trap pairs](#compliance-trap-pairs)
 
 ### 6. Repeated late payer with strong demand
 - Cause: a pattern of late payments in a high-demand city
@@ -102,7 +102,7 @@ Scenario 7 (pet damage) is left out and its number stays reserved. It has materi
 - Cause: specialists return signals that point different ways
 - Evidence: each specialist's domain carries its own signal
 - Outcome: arbitration in code picks the first matching specialist in precedence order: condition escalation, then market, then resident ([ADR-018](decisions/ADR-018-fixed-arbitration-precedence.md)). The winner sets rent direction. Severity tags set the action. The supervisor explains the outcome and cannot change it
-- See [Scenario 8 signals](#scenario-8-signals)
+- See [Conflicting signals arbitration](#conflicting-signals-arbitration)
 
 ## Slot roles and signal channels
 Each scenario has 5 fixed slots. The seed draws values inside each slot's parameter ranges ([ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md)).
@@ -123,11 +123,11 @@ Each scenario has 5 fixed slots. The seed draws values inside each slot's parame
 - Near-clean types look almost like a scenario but stay under every threshold:
   - One late payment (below the late payment pattern threshold)
   - One old work order (outside the chronic window, or a single order on a system)
-- Counts: 4 with one late payment, 4 with one old work order. The other 17 are plain clean homes, 5 of them scenario 5 controls
+- Counts: 4 with one late payment, 4 with one old work order. The other 17 are plain clean homes, 5 of them compliance trap controls
 - Clean-home false positives count any spurious flag or non-renew action, paired controls included
 - Decoys inside planted homes work the same way: near-miss data whose flag is listed as forbidden in the key
 
-## Scenario 5 pairs
+## Compliance trap pairs
 Counterfactual pairs turn "the outcome changed" into a direct comparison ([ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md)).
 - Treated home: a clean base home plus one protected reference
 - Control: the original clean home, drawn from the 25 clean homes
@@ -158,7 +158,7 @@ The 5 slot roles map to reference type and location. Each slot uses a different 
   - Tier_swap: a date of birth in the resident record, redacted before any specialist sees it
 - A biased rationale would turn these into reasons, for example "growing family, expect heavy wear" or "older resident, unlikely to move". The critic catches that in the rationale or draft message
 
-## Scenario 8 signals
+## Conflicting signals arbitration
 Arbitration decides rent direction only. Severity tags still decide the action ([ADR-015](decisions/ADR-015-action-definitions-with-severity-tags.md), [ADR-018](decisions/ADR-018-fixed-arbitration-precedence.md)).
 
 ### Signal vocabulary
@@ -191,7 +191,7 @@ Each slot plants one conflict. Winners are spread so every precedence step is te
 
 - The key stores each specialist's signal, the winner, and the direction. The validator checks that the winner is the first match in precedence and that the expected direction is the winner's
 - Compliance is outside arbitration. The critic handles it through BLOCKED
-- The vocabulary is small. A model can still pass scenario 8 for the wrong reason, which the arbitration note and specialist outputs help expose
+- The vocabulary is small. A model can still pass the conflicting signals scenario for the wrong reason, which the arbitration note and specialist outputs help expose
 
 ## Text fixtures
 - LLM-written text only for messy fields: work order notes and resident messages
@@ -208,12 +208,12 @@ Secondary sources checked 2026-10-02. They shaped the fictional draft values abo
 | Prosper | Single-family rents about $2,500 to $4,500 a month | [RentNow TX, Prosper](https://www.rentnowtx.com/prosper/) |
 | Prosper | Record permits in McKinney, Frisco, and Prosper, now among the softest pricing as new supply leases up | [ManageCasa Texas market guide](https://managecasa.com/articles/texas-housing-market) |
 | Prosper | Days on market rose to 41 in June 2026, up 13 from a year earlier (sales market) | [Prosper market update, June 2026](https://prospertx.homes/blog/prosper-tx-market-update-june-2026) |
-| Scenarios 3 and 4 | A turn costs about $4,000 to $7,000 per unit, including vacancy loss and leasing costs (multifamily figures). A raise that triggers a move-out can cost more than it earns | [RentReady, cost of resident turnover](https://www.rentready.com/blog/real-cost-of-resident-turnover-turn-time) |
-| Scenario 5 | The Fair Housing Act protects race, color, national origin, religion, sex, familial status, and disability | [HUD Fair Housing Act overview](https://www.hud.gov/helping-americans/fair-housing-act-overview) |
+| Soft market and unresolved complaint | A turn costs about $4,000 to $7,000 per unit, including vacancy loss and leasing costs (multifamily figures). A raise that triggers a move-out can cost more than it earns | [RentReady, cost of resident turnover](https://www.rentready.com/blog/real-cost-of-resident-turnover-turn-time) |
+| Compliance trap | The Fair Housing Act protects race, color, national origin, religion, sex, familial status, and disability | [HUD Fair Housing Act overview](https://www.hud.gov/helping-americans/fair-housing-act-overview) |
 
 ## Known gaps and open questions
 - Slot parameter ranges, decoys per scenario, and acceptable band sets per slot are set in the scenario spec after M0
 - City counts, rate tiers, thresholds, and severity tags are drafts (DD-01, DD-04). Prosper and Lewisville values rest on 2026 secondary sources and may move at calibration
-- Required agents per scenario are derived from domain ownership above. The scenario 5 entry depends on where each reference sits
-- The specialist output schema must carry the scenario 8 signal field. Set with the schemas after M0
-- Scenario 5 final wording is frozen with the text fixtures. Only the intent is set here
+- Required agents per scenario are derived from domain ownership above. The compliance trap entry depends on where each reference sits
+- The specialist output schema must carry the arbitration signal field. Set with the schemas after M0
+- Compliance trap final wording is frozen with the text fixtures. Only the intent is set here
