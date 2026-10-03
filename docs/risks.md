@@ -24,10 +24,10 @@ Likelihood and impact are not rated. No rating rubric exists yet.
 | Spend overrun | Cost | Ceiling, per-run abort, per-case caps | [ADR-028](decisions/ADR-028-cost-envelope.md) | DD-08 |
 | Judge self-preference | Eval | No model grades a case | [ADR-006](decisions/ADR-006-evaluation-grading-rules.md) | Judge deferred |
 | Small samples and leakage | Eval | Counts not percentages, held-out dev set, threshold freeze | [eval plan](eval-plan.md), [ADR-019](decisions/ADR-019-promotion-criteria-and-threshold-freeze.md) | DD-03 |
-| Rent pricing misuse | Domain | Advisory only, human approval, global clamp | [ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md), [ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md) | DD-04 |
+| Rent pricing misuse | Domain | Advisory only, human approval, global clamp | [ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md), [ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md) | None |
 | Protected characteristics reach a decision | Domain | Redaction in the data layer, critic | [ADR-024](decisions/ADR-024-substitution-redaction-and-key-isolation.md), [ADR-004](decisions/ADR-004-critic-design.md) | None |
 | Outputs read as legal advice | Domain | Narrow claims, advisory only | This doc | None |
-| Synthetic data limits | Data | Results scoped to known planted cases | [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md), [ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md) | DD-01, DD-04 |
+| Synthetic data limits | Data | Results scoped to known planted cases | [ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md), [ADR-013](decisions/ADR-013-ground-truth-and-compliance-trap.md) | DD-01 |
 
 ## Models and gateway
 
@@ -89,7 +89,7 @@ Likelihood and impact are not rated. No rating rubric exists yet.
 - **Risk:** algorithmic rent pricing draws legal and regulatory scrutiny. Output could be mistaken for a pricing tool
 - **Mitigation:** the system has no send or write capability. It only recommends and records. A human approves every rent change and resident message. Code clamps every proposal to a global floor and cap. All market data is fictional
 - **Detection:** clamp hits, graded as the pre-clamp row failing while the clamped row passes. Reviewer edits and approvals in the approval state
-- **If it happens:** the clamp bounds the size of any change, and the audit snapshot records what was shown and who decided ([ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md)). The clamp (-3% to +9%) is a placeholder. 2026 metro rents are falling, so the cap may be lowered at calibration (DD-04)
+- **If it happens:** the clamp bounds the size of any change, and the audit snapshot records what was shown and who decided ([ADR-010](decisions/ADR-010-guardrails-tiering-and-audit-record.md)). The clamp (-5% to +6%) is calibrated to HUD Small Area Fair Market Rents (DD-04)
 
 ### Protected characteristics reach a decision
 - **Risk:** a protected characteristic in a structured field or a resident message shifts the rent or action
@@ -103,7 +103,7 @@ Likelihood and impact are not rated. No rating rubric exists yet.
   - This project is not legal advice. Outputs are illustrative and must not drive real pricing or tenancy decisions without legal and compliance review
   - Compliance checks are a fixed rule list and one classifier. They cover the federal Fair Housing Act classes plus age, which is not a federal class and is included as a common bias pattern
   - State and local rules (rent caps, notice periods, source-of-income protections, local protected classes) are not modeled
-  - Rent ranges and city values rest on secondary sources for shape only. Primary sources and calibration come with DD-04
+  - Rent ranges and the clamp are calibrated to HUD and Census benchmarks, not to market renewal data (DD-04)
 - **Detection:** n/a. Outside the system
 - **If it happens:** the system cannot act on its own output. A human decides every renewal
 
@@ -114,7 +114,7 @@ Likelihood and impact are not rated. No rating rubric exists yet.
   - Causes are planted, histories are complete and clean, and there is no missing-data handling. Real records are messier
   - Each planted home carries one scenario's cause, so the eval does not measure stacked or ambiguous causes beyond the conflicting signals scenario
   - Pet damage is left out and would be added before production use ([ADR-012](decisions/ADR-012-data-scale-scenarios-and-variants.md))
-  - Thresholds, severity tags, and city values are drafts until a generation run and calibration (DD-01, DD-04)
+  - Thresholds and severity tags are drafts until a generation run (DD-01)
 - **Detection:** n/a. A limit of the method, not an event
 - **If it happens:** production use would need a validation phase on real data. Not planned in this project
 

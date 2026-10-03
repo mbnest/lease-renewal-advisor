@@ -11,7 +11,7 @@ Rules for every coding agent (Claude Code, Codex, others) and human contributor.
 - Current state, next step, and resume prompt: [docs/progress.md](docs/progress.md). Read it first, then the current milestone log it links
 
 ## Writing style
-- Succinct. Bullets. Sentence case headings
+- Succinct. Bullets. Sentence case headings. Exception: the README title is the project name in title case, "Lease Renewal Decision Agent"
 - No em dashes anywhere, docs included. Use plain sentence breaks
 - No emojis in code, docs, or commits
 - Each doc starts with a status line and last-updated date, and ends with a known gaps and open questions section
@@ -50,6 +50,7 @@ Directories are created by the first PR that needs them. Each lane edits only it
 | `src/lease_renewal/prompts/` | Prompt files | e |
 | `tests/` | Tests, mirroring `src/lease_renewal/` | owner of the code under test |
 | `docs/`, `README.md` | Docs | f |
+| `research/` | Source figures and scripts behind calibration decisions. Raw downloads gitignored | f |
 
 - Paths for generated data and the restricted answer-key directory are set with the access layer ([ADR-024](docs/decisions/ADR-024-substitution-redaction-and-key-isolation.md))
 

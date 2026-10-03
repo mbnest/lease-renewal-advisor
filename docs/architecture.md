@@ -1,6 +1,6 @@
 # Architecture
 
-Status: designed, not built. Last updated 2026-10-02.
+Status: designed, not built. Last updated 2026-10-03.
 How the lease renewal decision agent fits together. All data is synthetic. Output is advisory. Each decision links to its ADR in [docs/decisions/](decisions/README.md). Deferred items (DD-nn) live in [docs/open-decisions.md](open-decisions.md).
 
 ## System summary
@@ -151,13 +151,13 @@ Designed, not built. Implemented with the schemas after M0.
 
 | Band | Range (percent change) | Direction |
 |---|---|---|
-| REDUCE | -3 up to but excluding 0 | Reduce |
+| REDUCE | -5 up to but excluding 0 | Reduce |
 | HOLD | Exactly 0 | Hold |
-| LOW | Above 0 to 3 | Raise |
-| MODERATE | Above 3 to 6 | Raise |
-| HIGH | Above 6 to 9 | Raise |
+| LOW | Above 0 to 2 | Raise |
+| MODERATE | Above 2 to 4 | Raise |
+| HIGH | Above 4 to 6 | Raise |
 
-- Clamp: floor -3%, cap +9%. Placeholders until calibration (DD-04)
+- Clamp: floor -5%, cap +6%, calibrated to HUD Small Area Fair Market Rents (DD-04, [ADR-020](decisions/ADR-020-rent-clamp-and-symbolic-bands.md))
 - Action: no flags gives renew. Otherwise highest severity wins, escalate over note ([ADR-015](decisions/ADR-015-action-definitions-with-severity-tags.md))
 - Severity: escalate for chronic maintenance and open complaint. Note for late payment pattern, below market, soft demand
 - Arbitration: on a specialist conflict, the first match in precedence sets rent direction: condition escalation, then market, then resident. Severity tags still set the action. Signal vocabulary is in `docs/scenarios.md`
@@ -246,6 +246,6 @@ Target components are designed, not validated ([ADR-011](decisions/ADR-011-datab
 - The trigger for APPROVED to DONE is not defined (DD-12)
 - Thin model client interface and typed claim vocabulary are not specified ([ADR-001](decisions/ADR-001-plain-python-asyncio-orchestration.md), [ADR-004](decisions/ADR-004-critic-design.md))
 - Protected field list, schema names, and config file name are set with the schemas after M0
-- Tuned thresholds and severity tags (DD-01), model selection (DD-02), promotion thresholds (DD-03), clamp calibration (DD-04), MLflow pin (DD-05), Free Edition feasibility (DD-06), cost (DD-08), disposition vocabulary (DD-09), DONE trigger (DD-12)
+- Tuned thresholds and severity tags (DD-01), model selection (DD-02), promotion thresholds (DD-03), MLflow pin (DD-05), Free Edition feasibility (DD-06), cost (DD-08), disposition vocabulary (DD-09), DONE trigger (DD-12)
 - Checks named here are not yet tied to test ids. The test register is planned
 - `docs/eval-plan.md` and `docs/scenarios.md` are not written yet
